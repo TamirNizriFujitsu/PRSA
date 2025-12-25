@@ -2,7 +2,7 @@
 
 This repository contains the code for our USENIX Security Symposium 2025 paper, "**PRSA: Prompt Stealing Attacks against Real-World Prompt Services**". 
 
-## 📂 Assets
+## Assets
 
 We provide the collected open-source datasets (**collected dataset**) used in the **Prompt Generation** phase, along with the necessary code and configuration files to reproduce our experiments.
 
@@ -29,10 +29,10 @@ For **real-world prompts and LLM applications**, we do **not** upload them to an
 
 
 
-## ⚙️ How to Use
+## How to Use
 
 
-### 🔧 Environment Setup
+### Environment Setup
 
 The experiments were conducted using CUDA 11.6 with NVIDIA A100, but any GPU compatible with CUDA 11.6 should work.
 
@@ -53,29 +53,29 @@ Export your OpenAI API key before running:
 export OPENAI_API_KEY=YOUR_KEY
 ```
 
-### 🛠️ External Dependencies
+### External Dependencies
 
-#### 🔹 spaCy Language Models
+#### spaCy Language Models
 
 ```bash
 python -m spacy download en_core_web_md
 python -m spacy download en_core_web_sm
 ```
 
-#### 🔹 Word2Vec Embeddings
+#### Word2Vec Embeddings
 We use pre-trained Word2Vec embeddings from the Google News corpus to support semantic-aware prompt processing. Please download `GoogleNews-vectors-negative300.bin.gz` from the following source:
     🔗 [Google Drive Link] https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit?resourcekey=0-wjGZdNAUop6WykTtMip30g
 
 After downloading, place the file under the `./tool/` directory.
 
-#### 🔹 Java (JDK 21)
+#### Java (JDK 21)
 Some components rely on Java for external tools. If you choose not to install Java system-wide, we’ve provided a prebuilt version of JDK 21.0.1 for your convenience: 🔗 [Google Drive Link] https://drive.google.com/file/d/16I3mKf4ZESa9IO39zdhoJUl06StJ2BkO/view?usp=sharing. Simply download the archive and unzip it into the ./tool/ directory so that the structure looks like:
 
 ```bash
 ./tool/jdk-21.0.1/...
 ```
 
-#### 🔹 fkassim Package
+#### fkassim Package
 Syntactic similarity evaluation requires the **fkassim** package.  
 We provide a prebuilt archive for your convenience:  
 🔗 [Google Drive Link] https://drive.google.com/file/d/1ab_JUtL-itRUxzbc1Y5EzL9cfvGGccGx/view?usp=sharing
@@ -86,7 +86,7 @@ After downloading, unzip the archive into the current project directory so that 
 ./fkassim/...
 ```
 
-### ▶️ Run the Code
+### Run the Code
 
 #### Step 1: Generate Prompt Attention
 Adjust settings in `1_prompt_attention_generation.py` (e.g., `theme`, `attention_threshold`, etc.), then run:
@@ -114,7 +114,7 @@ The result will be located at ./result/
 
 
 
-## 📝 Notes
+## Notes
 
 - The experiments in our paper are conducted using LLM APIs, including GPT-4 and GPT-3.5. Users are expected to obtain their own API access. 
 
