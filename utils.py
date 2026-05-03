@@ -282,16 +282,17 @@ def replace_token_with_placeholder(text, token, replace='{}'):
 
 
 def prompt_pruning(config, prompt, input_data, output_data, fn):
-    prompt = mask_related_phrases(config, input_data, output_data, prompt, fn)
+    prompt = mask_related_phrases(config, input_data, output_data, prompt, fn) # Goal: remove larger phrases from the stolen prompt that directly match or strongly correspond to parts of the user input.
     prompt = mask_related_words(config, prompt, input_data, output_data, fn)
     return prompt
 
 
 def prompt_pruning_google(config, prompt, input_data, output_data, fn):
+    """Remove parts of the stolen prompt that are too specific to the observed User Input."""
     if config["pre_pruning"] == 1:
-        prompt = llm.pre_pruning(input_data, prompt)
-    prompt = mask_related_phrases(config, input_data, output_data, prompt, fn)
-    prompt = mask_related_words_google(config, prompt, input_data, output_data, fn)
+        prompt = llm.pre_pruning(input_data, prompt, model=config.get("pruning_llm_model", "gpt-4o")) # Remove parts of the stolen prompt that are too specific to the observed User Input.
+    prompt = mask_related_phrases(config, input_data, output_data, prompt, fn) # masks direct phrase-level matches from the input.
+    prompt = mask_related_words_google(config, prompt, input_data, output_data, fn) # masks semantic word-level matches related to the input topic.
     return prompt
 
 def prompt_pruning_phrase_level(config, prompt, input_data, output_data, fn):
