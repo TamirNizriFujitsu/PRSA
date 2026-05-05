@@ -28,6 +28,12 @@
     "deployment": "gpt-4o-mini",
     "api_key_env": "AZURE_OPENAI_API_KEY"
   },
+  "Qwen-1.5B": {
+    "provider": "local_openai",
+    "api_base": "http://localhost:8000/v1",
+    "api_key": "local",
+    "model": "Qwen-1.5B"
+  },
   "claude-sonnet-4-5": {
   "provider": "azure_ai",
   "api_base": "https://omer-mkkummts-eastus2.services.ai.azure.com/anthropic",

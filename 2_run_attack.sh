@@ -3,9 +3,9 @@
 # Run with: bash 2_run_attack.sh
 # Purpose:
 # 1) Run phase-2 prompt stealing/evaluation in parallel for all categories.
-# 2) Write per-category logs and result/<category>_res_<target_model>.csv outputs.
-# 3) Post-process results: merge into result/demo_data_all_categories_res_<target_model>.csv,
-#    export stolen_prompts/stolen_prompts_<target_model>.py, then delete per-category result CSVs.
+# 2) Write per-category logs and result/<category>_res_<target_model><scenario_suffix>.csv outputs.
+# 3) Post-process results: merge into result/post_phase2_data_<target_model><scenario_suffix>.csv,
+#    then delete per-category result CSVs.
 
 set -euo pipefail
 
@@ -28,6 +28,8 @@ output_dir="log"
 mkdir -p "$output_dir"
 
 current_jobs=0
+> llm_calls.jsonl  # reset — count phase 2 calls only
+STEAL_START=$(date +%s)
 
 for task in $tasks
 do
@@ -47,73 +49,30 @@ done
 
 wait
 
+STEAL_ELAPSED=$(( $(date +%s) - STEAL_START ))
+STEAL_MIN=$(( STEAL_ELAPSED / 60 ))
+STEAL_SEC=$(( STEAL_ELAPSED % 60 ))
+mkdir -p result
+echo "creating_stolen_prompts_and_pruning = ${STEAL_MIN}m ${STEAL_SEC}s" >> "result/final_documentation_${TARGET_LLM_MODEL}${scenario_suffix}.txt"
+
 # Post-process per-category result files:
-# 1) extract stolen prompts to a dict file
-# 2) merge category results to a consolidated csv
-# 3) delete each per-category result file
-python3 - "$tasks" "$TARGET_LLM_MODEL" "$scenario_suffix" <<'PY'
-import csv
-import os
+# 1) merge category results to a consolidated csv for next phase
+# 2) delete each per-category result file
+venv/bin/python3 - "$TARGET_LLM_MODEL" "$scenario_suffix" <<'PY'
 import sys
+import utils
 
-tasks = [x for x in sys.argv[1].split() if x]
-target_model = sys.argv[2]
-scenario_suffix = sys.argv[3]
-result_dir = "result"
-merged_path = os.path.join(result_dir, f"demo_data_all_categories_res_{target_model}{scenario_suffix}.csv")
-stolen_prompts_dir = "stolen_prompts"
-os.makedirs(stolen_prompts_dir, exist_ok=True)
-stolen_prompts_path = os.path.join(stolen_prompts_dir, f"stolen_prompts_{target_model}{scenario_suffix}.py")
+target_model = sys.argv[1]
+scenario_suffix = sys.argv[2]
 
-rows = []
-fieldnames = None
-stolen_prompts = {}
+merged_path = f"result/post_phase2_data_{target_model}{scenario_suffix}.csv"
+utils.merge_phase2_results(merged_path, target_model, scenario_suffix)
+PY
 
-for category in tasks:
-    path = os.path.join(result_dir, f"{category}_res_{target_model}{scenario_suffix}.csv")
-    if not os.path.exists(path):
-        print(f"[Warning] Missing result file: {path}")
-        continue
-
-    first_prompt = None
-
-    with open(path, newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        if fieldnames is None:
-            fieldnames = list(reader.fieldnames or [])
-        for idx, row in enumerate(reader):
-            row["Category"] = category
-            rows.append(row)
-
-            if idx == 0:
-                first_prompt = (row.get("stolen prompt") or "").strip()
-
-    if first_prompt:
-        stolen_prompts[category] = first_prompt
-
-    os.remove(path)
-
-if not rows:
-    print("[Warning] No result rows found to merge.")
-    raise SystemExit(0)
-
-if "Category" not in fieldnames:
-    fieldnames = ["Category"] + fieldnames
-
-os.makedirs(result_dir, exist_ok=True)
-with open(merged_path, "w", newline="", encoding="utf-8") as out_f:
-    writer = csv.DictWriter(out_f, fieldnames=fieldnames)
-    writer.writeheader()
-    writer.writerows(rows)
-
-with open(stolen_prompts_path, "w", encoding="utf-8") as f:
-    f.write("stolen_prompts = {\n")
-    for category in sorted(stolen_prompts):
-        f.write(f"    {category!r}: {stolen_prompts[category]!r},\n")
-    f.write("}\n")
-
-print(f"Merged {len(rows)} rows into {merged_path}.")
-print(f"Saved {len(stolen_prompts)} stolen prompts into {stolen_prompts_path}.")
+# LLM-calls counting — aggregate llm_calls.jsonl into final_documentation
+venv/bin/python3 - "$TARGET_LLM_MODEL" "$scenario_suffix" <<'PY'
+import sys, utils
+utils.write_llm_call_summary(sys.argv[1], sys.argv[2], label="After Phase 2")
 PY
 
 echo "All attack jobs executed and post-processing completed."

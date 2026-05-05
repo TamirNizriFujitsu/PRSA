@@ -44,7 +44,7 @@ class PAA(PromptOptimizer):
         return numbers[0] if numbers else None
 
     def cal_gradients(self, generated_output, output_data):
-        # This function asks LLM to judge eahc element's similarity between the two outputs, then if the score is below the threshold, that element is marked as weak = needing attention (by returning 1 as a value to this element in the dictionary)
+        # This function asks LLM to judge eahc element's similarity between the two outputs, then if the score is below the threshold, that element is marked as weak = needs attention (by returning 1 as a value to this element in the dictionary)
         # Meaning: the generated output differs too much from the real output in tone, audience, and structure.
 
         gradient = {}
@@ -64,7 +64,7 @@ class PAA(PromptOptimizer):
             The score is wrapped with <START> and <END>
             """
             gradient_prompt = '\n'.join([line.lstrip() for line in gradient_prompt.split('\n')])
-            res = llm.chatGPT(gradient_prompt, model=self.opt.get("gradient_llm_model", "gpt-4o"), temperature=0.0)
+            res = llm.chatGPT(gradient_prompt, model=self.opt.get("gradient_llm_model", "gpt-4o"), temperature=0.0, call_source="gradient")  # LLM-calls counting
             feedbacks = []
             temp = []
             for r in res:    

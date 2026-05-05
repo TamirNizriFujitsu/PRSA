@@ -10,9 +10,20 @@ import os
 from urllib.parse import parse_qs, parse_qsl, urlencode, urlparse, urlunparse
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+import fcntl  # LLM-calls counting
 
 
 _MODEL_CATALOG_CACHE = None
+# LLM-calls counting
+_LLM_CALL_LOG = "llm_calls.jsonl"
+
+
+def _log_llm_call(source: str, model: str):
+    entry = json.dumps({"source": source, "model": model, "ts": time.time()}) + "\n"
+    with open(_LLM_CALL_LOG, "a") as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        f.write(entry)
+        fcntl.flock(f, fcntl.LOCK_UN)
 
 
 class Predictor(ABC):
@@ -35,6 +46,7 @@ class ChatGPTPredictor(Predictor):
             n=1,
             model=gpt_model,
             temperature=self.config["temperature"],
+            call_source="target",  # LLM-calls counting
         )
 
         if not responses:
@@ -187,6 +199,15 @@ def _resolve_model_runtime(model_name):
             "model": entry.get("model", model_name),
         }
 
+    # vLLM change
+    if provider == "local_openai":
+        return {
+            "provider": "local_openai",
+            "api_base": entry.get("api_base", "http://localhost:8000/v1"),
+            "api_key": entry.get("api_key", "local"),
+            "model": entry.get("model", model_name),
+        }
+
     if provider == "azure_ai":
         api_key = entry.get("api_key") or os.getenv(entry.get("api_key_env", "AZURE_AI_API_KEY"))
         api_base = entry.get("api_base")
@@ -249,7 +270,8 @@ def _resolve_model_runtime(model_name):
     )
 
 
-def _create_chat_completion(messages, model, temperature, n, top_p, max_tokens):
+def _create_chat_completion(messages, model, temperature, n, top_p, max_tokens, call_source="unknown"):  # LLM-calls counting
+    _log_llm_call(call_source, model)  # LLM-calls counting
     runtime = _resolve_model_runtime(model)
     is_gpt5_family = isinstance(model, str) and model.startswith("gpt-5")
     token_param = (
@@ -287,6 +309,20 @@ def _create_chat_completion(messages, model, temperature, n, top_p, max_tokens):
 
     if runtime["provider"] == "openai":
         openai.api_key = runtime["api_key"]
+        return openai.ChatCompletion.create(
+            model=runtime["model"],
+            n=n,
+            messages=messages,
+            timeout=(300, 300),
+            **sampling_params,
+            **token_param,
+        )
+
+    # vLLM change
+    if runtime["provider"] == "local_openai":
+        openai.api_type = "open_ai"
+        openai.api_key = runtime["api_key"]
+        openai.api_base = runtime["api_base"]
         return openai.ChatCompletion.create(
             model=runtime["model"],
             n=n,
@@ -426,7 +462,7 @@ def llm_attention(config, inputs, Output, attention_dict, gpt_model, characteris
 
             What is the {attention} of the output in one sentence?
             """
-        res = chatGPT(attention_prompt, model=gpt_model, temperature=0.0)
+        res = chatGPT(attention_prompt, model=gpt_model, temperature=0.0, call_source="generator")  # LLM-calls counting
         attention_text += res[0]
 
     return attention_text
@@ -450,7 +486,7 @@ def generate_prompt(config, inputs, output, gradient={}, gpt_model=None, max_tok
                             The instruction is wrapped with <START> and <END>.
                             """
 
-        res_list = chatGPT(prompt_gen_template, n=1, model=gpt_model, max_tokens=max_tokens, temperature=0.0)
+        res_list = chatGPT(prompt_gen_template, n=1, model=gpt_model, max_tokens=max_tokens, temperature=0.0, call_source="generator")  # LLM-calls counting
         res = res_list[0] if res_list else None
 
         if res is None:
@@ -483,7 +519,7 @@ def generate_prompt(config, inputs, output, gradient={}, gpt_model=None, max_tok
                         The instruction is wrapped with <START> and <END>.
                         """
 
-    res_list = chatGPT(attention_prompt, n=1, model=gpt_model, temperature=0.0)
+    res_list = chatGPT(attention_prompt, n=1, model=gpt_model, temperature=0.0, call_source="generator")  # LLM-calls counting
     res = res_list[0] if res_list else None
 
     if res is None:
@@ -511,10 +547,35 @@ def pre_pruning(user_input, prompt, model="gpt-4o"):
     I provide a Prompt and User Input. Please identify all parts of the Prompt that are semantically tied to the User Input, and replace them with placeholders "{{}}". Keep the sentence structure intact. Return only the masked prompt.
     The masked prompt is wrapped with <START> and <END>.
     """
-    res = chatGPT(instruction, n=1, model=model, temperature=0.0)[0]
+    res = chatGPT(instruction, n=1, model=model, temperature=0.0, call_source="pruning")[0]  # LLM-calls counting
     feedback = utils.parse_tagged_text(res, "<START>", "<END>")
     pre_prompt = feedback[0]
     return pre_prompt
+
+
+def edit_stolen_prompt(stolen_prompt, model="gpt-4o"):
+    system_prompt = """You are given a system prompt that contains placeholder markers "{}". These placeholders represent parts that were masked because they were specific to a particular user input.
+
+Your task is to make the prompt readable and clear by handling each "{}" in the way that best fits the surrounding context: replace it with a short, natural word or phrase if needed, or simply remove it if the sentence is already clear without it.
+
+Rules:
+- Replace each "{}" with the minimum text needed to make the sentence grammatically correct and understandable.
+- Do not add new information, new constraints, or new logic beyond what the surrounding text already implies.
+- Do not restructure sentences or change any part of the prompt other than the "{}" placeholders.
+- Keep all original wording, formatting, and intent intact.
+
+The goal is purely syntactic — fix only what is needed for readability, do not change the prompt's logic, meaning, or scope.
+
+Return only the edited prompt with no additional commentary."""
+
+    res = chatGPT_inference(
+        system_prompt=system_prompt,
+        text=f'Prompt:\n"{stolen_prompt}"',
+        model=model,
+        temperature=0.0,
+        call_source="generator",
+    )
+    return res[0] if res else stolen_prompt
 
 
 def llm_based_evaluation(target_output, generated_output, model="gpt-4o"):
@@ -542,7 +603,7 @@ def llm_based_evaluation(target_output, generated_output, model="gpt-4o"):
 
     Generated Text: \"{generated_output}\"
     """
-    res = chatGPT_inference(system_prompt=system_prompt, text=user_prompt, model=model, temperature=0)[0]
+    res = chatGPT_inference(system_prompt=system_prompt, text=user_prompt, model=model, temperature=0, call_source="evaluation")[0]  # LLM-calls counting
     return res
 
 
@@ -557,6 +618,7 @@ def chatGPT(
     frequency_penalty=0,
     model="gpt-4o",
     logit_bias={},
+    call_source="unknown",  # LLM-calls counting
 ):
     messages = [{"role": "user", "content": text}]
 
@@ -572,6 +634,7 @@ def chatGPT(
                 n=n,
                 top_p=top_p,
                 max_tokens=max_tokens,
+                call_source=call_source,  # LLM-calls counting
             )
         except Exception as e:
             retry_count += 1
@@ -613,6 +676,7 @@ def chatGPT_inference(
     frequency_penalty=0,
     model="gpt-4o",
     logit_bias={},
+    call_source="unknown",  # LLM-calls counting
 ):
     messages = []
     messages.append({"role": "system", "content": system_prompt})
@@ -630,6 +694,7 @@ def chatGPT_inference(
                 n=n,
                 top_p=top_p,
                 max_tokens=max_tokens,
+                call_source=call_source,  # LLM-calls counting
             )
         except Exception as e:
             retry_count += 1

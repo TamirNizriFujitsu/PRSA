@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 import pandas as pd
-import random
 
 class DataProcessor(ABC):
     def __init__(self, opt):
@@ -29,10 +28,6 @@ class Datasets(DataProcessor):
     def load_collect_data(self):
         df = pd.read_csv(self.data_dir + '/%s.csv'%self.theme, encoding="utf-8")
         exs = df.reset_index().to_dict('records')
-        max_samples = self.opt.get("max_samples", 0)
-        if max_samples and max_samples < len(exs):
-            random.shuffle(exs)
-            exs = exs[:max_samples]
         return exs
     
     def load_test_data(self):

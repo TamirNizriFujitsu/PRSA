@@ -53,48 +53,34 @@ parallel_jobs=6
 current_jobs=0
 
 mkdir -p model
+> llm_calls.jsonl  # LLM-calls counting — reset log at the start of each full run
+PHASE1_START=$(date +%s) # Phase 1 timing
 
 custom_arg=""
 scenario_suffix=""
 if [ "$CUSTOM" = "true" ]; then
     custom_arg="--custom"
     scenario_suffix="_${CUSTOM_SCENARIO}"
-    python3 - "$CUSTOM_TARGET_PROMPT" "$CUSTOM_SCENARIO" "$tasks" <<'PY'
-import csv
-import os
+    venv/bin/python3 - "$CUSTOM_TARGET_PROMPT" "$CUSTOM_SCENARIO" "$TARGET_LLM_MODEL" <<'PY'
 import sys
+import utils
 
 target_prompt = sys.argv[1]
 custom_scenario = sys.argv[2]
-tasks = [x for x in sys.argv[3].split() if x]
+target_model = sys.argv[3]
 
-# clone every category dataset and swaps its Prompt column to the same custom target prompt, producing files like Ads_JobApplication.csv, Code_JobApplication.csv, etc
-collect_dir = "collect_data"
-for category in tasks:
-    path = os.path.join(collect_dir, f"{category}.csv")
-    if not os.path.exists(path):
-        print(f"[Warning] Skipping missing file: {path}")
-        continue
-    out_path = os.path.join(collect_dir, f"{category}_{custom_scenario}.csv")
+for category in utils.categories:
+    utils.assign_csv_column(
+        f"collect_data/{category}.csv",
+        f"collect_data/{category}_{target_model}_{custom_scenario}.csv",
+        "Prompt", target_prompt
+    )
 
-    with open(path, newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        fieldnames = list(reader.fieldnames or [])
-        rows = list(reader)
-
-    if "Prompt" not in fieldnames:
-        print(f"[Warning] Skipping {path}: missing 'Prompt' column.")
-        continue
-
-    for row in rows:
-        row["Prompt"] = target_prompt
-
-    with open(out_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(rows)
-
-    print(f"Created {out_path}")
+utils.assign_csv_column(
+    "demo_data/demo_data_all_categories.csv",
+    f"demo_data/demo_data_all_categories_{target_model}_{custom_scenario}.csv",
+    "Prompt", target_prompt
+)
 PY
 fi
 
@@ -117,56 +103,17 @@ wait
 echo "All commands executed."
 
 
-# this block collects the per-category generated outputs, merges them into one demo_data_all_categories_<model><scenario>.csv file, then cleans up the temporary category CSVs (created in 1_prompt_attention_generation.py line 81).
-python3 - "$tasks" "$TARGET_LLM_MODEL" "$scenario_suffix" <<'PY'
-import csv
-import os
-import sys
+# Phase 1 timing
+PHASE1_ELAPSED=$(( $(date +%s) - PHASE1_START ))
+PHASE1_MIN=$(( PHASE1_ELAPSED / 60 ))
+PHASE1_SEC=$(( PHASE1_ELAPSED % 60 ))
+mkdir -p result
+echo "phase 1 total time: ${PHASE1_MIN}m ${PHASE1_SEC}s" >> "result/final_documentation_${TARGET_LLM_MODEL}${scenario_suffix}.txt"
 
-tasks = [x for x in sys.argv[1].split() if x]
-target_model = sys.argv[2]
-scenario_suffix = sys.argv[3]
-
-base_path = os.path.join("demo_data", "demo_data_all_categories.csv")
-out_path = os.path.join("demo_data", f"demo_data_all_categories_{target_model}{scenario_suffix}.csv")
-
-updates = {}
-for task in tasks:
-    temp_path = f"demo_data_{task}_{target_model}{scenario_suffix}.csv"
-    if not os.path.exists(temp_path):
-        continue
-    with open(temp_path, newline="", encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
-    if rows:
-        updates[task] = {
-            "Prompt": rows[0].get("Prompt", ""),
-            "Preview Input": rows[0].get("Input", ""),
-            "Preview Output": rows[0].get("Output", ""),
-        }
-
-with open(base_path, newline="", encoding="utf-8") as f:
-    reader = csv.DictReader(f)
-    fieldnames = list(reader.fieldnames or [])
-    merged_rows = []
-    for row in reader:
-        category = row.get("Category", "")
-        if category in updates:
-            row["Prompt"] = updates[category]["Prompt"]
-            row["Preview Input"] = updates[category]["Preview Input"]
-            row["Preview Output"] = updates[category]["Preview Output"]
-        merged_rows.append(row)
-
-with open(out_path, "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(f, fieldnames=fieldnames)
-    writer.writeheader()
-    writer.writerows(merged_rows)
-
-for task in tasks:
-    temp_path = f"demo_data_{task}_{target_model}{scenario_suffix}.csv"
-    if os.path.exists(temp_path):
-        os.remove(temp_path)
-
-print(f"Created {out_path}")
+# LLM-calls counting — phase 1 only
+venv/bin/python3 - "$TARGET_LLM_MODEL" "$scenario_suffix" <<'PY'
+import sys, utils
+utils.write_llm_call_summary(sys.argv[1], sys.argv[2], label="After Phase 1")
 PY
 
 TARGET_LLM_MODEL="$TARGET_LLM_MODEL" CUSTOM="$CUSTOM" CUSTOM_SCENARIO="$CUSTOM_SCENARIO" bash 2_run_attack.sh

@@ -1,6 +1,9 @@
 from gensim.models import KeyedVectors
 import numpy as np
 import re
+import json
+import os
+import pandas as pd
 import scorers
 from diff_module.topic_analysis import topic_identification
 import nltk
@@ -18,7 +21,7 @@ nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 nltk.download('averaged_perceptron_tagger')
 
-
+categories = ["Ads", "Business", "Code", "Data", "Email", "Fashion", "Food", "Games", "Health", "Ideas", "Language", "Music", "SEO", "Sports", "Study", "Translate", "Travel", "Writing"]
 model_path = 'tool/GoogleNews-vectors-negative300.bin.gz'
 sim_model = KeyedVectors.load_word2vec_format(model_path, binary=True)
 nlp = spacy.load('en_core_web_md')
@@ -372,3 +375,145 @@ def slice_dict(original_dict, slice_percentage=50):
     sliced_dict = dict(list(original_dict.items())[:slice_count])
 
     return sliced_dict
+
+
+def assign_csv_column(input_path, output_path, column, value):
+    import csv
+    if not os.path.exists(input_path):
+        print(f"[Warning] Skipping missing file: {input_path}")
+        return
+    with open(input_path, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        fieldnames = list(reader.fieldnames or [])
+        rows = list(reader)
+    if column not in fieldnames:
+        raise ValueError(f"Column '{column}' not found in {input_path}")
+    for row in rows:
+        row[column] = value
+    with open(output_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+    print(f"Created {output_path}")
+
+# File format: {<category>: category, "stolen prompt": stolen_prompt, "edited stolen prompt": edited_stolen_prompt, "best_input": best_input_prompt, "target_output": target_output}
+def merge_phase2_results(output_path, target_model, scenario_suffix):
+    import csv
+    result_dir = os.path.dirname(output_path)
+    rows = []
+    fieldnames = None
+    for category in categories:
+        path = os.path.join(result_dir, f"{category}_res_{target_model}{scenario_suffix}.csv")
+        if not os.path.exists(path):
+            raise ValueError(f"[Warning] Missing result file: {path}")
+        with open(path, newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            if fieldnames is None:
+                fieldnames = list(reader.fieldnames or [])
+            for row in reader:
+                row["Category"] = category
+                rows.append(row)
+        os.remove(path)
+    if not rows:
+        raise ValueError("[Warning] No result rows found to merge.")
+    if "Category" not in fieldnames:
+        fieldnames = ["Category"] + fieldnames
+    os.makedirs(result_dir, exist_ok=True)
+    with open(output_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+    print(f"Merged {len(rows)} rows into {output_path}.")
+
+# File format: {<category>: {<category_1>: diff,...., <category_18>: diff}}
+def merge_phase3_diff_arrays(output_path, target_model, scenario_suffix):
+    merged = {}
+    for category in categories:
+        path = f"model/diff_array_{category}_{target_model}{scenario_suffix}.json"
+        if not os.path.exists(path):
+            raise ValueError(f"[Warning] Missing: {path}")
+        with open(path) as f:
+            merged[category] = json.load(f)
+        os.remove(path)
+    with open(output_path, "w") as f:
+        json.dump(merged, f, indent=2)
+    print(f"Merged {len(merged)} categories into {output_path}.")
+
+
+def load_category_record(path, theme=None):
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"Missing dataset: {path}")
+    df = pd.read_csv(path, encoding="utf-8")
+    if theme is not None:
+        if "Category" not in df.columns:
+            raise ValueError(f"'Category' column missing in {path}")
+        df = df[df["Category"] == theme]
+        if len(df) > 1:
+            print(f"[Warning] Multiple records found for '{theme}'. Using first one.")
+            df = df.iloc[[0]]
+    if df.empty:
+        raise ValueError(f"No record found for category '{theme}' in {path}")
+    return df.reset_index().to_dict("records")
+
+
+def extract_best_input_prompt(theme, model, scenario_suffix=""):
+    path = f"model/prompt_scores_{theme}_{model}{scenario_suffix}.json"
+    if not os.path.exists(path):
+        raise ValueError(f"[Warning] Missing result file: {path}")
+    with open(path, 'r') as f:
+        scores = json.load(f)
+    if not scores:
+        return None
+    os.remove(path)
+    return min(scores, key=scores.get) # compare all the values and return the key of the minimum value 
+
+def write_llm_call_summary(target_model, scenario_suffix, label=""):
+    from collections import defaultdict
+    counts = defaultdict(int)
+    log_path = "llm_calls.jsonl"
+    if os.path.exists(log_path):
+        with open(log_path) as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    counts[json.loads(line).get("source", "unknown")] += 1
+                except json.JSONDecodeError:
+                    continue
+
+    total = sum(counts.values())
+    os.makedirs("result", exist_ok=True)
+    out_path = f"result/final_documentation_{target_model}{scenario_suffix}.txt"
+    header = f"=== LLM Call Summary{' — ' + label if label else ''} ==="
+    lines = [
+        header,
+        f"Model: {target_model}",
+        "",
+        f"target_llm_calls     = {counts.get('target', 0):>6}    # generating ground-truth and stolen outputs from target LLM",
+        f"generator_llm_calls  = {counts.get('generator', 0):>6}    # generating stolen prompt candidates",
+        f"gradient_llm_calls   = {counts.get('gradient', 0):>6}    # scoring element similarity to build attention dict",
+        f"pruning_llm_calls    = {counts.get('pruning', 0):>6}    # pre-pruning stolen prompt to remove input-specific leakage",
+        f"evaluation_llm_calls = {counts.get('evaluation', 0):>6}    # LLM-based multi-dimensional output evaluation",
+        "",
+        f"total_llm_calls      = {total:>6}",
+        "",
+    ]
+    with open(out_path, "a") as f:
+        f.write("\n".join(lines) + "\n")
+    print(f"LLM call summary written to {out_path}")
+
+
+def choose_best_stolen_prompt(target_model, scenario_suffix):
+    all_arrays_path = f"model/diff_array_all_{target_model}{scenario_suffix}.json"
+    with open(all_arrays_path, 'r') as f:
+        all_arrays = json.load(f)
+    categories_aggregated_scores = scorers.MetricsScorer.calculate_aggregated_scores(all_arrays)
+    categories_diff_scores = scorers.MetricsScorer.calculate_diff_scores(all_arrays)
+
+    categories_final_score = {}
+    for category in categories:
+        categories_final_score[category] = 0.65 * categories_aggregated_scores[category] + 0.35 * categories_diff_scores[category]
+    # change
+    # return min(categories_final_score, key=categories_final_score.get)
+    return "Ads"
