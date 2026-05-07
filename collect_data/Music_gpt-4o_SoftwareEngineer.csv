@@ -1,0 +1,1059 @@
+Prompt,Preview Input,Preview Output,Input Test Case1,Input Test Case2
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Craft a detailed review of a hypothetical album by [Artist Name] that explores the concept of [Concept Theme]. Discuss how each track contributes to the overarching theme, mentioning specific sounds, lyricism, and influences from various music genres. Analyze the artist’s evolution in style compared to their previous works. Conclude with how this album resonates with audiences and its potential impact on [Artist Name]'s career trajectory.
+[Artist Name]=Adele
+[Concept Theme]=Time Travel","Album Title: ""Temporal Echoes""
+
+Adele's latest album, ""Temporal Echoes,"" delves into the intriguing concept of time travel, presenting a unique and thought-provoking exploration of how the passage of time affects love, loss, and self-discovery. Known for her soulful and emotive vocals, Adele masterfully intertwines her powerful voice with a diverse range of musical styles to create a captivating sonic journey through different eras.
+
+1. ""Chrono Love"": The album opens with a haunting melody that sets the tone for the theme of love transcending time. Adele's vocals soar over a lush orchestral arrangement, drawing the listener into a poignant narrative of a love that spans centuries.
+
+2. ""Retrograde"": This track blends elements of retro soul and futuristic electronica, creating a dynamic sound that reflects the disorienting nature of time travel. Adele's introspective lyrics explore the complexities of revisiting the past and the bittersweet nostalgia that comes with it.
+
+3. ""Parallel Lives"": Here, Adele showcases her storytelling prowess as she muses on the concept of parallel universes and the different paths our lives could have taken. The piano-driven melody builds to a crescendo, mirroring the emotional intensity of reflecting on the choices we make.
+
+4. ""Timeless"": A standout ballad on the album, ""Timeless"" features Adele's raw vocals against a stripped-down acoustic backdrop. The lyrics delve into the idea of finding a love that transcends the constraints of time and space, evoking a sense of longing and vulnerability.
+
+5. ""Future Past"": Blending elements of modern pop and classic R&B, ""Future Past"" is a soulful reflection on the cyclical nature of time and how the past influences our future. Adele's emotive delivery captures the paradoxical feeling of moving forward while being anchored by the past.
+
+6. ""Wormhole"": This experimental track takes listeners on a sonic journey through swirling synths and hypnotic beats, creating a sense of disorientation and intrigue. Adele's vocals weave through the intricate production, evoking the sensation of traveling through a wormhole in space-time.
+
+7. ""Temporal Lullaby"": Closing the album on a contemplative note, ""Temporal Lullaby"" is a gentle yet poignant ode to the passage of time and the inevitability of change. Adele's soothing vocals and ethereal instrumentation create a dreamlike atmosphere, inviting listeners to reflect on their own relationship with time.
+
+""Temporal Echoes"" showcases Adele's evolution as an artist, pushing the boundaries of her signature sound while staying true to her emotional authenticity. The album seamlessly fuses elements of soul, pop, electronica, and classical music, creating a rich tapestry of sound that mirrors the complexity of the album's thematic exploration.
+
+With its introspective lyrics, diverse musical influences, and Adele's powerhouse vocals, ""Temporal Echoes"" is poised to resonate deeply with audiences and further solidify Adele's status as a musical icon. This ambitious project not only showcases Adele's artistic growth but also opens up new possibilities for her future ventures, cementing her place as one of the most versatile and compelling artists of her generation.",[Artist Name]=Kendrick Lamar [Concept Theme]=Self-Identity,[Artist Name]=Taylor Swift [Concept Theme]=Nature and Rebirth
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Explore the evolution of musical instruments across different cultures. Detail how instruments unique to [Culture 1] and [Culture 2] have developed over time and their significance in contemporary music. Include discussions on the craftsmanship, the traditional and modern playing techniques, and how these instruments have influenced genres globally.
+[Culture 1]=Japan
+[Culture 2]=West Africa","The evolution of musical instruments in Japan and West Africa showcases the rich diversity in craftsmanship, playing techniques, and cultural significance. 
+
+In Japan, traditional instruments like the shamisen, koto, and shakuhachi have been integral to Japanese music for centuries. The shamisen is a three-stringed instrument with a distinctive sound, often used in traditional Japanese music genres such as kabuki and bunraku theater. Crafted with precision, the shamisen's body is made from wood, while the strings are traditionally crafted from silk. Over time, the instrument has undergone modifications to enhance its sound quality and playability.
+
+The koto, a 13-stringed zither, is another iconic Japanese instrument with a history dating back to the 7th century. Made from paulownia wood, the koto is played using ivory picks on the fingers, producing a delicate and ethereal sound. Modern adaptations of the koto include electric versions that have expanded its versatility in contemporary music genres.
+
+The shakuhachi, a bamboo flute, is deeply rooted in Zen Buddhism and traditional Japanese music. Its simple construction belies its complex and hauntingly beautiful tones, making it a favorite in traditional Japanese folk music and meditation practices. The shakuhachi has inspired contemporary musicians globally, influencing genres like jazz and ambient music.
+
+In West Africa, a diverse range of traditional instruments such as the djembe, kora, and balafon have shaped the region's vibrant music scene. The djembe, a goblet-shaped drum, is known for its versatility and expressive range. Hand-carved from a single piece of hardwood and topped with goatskin, the djembe's craftsmanship is a testament to the skill of West African artisans. Its rhythmic patterns and tones have influenced various music genres worldwide, from world music to pop and electronic dance music.
+
+The kora, a 21-stringed harp-lute, is a symbol of West African storytelling and oral traditions. Crafted from a calabash gourd and cowhide, the kora's intricate playing technique involves plucking and strumming to create mesmerizing melodies. Modern kora players have incorporated elements of jazz, blues, and world music into their repertoire, expanding the instrument's global appeal.
+
+The balafon, a wooden xylophone with gourd resonators, is another key instrument in West African music. Played with mallets, the balafon produces bright and percussive tones that are essential in traditional ceremonies and celebrations. Its influence can be heard in contemporary genres like Afrobeat and reggae, showcasing the instrument's adaptability and enduring legacy.
+
+Overall, the evolution of musical instruments in Japan and West Africa reflects a deep connection to cultural heritage and artistic expression. These instruments continue to inspire musicians globally, bridging traditional and modern sounds to create a truly diverse and dynamic musical landscape.","[Culture 1]=India
+[Culture 2]=Brazil","[Culture 1]=Native American tribes
+[Culture 2]=Middle Eastern"
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Explore the impact of groundbreaking musical albums released in the 20th century. Focus on how albums like [Album 1] and [Album 2] have influenced contemporary music scenes and genres such as [Genre 1] and [Genre 2]. Discuss the socio-political context during the release of these albums and how they resonated with or challenged societal norms and values of their time. Analyze the legacy of these albums in shaping the music industry, and include their reception by both critics and the public.
+[Album 1]=The Dark Side of the Moon
+[Album 2]=Nevermind
+[Genre 1]=Alternative Rock
+[Genre 2]=Electronic Music","""The Dark Side of the Moon"" by Pink Floyd and ""Nevermind"" by Nirvana are two groundbreaking albums that have had a profound impact on contemporary music scenes, particularly in alternative rock and electronic music genres.
+
+""The Dark Side of the Moon"" was released in 1973 during a tumultuous period marked by social and political upheaval, including the Vietnam War and the Watergate scandal. The album's themes of mental health, greed, and the passage of time resonated with listeners who were grappling with a sense of disillusionment and uncertainty. Its innovative use of studio effects, synthesizers, and unconventional song structures pushed the boundaries of rock music and paved the way for the development of electronic music.
+
+The album's legacy can be seen in the rise of progressive rock and the influence it had on bands like Radiohead and Tool. Its seamless blending of music and lyrics into a cohesive concept album set a new standard for artistic expression in the music industry. Critics hailed it as a masterpiece, and it remains one of the best-selling albums of all time, with enduring popularity among fans.
+
+""Nevermind"" was released in 1991 amidst the rise of grunge music and the decline of the glam metal scene. Nirvana's raw and unfiltered sound, coupled with frontman Kurt Cobain's introspective lyrics, captured the angst and disillusionment of a generation coming of age in a post-Reagan era marked by economic recession and social unrest. The album's explosive success catapulted alternative rock into the mainstream and challenged the dominance of pop and hair metal on the charts.
+
+""Nevermind"" revolutionized the music industry by proving that underground, DIY bands could achieve commercial success without compromising their artistic integrity. It inspired a wave of alternative rock bands and paved the way for the mainstream acceptance of genres like punk and indie rock. The album's impact can be seen in the continued popularity of grunge music and its influence on bands like Pearl Jam and Foo Fighters.
+
+In conclusion, both ""The Dark Side of the Moon"" and ""Nevermind"" are seminal albums that not only defined their respective genres but also challenged societal norms and values of their time. They continue to shape the music industry and inspire artists across different genres, leaving a lasting legacy that will endure for generations to come.",[Album 1]=Thriller [Album 2]=The Rise and Fall of Ziggy Stardust and the Spiders from Mars [Genre 1]=Pop [Genre 2]=Glam Rock,[Album 1]=Sgt. Pepper's Lonely Hearts Club Band [Album 2]=Pet Sounds [Genre 1]=Psychedelic Rock [Genre 2]=Progressive Rock
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Design a virtual music festival that celebrates the diversity of [Country or Region]'s musical heritage. Outline the festival's schedule, featuring performances that highlight a mix of [Number] traditional and contemporary artists. Each artist should showcase a unique blend of [Traditional Music Genre 1], [Traditional Music Genre 2], and [Modern Music Genre], playing instruments such as [Instrument 1] and [Instrument 2]. Describe the interactive workshops for attendees, focusing on the history of the musical genres and their evolution. Conclude with the festival's impact on promoting cultural exchange and its reception by the global music community.
+[Country or Region]=India
+[Number]=10
+[Traditional Music Genre 1]=Hindustani classical
+[Traditional Music Genre 2]=Carnatic music
+[Modern Music Genre]=Bollywood music
+[Instrument 1]=sitar
+[Instrument 2]=tabla","Welcome to the ""Harmony of India"" virtual music festival, celebrating the rich and diverse musical heritage of India. This festival brings together traditional Hindustani classical and Carnatic music with the modern sounds of Bollywood music, showcasing a fusion that represents the essence of India's musical tapestry.
+
+**Schedule:**
+
+1. **Opening Ceremony:** A mesmerizing performance blending Hindustani classical and Carnatic music to set the tone for the festival.
+
+2. **Artist 1:** A Hindustani classical vocalist accompanied by a tabla player, presenting soulful renditions of traditional ragas.
+
+3. **Artist 2:** A Carnatic music ensemble featuring violin, mridangam, and ghatam, delivering vibrant and rhythmic compositions.
+
+4. **Artist 3:** A contemporary Bollywood band infusing popular hits with classical elements like the sitar and tabla, creating a unique fusion experience.
+
+5. **Artist 4:** A fusion performance uniting Hindustani and Carnatic musicians in a collaborative exploration of traditional and modern sounds.
+
+6. **Artist 5:** A young indie artist blending classical Indian influences with electronic beats, showcasing the evolving landscape of Indian music.
+
+7. **Artist 6:** A Bollywood playback singer delivering chart-topping hits alongside traditional instruments, bridging the gap between past and present.
+
+8. **Artist 7:** A fusion instrumental group combining Hindustani and Carnatic styles with a modern twist, pushing boundaries and redefining genres.
+
+9. **Artist 8:** A contemporary dance troupe interpreting Indian classical rhythms through a modern lens, adding a visual dimension to the musical journey.
+
+10. **Closing Ceremony:** A grand finale featuring all artists coming together for a spectacular collaborative performance, symbolizing unity in diversity through music.
+
+**Interactive Workshops:**
+
+- **History of Hindustani & Carnatic Music:** Delve into the origins and evolution of these classical music traditions, exploring key composers, ragas, and rhythmic patterns.
+  
+- **Instrument Masterclasses (Sitar & Tabla):** Learn about the significance of the sitar and tabla in Indian music, their construction, playing techniques, and cultural importance.
+
+- **Bollywood Music Evolution:** Trace the development of Bollywood music from its roots in classical Indian music to its modern-day fusion with global influences.
+
+**Impact and Reception:**
+
+The ""Harmony of India"" festival serves as a platform for cultural exchange, promoting the rich musical heritage of India to a global audience. By showcasing the seamless blend of traditional and modern genres, the festival fosters appreciation for India's diverse musical traditions and their relevance in contemporary times.
+
+The fusion of Hindustani classical, Carnatic music, and Bollywood tunes not only highlights the unity within diversity but also resonates with audiences worldwide, bridging cultural gaps and fostering a deeper understanding of India's musical legacy. The festival's reception by the global music community is expected to be enthusiastic, with a recognition of India's unique contribution to the world of music and its ability to inspire new artistic expressions.","[Country or Region]=Brazil
+[Number]=8
+[Traditional Music Genre 1]=Samba
+[Traditional Music Genre 2]=Bossa Nova
+[Modern Music Genre]=Brazilian pop
+[Instrument 1]=guitar
+[Instrument 2]=berimbau","[Country or Region]=Ireland
+[Number]=5
+[Traditional Music Genre 1]=Irish folk
+[Traditional Music Genre 2]=Celtic
+[Modern Music Genre]=Irish rock
+[Instrument 1]=fiddle
+[Instrument 2]=bodhran"
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Explore the impact of global music festivals on local cultures and economies. Analyze how major events like [Festival Name 1] and [Festival Name 2] contribute to cultural exchange and economic development in their host cities. Discuss the role of these festivals in promoting local artists alongside international acts, the environmental challenges they pose, and strategies for sustainable event management.
+[Festival Name 1]=Coachella
+[Festival Name 2]=Glastonbury","Coachella and Glastonbury are two iconic global music festivals that have a significant impact on local cultures and economies in their host cities. These festivals contribute to cultural exchange by bringing together a diverse range of artists and attendees from around the world. They also play a crucial role in promoting local artists alongside internationally renowned acts, providing a platform for emerging talents to showcase their music to a global audience.
+
+In terms of economic development, both Coachella and Glastonbury generate substantial revenue for their host cities through ticket sales, merchandise, food and beverage sales, accommodation bookings, and other related activities. These festivals attract thousands of visitors, both domestic and international, leading to a boost in tourism and local businesses. The economic impact is particularly significant for small businesses and vendors in the host cities, as they benefit from the increased foot traffic and exposure during the festival period.
+
+One of the key environmental challenges posed by major music festivals like Coachella and Glastonbury is the generation of large amounts of waste, including plastic pollution, food waste, and carbon emissions from transportation. To address these challenges, festival organizers have been implementing sustainable practices such as recycling programs, reusable materials, and carbon offset initiatives. For example, Glastonbury has been working towards becoming a single-use plastic-free event and promoting eco-friendly alternatives for attendees.
+
+Sustainable event management strategies are essential for the long-term success and viability of global music festivals. These strategies can include reducing energy consumption, minimizing waste production, promoting public transportation and carpooling, and engaging with local communities to ensure minimal disruption and maximum benefit. By adopting sustainable practices, festivals like Coachella and Glastonbury can not only reduce their environmental footprint but also inspire attendees and other event organizers to follow suit.
+
+In conclusion, global music festivals like Coachella and Glastonbury play a vital role in promoting cultural exchange, economic development, and local talent while also facing environmental challenges that require sustainable solutions. By balancing the economic benefits with environmental considerations and supporting local communities, these festivals can continue to thrive and make a positive impact on both global and local scales.",[Festival Name 1]=Tomorrowland [Festival Name 2]=Burning Man,[Festival Name 1]=Lollapalooza [Festival Name 2]=Montreux Jazz Festival
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Explore the evolution of a specific music genre, such as [Genre Name], from its origins to its current form. Detail key artists, significant albums, and landmark songs that have defined and shaped the genre over the years. Discuss how social and political factors have influenced the genre's development and how it has impacted other music styles. Conclude by predicting future trends and directions for the genre.
+[Genre Name]=Hip Hop","Hip hop is a genre that emerged in the Bronx, New York City, in the 1970s, characterized by its rhythmic vocal delivery and intricate wordplay over a backdrop of beats and samples. It has since evolved into a global cultural phenomenon, influencing fashion, language, and art beyond just music. Let's delve into the evolution of hip hop from its humble beginnings to its current state.
+
+**Origins (1970s-1980s):**
+Hip hop's roots can be traced back to DJ Kool Herc, who is credited with hosting the first hip hop party in 1973. The genre quickly gained traction in the Bronx, with pioneers like Grandmaster Flash and Afrika Bambaataa incorporating turntablism and breakdancing into the culture. The Sugarhill Gang's ""Rapper's Delight"" in 1979 is often considered the first commercially successful hip hop song.
+
+**Golden Era (1980s-1990s):**
+The 1980s and 1990s are often referred to as the ""Golden Era"" of hip hop, characterized by socially conscious lyrics and innovative production techniques. Artists like Run-D.M.C., LL Cool J, Public Enemy, and N.W.A. revolutionized the genre with their unique styles and political messages. The emergence of sampling and the birth of sub-genres like gangsta rap (with artists like Tupac Shakur and The Notorious B.I.G.) and alternative hip hop (De La Soul, A Tribe Called Quest) further diversified the sound of hip hop.
+
+**Mainstream Success (2000s-2010s):**
+The 2000s saw hip hop reaching new heights of commercial success, with artists like Eminem, Jay-Z, Kanye West, and 50 Cent dominating the charts. The era also saw the rise of Southern hip hop with artists like OutKast, Ludacris, and Lil Wayne bringing a new sound to the genre. The 2010s saw the blurring of genre boundaries, with artists like Drake and Kendrick Lamar incorporating elements of R&B and rock into their music.
+
+**Current State (2020s):**
+In the current landscape of hip hop, artists like Travis Scott, Cardi B, and Megan Thee Stallion are pushing boundaries and redefining the genre. The rise of streaming platforms has democratized the music industry, allowing independent artists to gain visibility and challenge the dominance of major labels. The genre continues to evolve, with trap music dominating the charts and artists experimenting with new sounds and styles.
+
+**Future Trends:**
+As we look to the future of hip hop, it's clear that the genre will continue to evolve and shape the musical landscape. Collaboration between artists from different genres will likely become more common, leading to a fusion of sounds and styles. Social and political issues will continue to be central themes in hip hop music, reflecting the realities of the world we live in. Technology will also play a significant role, with virtual concerts and immersive experiences redefining how fans engage with their favorite artists.
+
+In conclusion, hip hop has come a long way from its origins in the Bronx to becoming a global cultural force. Its evolution has been shaped by social and political factors, as well as technological advancements. As we move forward, hip hop will undoubtedly continue to push boundaries and inspire new generations of artists and fans.",[Genre Name]=Jazz,[Genre Name]=Electronic Dance Music
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Compose a short artist biography for a musician from [Country], who specializes in [Music Genre]. The bio should include key milestones in their career, influences from [Influence 1] and [Influence 2], and their notable achievements in the music industry. Highlight how their cultural background has shaped their musical style and discuss their most popular album or song, explaining its significance and the message it conveys.
+[Country]=Brazil
+[Music Genre]=Bossa Nova
+[Influence 1]=Jazz
+[Influence 2]=Samba","Hailing from the vibrant land of Brazil, Maria Silva is a distinguished Bossa Nova artist who has captivated audiences worldwide with her mesmerizing melodies and soulful voice. With a career spanning over two decades, Maria's musical journey has been deeply influenced by the rich traditions of Jazz and Samba, blending these genres seamlessly into her unique Bossa Nova style.
+
+Growing up surrounded by the rhythmic beats of Samba and the improvisational flair of Jazz, Maria honed her craft and developed a sound that pays homage to her cultural roots while pushing the boundaries of traditional Bossa Nova music. Her ability to infuse elements of Jazz improvisation with the infectious rhythms of Samba has earned her critical acclaim and a loyal fan base.
+
+One of Maria's most notable achievements in the music industry is her chart-topping album ""Coração Brasileiro,"" which showcases her exceptional songwriting skills and emotive vocal delivery. The title track, ""Coração Brasileiro,"" is a poignant ode to the resilience and spirit of the Brazilian people, drawing inspiration from the country's diverse cultural heritage and tumultuous history. Through her music, Maria conveys a message of unity, love, and hope, touching the hearts of listeners across the globe.
+
+With her unwavering dedication to preserving the essence of Bossa Nova while pushing the boundaries of the genre, Maria Silva continues to be a trailblazer in the music industry, enchanting audiences with her enchanting melodies and heartfelt lyrics.","[Country]=Ireland
+[Music Genre]=Folk
+[Influence 1]=Traditional Irish music
+[Influence 2]=Rock","[Country]=Japan
+[Music Genre]=J-Pop
+[Influence 1]=Anime soundtracks
+[Influence 2]=Classical music"
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Delve into the evolution of musical genres over the decades. Chart the transformation and development of [Specific Genre] from its origins to the present day. Analyze key figures, landmark albums, and pivotal moments that shaped the trajectory of [Specific Genre]. Additionally, discuss the technological advancements in music production and their effects on the [Specific Genre].
+[Specific Genre]=Rock","Rock music is a genre that has continuously evolved and diversified since its inception in the mid-20th century. It originated in the United States in the late 1940s and early 1950s, drawing influences from rhythm and blues, country music, and gospel music. The genre's roots can be traced back to the emergence of rock and roll, with artists like Chuck Berry, Little Richard, and Elvis Presley leading the way.
+
+In the 1960s, rock music underwent a significant transformation with the rise of the counterculture movement and the British Invasion. Bands like The Beatles, The Rolling Stones, The Who, and The Kinks brought a new sound and style to rock music, incorporating elements of folk, psychedelic, and blues music. This era saw the release of landmark albums such as The Beatles' ""Sgt. Pepper's Lonely Hearts Club Band"" and The Jimi Hendrix Experience's ""Are You Experienced,"" which pushed the boundaries of rock music.
+
+The 1970s marked the era of classic rock, with bands like Led Zeppelin, Pink Floyd, and Queen dominating the airwaves. This decade also saw the rise of subgenres like punk rock, with bands like The Ramones and The Sex Pistols bringing a raw and rebellious energy to the genre. The 1970s also saw the birth of progressive rock, with bands like Yes and Genesis incorporating complex musical arrangements and concept albums into their music.
+
+The 1980s brought further diversification to rock music, with the emergence of genres like glam metal, post-punk, and alternative rock. Bands like Guns N' Roses, U2, and The Cure defined the sound of the decade, while artists like Prince and Michael Jackson blended rock with pop and funk influences. The 1980s also saw the advent of music videos, which became an essential part of promoting rock music.
+
+The 1990s saw the rise of grunge music, with bands like Nirvana, Pearl Jam, and Soundgarden leading the way. This decade also saw the mainstream success of alternative rock bands like Red Hot Chili Peppers, Radiohead, and Smashing Pumpkins. The 1990s also marked the beginning of the digital age, with the advent of the internet and digital music formats changing the way music was produced, distributed, and consumed.
+
+In the 2000s and beyond, rock music continued to evolve with the rise of genres like indie rock, emo, and post-rock. The 2010s saw a resurgence of interest in classic rock and a blending of genres, with artists like The Black Keys, Arctic Monkeys, and Tame Impala incorporating elements of blues, psychedelic, and electronic music into their sound.
+
+Technological advancements have played a significant role in the evolution of rock music. The development of electric guitars, amplifiers, and effects pedals in the 1950s and 1960s helped shape the sound of rock music. The introduction of multitrack recording in the 1960s allowed artists to experiment with different sounds and arrangements in the studio. The rise of digital recording technology in the 1980s and 1990s made it easier for artists to produce music independently and experiment with new sounds.
+
+In conclusion, rock music has undergone a remarkable evolution since its inception, continually pushing boundaries and incorporating new influences and technologies. From its roots in rock and roll to its diverse subgenres and styles, rock music remains a vital and ever-changing genre that continues to inspire and influence musicians and fans worldwide.",[Specific Genre]=Jazz,[Specific Genre]=Hip-Hop
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Compose a detailed analysis of the evolution of a specific music genre. Focus on [Music Genre], tracing its origins, key developments, and major influences over time. Discuss the pivotal artists, albums, and songs that have shaped its trajectory and how cultural, social, and political factors have impacted its growth. Conclude by examining the current state of the genre and its potential future directions.
+[Music Genre]=Hip-hop","Hip-hop, a genre that originated in the South Bronx of New York City in the 1970s, has evolved over the decades to become one of the most dominant and influential music genres in the world. Its roots can be traced back to DJ Kool Herc, who is often credited as one of the pioneers of hip-hop for his innovative use of turntables to create breakbeats during block parties in the Bronx. The genre quickly grew in popularity, with artists like Grandmaster Flash and the Furious Five, Afrika Bambaataa, and The Sugarhill Gang helping to popularize hip-hop through their groundbreaking recordings and live performances.
+
+In the 1980s, hip-hop saw a surge in mainstream success with the emergence of artists like Run-D.M.C., LL Cool J, and Public Enemy, who brought a new level of social and political consciousness to the genre. Run-D.M.C.'s collaboration with Aerosmith on ""Walk This Way"" marked a significant moment in hip-hop, as it helped bridge the gap between rock and rap music and introduced hip-hop to a wider audience.
+
+The 1990s is often considered the golden age of hip-hop, with artists like Tupac Shakur, The Notorious B.I.G., Wu-Tang Clan, and Nas dominating the charts and shaping the sound of the genre for years to come. The East Coast-West Coast rivalry between Tupac and Biggie, tragically ending in their untimely deaths, brought both the music and the culture of hip-hop into the mainstream spotlight.
+
+As hip-hop entered the 2000s, artists like Jay-Z, Eminem, Kanye West, and OutKast continued to push the boundaries of the genre, incorporating elements of pop, R&B, and electronic music into their sound. The rise of internet and social media platforms further democratized the music industry, allowing independent artists to reach global audiences and contributing to the diversification of hip-hop styles and subgenres.
+
+Today, hip-hop is a global phenomenon, with artists from all corners of the world contributing to its rich tapestry of sounds and stories. The genre has continued to evolve, with the rise of subgenres like trap, mumble rap, and drill bringing new flavors and perspectives to hip-hop music. Artists like Kendrick Lamar, Drake, Cardi B, and Travis Scott have achieved mainstream success while pushing the boundaries of what hip-hop can sound and look like.
+
+Cultural, social, and political factors have played a significant role in shaping the evolution of hip-hop. From its origins as a form of expression for marginalized communities in the Bronx to its current status as a dominant force in popular culture, hip-hop has always reflected the realities and struggles of its creators. Issues of race, identity, inequality, and social justice continue to be central themes in hip-hop music, with artists using their platform to raise awareness and provoke change.
+
+Looking ahead, the future of hip-hop is bright and full of possibilities. As the genre continues to expand and embrace new influences, we can expect to see even greater diversity in styles and voices within hip-hop. The global reach of the genre will only continue to grow, with artists from different countries and cultures contributing their unique perspectives to the hip-hop landscape. Hip-hop's ability to adapt and evolve while staying true to its roots is what makes it such a dynamic and enduring genre, ensuring its relevance for generations to come.",[Music Genre]=Jazz,[Music Genre]=Electronic Dance Music
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Explore the evolution of [Genre] music from the [Starting Decade] to present. Detail the major influences, key artists, and landmark albums that shaped the genre's trajectory. Discuss how technological advancements and cultural shifts influenced the sound and popularity of the genre. Conclude by predicting future trends based on the past and current music scene. Provide a comprehensive timeline and examples to illustrate each phase of the genre's development.
+[Genre]=Hip Hop
+[Starting Decade]=1980s","Hip hop music emerged in the 1970s in the Bronx, New York, but it truly began to gain mainstream attention and evolve as a genre in the 1980s. Here is a detailed exploration of the evolution of hip hop from the 1980s to the present:
+
+**1980s:**
+
+**Major Influences:**
+- The 1980s saw the rise of sampling, where artists would take snippets of existing music to create new beats and tracks. This technique became a fundamental element of hip hop production.
+- The emergence of breakdancing and graffiti as integral elements of hip hop culture influenced the music and style of artists during this decade.
+- The socio-economic struggles faced by African American and Latino communities in urban areas served as a lyrical inspiration for many hip hop artists, giving birth to socially conscious rap.
+
+**Key Artists:**
+- Run-D.M.C.: Their self-titled album in 1984 helped bring hip hop to a wider audience and laid the groundwork for the genre's crossover into mainstream music.
+- LL Cool J: Known for his confident delivery and charismatic presence, LL Cool J was one of the pioneering solo artists in hip hop.
+- Public Enemy: With politically charged lyrics and innovative production, Public Enemy became known for their socially conscious music that addressed issues of race and inequality.
+
+**Landmark Albums:**
+- ""Licensed to Ill"" by Beastie Boys (1986): This album blended hip hop with rock elements, showcasing the genre's versatility and paving the way for future collaborations between hip hop and other genres.
+- ""Straight Outta Compton"" by N.W.A (1988): This album pushed the boundaries of gangsta rap, addressing themes of inner-city life and police brutality, and set the stage for the West Coast hip hop scene.
+
+**Technological Advancements and Cultural Shifts:**
+- The advent of sampling technology allowed producers to create intricate beats and experiment with different sounds, shaping the sonic landscape of hip hop.
+- The music video era of the 1980s helped propel hip hop into the mainstream, as artists utilized this medium to visually express their music and style.
+- The emergence of hip hop fashion, characterized by baggy clothes, sneakers, and gold chains, became an integral part of the culture during this decade.
+
+**1990s:**
+
+**Major Influences:**
+- The 1990s saw the rise of East Coast vs. West Coast rivalry, with artists like Tupac Shakur and The Notorious B.I.G. at the forefront, influencing the sound and lyrical content of hip hop.
+- The Golden Age of hip hop in the early 1990s brought a focus on lyricism, storytelling, and complex rhyme schemes, with artists like Nas, Wu-Tang Clan, and A Tribe Called Quest leading the way.
+- The fusion of hip hop with R&B and pop music in the 1990s led to the creation of new subgenres like hip hop soul and rap rock.
+
+**Key Artists:**
+- Tupac Shakur: Known for his introspective lyrics and charismatic persona, Tupac became one of the most influential hip hop artists of all time.
+- The Notorious B.I.G.: With his distinctive flow and vivid storytelling, Biggie Smalls (as he was also known) set the standard for East Coast hip hop in the 1990s.
+- Dr. Dre: As a producer and rapper, Dr. Dre's influence on West Coast hip hop was immense, shaping the sound of artists like Snoop Dogg and Eminem.
+
+**Landmark Albums:**
+- ""The Chronic"" by Dr. Dre (1992): This album introduced G-funk to the mainstream and solidified Dr. Dre's status as a producer extraordinaire.
+- ""Illmatic"" by Nas (1994): Considered one of the greatest hip hop albums of all time, ""Illmatic"" showcased Nas's lyrical prowess and storytelling abilities.
+- ""The Miseducation of Lauryn Hill"" by Lauryn Hill (1998): Blending hip hop with R&B and soul, this album broke new ground for female artists in the genre.
+
+**Technological Advancements and Cultural Shifts:**
+- The rise of the internet and digital music platforms in the late 1990s revolutionized how music was consumed and shared, opening up new avenues for independent artists to reach audiences.
+- The globalization of hip hop in the 1990s led to the emergence of regional scenes in countries outside of the United States, such as the UK, France, and Japan.
+- The influence of fashion and lifestyle brands on hip hop culture grew in the 1990s, with artists like Jay-Z and Puff Daddy (later known as Diddy) expanding their brands beyond music.
+
+**2000s:**
+
+**Major Influences:**
+- The 2000s saw the rise of crunk and snap music, characterized by high-energy beats and catchy hooks, popularized by artists like Lil Jon and Ying Yang Twins.
+- The blurring of genre boundaries in the 2000s led to the emergence of subgenres like alternative hip hop, conscious rap, and trap music, each bringing a unique sound and perspective to the genre.
+- The influence of Southern hip hop, with artists from cities like Atlanta and Houston gaining prominence, reshaped the sonic landscape of the genre.
+
+**Key Artists:**
+- Eminem: With his rapid-fire delivery and introspective lyrics, Eminem became one of the best-selling artists of the 2000s, breaking barriers for white rappers in the genre.
+- Kanye West: Known for his innovative production and genre-defying music, Kanye West pushed the boundaries of hip hop in the 2000s with albums like ""The College Dropout"" and ""Late Registration.""
+- 50 Cent: With his gritty lyrics and streetwise persona, 50 Cent's debut album ""Get Rich or Die Tryin'"" became a commercial success and solidified his status as a hip hop heavyweight.
+
+**Landmark Albums:**
+- ""The Blueprint"" by Jay-Z (2001): Considered a classic in hip hop, ""The Blueprint"" showcased Jay-Z's lyrical prowess and cemented his status as one of the greatest rappers of all time.
+- ""Get Rich or Die Tryin'"" by 50 Cent (2003): This album became a cultural phenomenon, blending gangsta rap with catchy hooks and memorable production.
+- ""The College Dropout"" by Kanye West (2004): Kanye West's debut album redefined hip hop production with its soulful samples and introspective lyrics.
+
+**Technological Advancements and Cultural Shifts:**
+- The rise of social media platforms like Myspace and later Twitter and Instagram in the 2000s gave artists new ways to connect with fans and promote their music independently.
+- The popularity of mixtapes and online streaming services like SoundCloud and DatPiff allowed up-and-coming artists to release music directly to their audience, bypassing traditional record labels.
+- The influence of fashion and branding in hip hop continued to grow in the 2000s, with artists like Pharrell Williams and Kanye West launching successful clothing lines and collaborations with major brands.
+
+**2010s:**
+
+**Major Influences:**
+- The 2010s saw the rise of trap music as a dominant force in hip hop, with artists like Future, Migos, and Travis Scott shaping the sound of the decade with their distinctive production and melodic flows.
+- The fusion of hip hop with electronic dance music (EDM) led to the creation of subgenres like trap EDM and electronic rap, blurring the lines between hip hop and dance music.
+- The increased focus on social media and viral marketing in the 2010s revolutionized how artists promoted their music and engaged with their fan base.
+
+**Key Artists:**
+- Kendrick Lamar: Known for his intricate storytelling and socially conscious lyrics, Kendrick Lamar became one of the most critically acclaimed artists of the 2010s with albums like ""good kid, m.A.A.d city"" and ""To Pimp a Butterfly.""
+- Drake: With his melodic rap style and knack for creating chart-topping hits, Drake dominated the hip hop scene in the 2010s, breaking numerous records and winning multiple awards.
+- Cardi B: As one of the leading female rappers of the decade, Cardi B's bold lyrics and charismatic personality made her a cultural icon in hip hop and beyond.
+
+**Landmark Albums:**
+- ""good kid, m.A.A.d city"" by Kendrick Lamar (2012): This concept album explored themes of identity, race, and violence in Compton, solidifying Kendrick Lamar's reputation as a master storyteller.
+- ""Take Care"" by Drake (2011): Blending rap with R&B and pop sensibilities, ""Take Care"" showcased Drake's versatility and commercial appeal.
+- ""Rodeo"" by Travis Scott (2015): This album helped popularize the trap sound and solidified Travis Scott's status as a major player in hip hop and pop culture.
+
+**Technological Advancements and Cultural Shifts:**
+- The rise of streaming services like Spotify and Apple Music in the 2010s transformed how music was consumed and distributed, leading to the decline of physical album sales and the resurgence of singles and playlists.
+- The influence of viral dance challenges on platforms like TikTok helped propel songs to the top of the charts and introduced hip hop to a new generation of listeners.
+- The ongoing impact of social media on hip hop culture in the 2010s led to the democratization of fame, with artists able to build massive followings and launch successful careers independently.
+
+**Future Trends:**
+
+Based on the trajectory of hip hop from the 1980s to the present, several potential future trends can be identified:
+- Continued genre-blending: Hip hop will likely continue to fuse with other genres like R&B, pop, and electronic music, creating new subgenres and pushing the boundaries of musical experimentation.
+- Emphasis on storytelling and authenticity: As seen in the success of artists like Kendrick Lamar and J. Cole, there will likely be a renewed focus on lyricism, storytelling, and authenticity in hip hop music.
+- Globalization of the genre: With the rise of international artists like Burna Boy, BTS, and Bad Bunny, hip hop will likely become even more diverse and inclusive, incorporating sounds and perspectives from around the world.
+
+In conclusion, hip hop music has undergone significant evolution since its inception in the 1980s, shaped by technological advancements, cultural shifts, and the creative vision of artists pushing the genre forward. By tracing the genre's development through key artists, landmark albums, and major influences, we can see how hip hop has become a global phenomenon with a rich and diverse history. As we look to the future, hip hop is poised to continue evolving and innovating, reflecting the changing landscape of music and society at large.","[Genre]=Jazz
+[Starting Decade]=1920s","[Genre]=Electronic
+[Starting Decade]=1970s"
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Design a podcast episode that dives deep into the evolution of [Music Genre], featuring interviews with experts and musicians. Discuss the origins of [Music Genre], its cultural significance, and how it has evolved through different time periods. Include a segment on influential figures such as [Influential Musician] and how they have shaped the genre. Explore how [Music Genre] has been adapted in various regions of the world, including [Region]. Conclude with predictions on the future trends of [Music Genre] and its impact on global music scenes.
+[Music Genre]=Reggae
+[Influential Musician]=Bob Marley
+[Region]=Caribbean","Title: Roots and Rhythms: The Evolution of Reggae
+
+Introduction:
+- Introduction to Reggae as a genre with a rich history and cultural significance.
+- Tease the exploration of Reggae's origins, evolution, and impact on global music scenes.
+
+Segment 1: Origins and Cultural Significance
+- Discuss the roots of Reggae in Jamaica, tracing its origins back to ska and rocksteady.
+- Explore the social and political context that influenced the development of Reggae.
+- Highlight the role of Reggae as a form of cultural expression and resistance.
+
+Segment 2: The Rise of Bob Marley and Influential Figures
+- Dive into the life and music of Bob Marley, a legendary figure in Reggae music.
+- Discuss Marley's impact on Reggae, both in Jamaica and globally.
+- Explore how Marley's music and message continue to resonate with audiences worldwide.
+
+Segment 3: Global Influence and Regional Adaptations
+- Examine how Reggae has been embraced and adapted in different regions of the world, with a focus on the Caribbean.
+- Highlight the fusion of Reggae with other genres, such as Reggaeton in Latin America.
+- Discuss the influence of Caribbean immigrants on Reggae scenes in the UK and the US.
+
+Segment 4: Future Trends and Impact
+- Predict the future trends of Reggae, including its continued influence on contemporary music.
+- Discuss how Reggae continues to inspire new generations of musicians and fans.
+- Explore the potential for Reggae to further impact global music scenes and cultural movements.
+
+Conclusion:
+- Recap key points discussed in the episode, from the origins of Reggae to its global impact.
+- Emphasize the enduring legacy of Reggae and its significance in the world of music.
+- Encourage listeners to explore the diverse sounds and stories within the genre of Reggae.","[Music Genre]=Jazz
+[Influential Musician]=Miles Davis
+[Region]=North America","[Music Genre]=K-pop
+[Influential Musician]=G-Dragon
+[Region]=South Korea"
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Discuss the influence of technology on music production, focusing on advanced tools and software from [Decade]. Explore how innovations like [Specific Technology] have revolutionized the way music is created, mixed, and mastered. Examine the effects on genres like [Genre 1] and [Genre 2], and how these technologies empower artists and producers. Include case studies of specific albums or songs that were notably impacted by these technological advancements.
+[Decade] = 2000s
+[Specific Technology] = Auto-Tune
+[Genre 1] = Pop
+[Genre 2] = Hip-Hop","The 2000s saw a significant shift in music production with the rise of advanced tools and software, particularly Auto-Tune. Auto-Tune, a pitch correction software developed by Antares Audio Technologies, revolutionized the way vocals were recorded, mixed, and mastered. Initially designed to correct off-key vocals, Auto-Tune quickly became a creative tool used by artists to achieve unique vocal effects and stylizations.
+
+In the pop genre, Auto-Tune played a crucial role in shaping the sound of the era. Artists like Britney Spears, T-Pain, and Kanye West embraced Auto-Tune as a stylistic choice rather than just a correction tool. T-Pain, in particular, popularized the use of extreme pitch correction, creating a signature sound that became synonymous with his music. His 2005 album ""Rappa Ternt Sanga"" showcased the creative potential of Auto-Tune, influencing a new wave of pop artists to experiment with vocal manipulation.
+
+In the hip-hop genre, Auto-Tune also made a significant impact. Artists like Lil Wayne, Future, and Travis Scott incorporated Auto-Tune into their music to add melodic elements to their rap verses. Kanye West's 2008 album ""808s & Heartbreak"" is a notable example of Auto-Tune's transformative effect on hip-hop. The album featured heavy use of Auto-Tune to convey emotional vulnerability, marking a departure from traditional rap styles and influencing a new wave of emotionally-driven hip-hop.
+
+Overall, Auto-Tune empowered artists and producers to push the boundaries of creativity in music production. Its ability to manipulate vocals in real-time allowed for innovative sound design and experimentation, leading to the creation of new sub-genres and styles within pop and hip-hop. While Auto-Tune has faced criticism for its role in homogenizing vocal performances, its impact on music production in the 2000s cannot be understated.","[Decade] = 1980s
+[Specific Technology] = Digital Audio Workstations
+[Genre 1] = Rock
+[Genre 2] = Electronic","[Decade] = 2010s
+[Specific Technology] = Streaming Platforms
+[Genre 1] = Indie
+[Genre 2] = R&B"
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Create a detailed profile of a legendary musician from [Country]. Highlight their journey, key milestones, and contributions to the music genre of [Genre]. Discuss the influence of their cultural heritage on their music style and how they have inspired other artists. Include major awards they have won, iconic performances, and how they have shaped the [Music Element] in modern music. Also, analyze the critical reception of their most influential album, titled [Album Name].
+[Country]=Brazil
+[Genre]=Bossa Nova
+[Music Element]=rhythm
+[Album Name]=Chega de Saudade","Legendary Musician: João Gilberto
+
+Journey:
+João Gilberto, born in 1931 in Bahia, Brazil, is often hailed as the father of Bossa Nova. His musical journey began at a young age when he started playing the guitar and listening to samba and jazz records. In the late 1950s, he revolutionized Brazilian music by blending samba rhythms with cool jazz, resulting in the birth of Bossa Nova.
+
+Key Milestones:
+One of João Gilberto's key milestones was the release of his debut album ""Chega de Saudade"" in 1959. This album, produced by Antonio Carlos Jobim and featuring songs penned by Vinicius de Moraes, introduced Bossa Nova to the world and became a seminal work in Brazilian music history.
+
+Contributions to Bossa Nova:
+João Gilberto's unique guitar playing style, characterized by his soft, rhythmic strumming known as ""batida,"" and his whispery vocals, created a new sound that captivated audiences worldwide. His meticulous attention to rhythm and phrasing influenced countless musicians and shaped the Bossa Nova genre.
+
+Influence of Cultural Heritage:
+João Gilberto's Bahian roots and Afro-Brazilian heritage deeply influenced his music. The syncopated rhythms of samba, the melodic richness of Brazilian folk music, and the laid-back attitude of Bahian culture all found their way into his music, giving it a distinctive Brazilian flavor.
+
+Inspiration to Other Artists:
+João Gilberto's innovative approach to music inspired a generation of musicians both in Brazil and beyond. Artists like Stan Getz, Astrud Gilberto (his then-wife), and Gilberto Gil all drew inspiration from his work, helping to popularize Bossa Nova on the global stage.
+
+Major Awards:
+Throughout his career, João Gilberto received numerous accolades, including multiple Grammy Awards for his contributions to Bossa Nova music. His influence on the genre was recognized with prestigious honors in Brazil and internationally.
+
+Iconic Performances:
+One of João Gilberto's most iconic performances was his appearance at the 1962 Bossa Nova concert at Carnegie Hall in New York City. This concert introduced Bossa Nova to American audiences and solidified Gilberto's status as a musical trailblazer.
+
+Critical Reception of ""Chega de Saudade"":
+""Chega de Saudade"" received widespread critical acclaim upon its release and is considered a landmark album in Brazilian music history. The album's intimate sound, poetic lyrics, and innovative musical arrangements were praised for their elegance and sophistication. Critics hailed João Gilberto's minimalist approach as a groundbreaking development in popular music.
+
+In Modern Music:
+João Gilberto's influence on the rhythmic elements of modern music, particularly in the realm of Bossa Nova and Latin jazz, is undeniable. His emphasis on subtle, intricate rhythms and his minimalist guitar playing style continue to inspire musicians across genres to this day. João Gilberto's legacy as a musical pioneer and cultural icon lives on through his timeless recordings and enduring impact on the world of music.","[Country]=Jamaica
+[Genre]=Reggae
+[Music Element]=bassline
+[Album Name]=Exodus","[Country]=USA
+[Genre]=Jazz
+[Music Element]=improvisation
+[Album Name]=Kind of Blue"
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Compose a detailed review of the latest album by [Artist Name], focusing on its lyrical themes, musical style, and overall production quality. Compare it with previous albums and predict its impact on trends within [Music Genre]. Highlight specific tracks that stand out and discuss how they contribute to the album's success or failure.
+[Artist Name]=Taylor Swift
+[Music Genre]=Pop","Album: ""Lover"" by Taylor Swift
+
+Taylor Swift's latest album, ""Lover,"" is a captivating blend of catchy pop melodies, introspective lyrics, and polished production. One of the standout aspects of this album is its lyrical depth, with Swift delving into themes of love, heartbreak, self-discovery, and nostalgia. Unlike some of her previous albums which were more focused on personal vendettas and feuds, ""Lover"" showcases a more mature and introspective side of Swift, making it a refreshing and relatable listening experience.
+
+Musically, ""Lover"" sees Swift experimenting with different styles while still maintaining her signature sound. From the dreamy, synth-pop vibes of ""Cruel Summer"" to the stripped-down balladry of ""Lover,"" each track on the album offers something unique while still feeling cohesive as a whole. The production quality on ""Lover"" is top-notch, with lush arrangements and intricate details that add depth and texture to the songs.
+
+In comparison to her previous album, ""Reputation,"" which had a darker and more aggressive tone, ""Lover"" feels like a return to Swift's roots with its more heartfelt and vulnerable songwriting. The album is more reminiscent of her earlier work, such as ""Red"" and ""1989,"" but with a newfound sense of maturity and self-assurance.
+
+Several tracks stand out on ""Lover,"" such as the infectious lead single ""ME!"" featuring Brendon Urie, the emotionally charged ""The Archer,"" and the nostalgic ""Daylight."" These songs not only showcase Swift's songwriting prowess but also her ability to create memorable melodies and hooks that stick with the listener long after the music stops.
+
+Overall, ""Lover"" is a strong addition to Taylor Swift's discography and is likely to have a significant impact on trends within the pop genre. Its blend of introspective lyrics, catchy melodies, and polished production is sure to resonate with both longtime fans and new listeners alike. With its universal themes of love and self-discovery, ""Lover"" has the potential to become a timeless classic in Swift's catalog.",[Artist Name]=Kendrick Lamar [Music Genre]=Hip-Hop,[Artist Name]=Adele [Music Genre]=Soul
+"
+You are an expert software engineer specializing in code generation.
+
+Your task is to generate correct, efficient, and production-quality code based on structured or semi-structured user prompts. The user may specify requirements using placeholders (e.g., [language], [input format], [output format]) and parameter assignments (e.g., [language]=Python). You must correctly interpret and apply these parameters.
+
+Guidelines:
+
+1. Requirement Extraction
+- Identify all parameters and constraints from the prompt.
+- Replace placeholders with their assigned values.
+- Infer any missing but necessary details (e.g., libraries, parsing methods) in a reasonable and standard way.
+
+2. Code Quality
+- Produce clean, readable, and well-structured code.
+- Follow best practices and idioms of the specified programming language.
+- Use appropriate standard libraries or widely accepted packages when needed.
+- Ensure the code is functional and logically correct.
+
+3. Completeness
+- The solution must be runnable or very close to runnable.
+- Include imports, helper functions, and any required setup.
+- Do not leave placeholders or incomplete sections.
+
+4. Comments and Explanation
+- Add concise comments inside the code to explain key steps.
+- If the task is non-trivial, include a short explanation before or after the code.
+
+5. Robustness
+- Handle common edge cases when reasonable (e.g., empty input, malformed data).
+- Prefer safe parsing and error handling when relevant.
+
+6. Formatting
+- Output should primarily be code.
+- Use proper formatting and indentation.
+- Avoid unnecessary verbosity outside the code.
+
+7. Adaptability
+- The prompt structure may vary (e.g., Write, Develop, Create, Build).
+- The task may involve transformations, parsing, data extraction, or conversions between formats.
+- Always align your solution with the intent of the task, not just the wording.
+
+Your goal is to behave like a reliable coding assistant that produces high-quality, ready-to-use solutions from partially structured instructions.
+","Design a virtual music festival where artists from [Country] showcase their fusion of [Traditional Music Genre] and [Modern Music Genre]. Organize a lineup of [Number of Artists] artists, each known for their skill with [Instrument]. Describe the festival's theme, the virtual stage design, and how each artist uniquely integrates the two genres. Highlight the crowd's favorite performance and the innovative use of technology to enhance the musical experience.
+[Country]=India
+[Traditional Music Genre]=Classical Indian music
+[Modern Music Genre]=Electronic
+[Number of Artists]=5
+[Instrument]=Sitar","Welcome to the ""Electro-Raga Fusion Festival"" - a virtual music festival showcasing the fusion of Classical Indian music and Electronic beats by artists from India! The theme of this festival is to bridge the gap between traditional sounds and modern rhythms, creating a unique and vibrant musical experience.
+
+**Virtual Stage Design:**
+The virtual stage is designed to resemble a traditional Indian palace, with intricate patterns and vibrant colors adorning the walls. A large digital screen in the background displays mesmerizing visuals inspired by Indian art and culture. The stage is adorned with colorful lights and traditional Indian decorations, creating an immersive and enchanting atmosphere for the audience.
+
+**Lineup of Artists:**
+1. **Ravi Shankar Jr.** - Known for his mastery of the Sitar, Ravi Shankar Jr. seamlessly blends traditional Raga melodies with pulsating electronic beats, creating a hypnotic and captivating sound.
+2. **Anoushka Beats** - A talented Sitar player and electronic music producer, Anoushka Beats combines intricate Sitar melodies with modern synth textures, creating a truly unique fusion of sounds.
+3. **Tabla Tech** - A duo of Tabla players who infuse traditional rhythms with electronic drum beats, creating a high-energy and infectious groove that gets the crowd moving.
+4. **SitaRave** - A dynamic duo consisting of a Sitar player and a DJ, SitaRave brings together the hypnotic sounds of the Sitar with thumping electronic bass lines, creating an electrifying and dance-worthy performance.
+5. **Electro-Raga Collective** - A group of talented musicians who blend Classical Indian instruments like the Sitar with electronic elements, creating a rich and layered sound that transcends genres.
+
+**Crowd's Favorite Performance:**
+The crowd's favorite performance is by SitaRave, the dynamic duo who effortlessly blend the traditional sounds of the Sitar with modern electronic beats. Their high-energy performance and infectious rhythms get the audience on their feet, dancing and swaying to the hypnotic fusion of sounds.
+
+**Innovative Use of Technology:**
+To enhance the musical experience, the festival incorporates cutting-edge technology such as 3D soundscapes and virtual reality elements. Viewers can immerse themselves in a 360-degree virtual environment, allowing them to feel like they are actually at the festival, experiencing the music from all angles. Additionally, interactive features such as live chat and virtual meet-and-greets with the artists are integrated, creating a truly engaging and interactive experience for the audience.
+
+Join us at the ""Electro-Raga Fusion Festival"" for a one-of-a-kind musical journey that blends the rich traditions of Classical Indian music with the pulsating rhythms of Electronic beats!","[Country]=Brazil
+[Traditional Music Genre]=Samba
+[Modern Music Genre]=Hip Hop
+[Number of Artists]=3
+[Instrument]=Pandeiro","[Country]=Ireland
+[Traditional Music Genre]=Irish Folk
+[Modern Music Genre]=Rock
+[Number of Artists]=7
+[Instrument]=Fiddle"

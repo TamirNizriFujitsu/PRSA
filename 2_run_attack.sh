@@ -9,6 +9,8 @@
 
 set -euo pipefail
 
+echo "phase 2 started"
+
 tasks="Ads Business Code Email Ideas SEO Writing Food Health Music Data Fashion Games Language Sports Study Translate Travel"
 
 TARGET_LLM_MODEL="${TARGET_LLM_MODEL:-CommandA}"
@@ -37,8 +39,8 @@ do
         --theme "$task" \
         $custom_arg \
         --target_llm_model "$TARGET_LLM_MODEL" \
-        --out "${output_dir}/${task}_${TARGET_LLM_MODEL}${scenario_suffix}.txt" \
-        >> "${output_dir}/${task}_${TARGET_LLM_MODEL}${scenario_suffix}.log" 2>&1 &
+        --out "${output_dir}/${task}_phase2_${TARGET_LLM_MODEL}${scenario_suffix}.txt" \
+        >> "${output_dir}/${task}_phase2_${TARGET_LLM_MODEL}${scenario_suffix}.log" 2>&1 &
 
     current_jobs=$((current_jobs + 1))
     if [ "$current_jobs" -ge "$parallel_jobs" ]; then
@@ -53,7 +55,13 @@ STEAL_ELAPSED=$(( $(date +%s) - STEAL_START ))
 STEAL_MIN=$(( STEAL_ELAPSED / 60 ))
 STEAL_SEC=$(( STEAL_ELAPSED % 60 ))
 mkdir -p result
-echo "creating_stolen_prompts_and_pruning = ${STEAL_MIN}m ${STEAL_SEC}s" >> "result/final_documentation_${TARGET_LLM_MODEL}${scenario_suffix}.txt"
+echo "Phase 2 - creating_stolen_prompts_and_pruning = ${STEAL_MIN}m ${STEAL_SEC}s" >> "result/final_documentation_${TARGET_LLM_MODEL}${scenario_suffix}.txt"
+
+# LLM-calls counting — aggregate llm_calls.jsonl into final_documentation
+venv/bin/python3 - "$TARGET_LLM_MODEL" "$scenario_suffix" <<'PY'
+import sys, utils
+utils.write_llm_call_summary(sys.argv[1], sys.argv[2], label="After Phase 2")
+PY
 
 # Post-process per-category result files:
 # 1) merge category results to a consolidated csv for next phase
@@ -69,10 +77,6 @@ merged_path = f"result/post_phase2_data_{target_model}{scenario_suffix}.csv"
 utils.merge_phase2_results(merged_path, target_model, scenario_suffix)
 PY
 
-# LLM-calls counting — aggregate llm_calls.jsonl into final_documentation
-venv/bin/python3 - "$TARGET_LLM_MODEL" "$scenario_suffix" <<'PY'
-import sys, utils
-utils.write_llm_call_summary(sys.argv[1], sys.argv[2], label="After Phase 2")
-PY
+echo "phase 2 ended"
 
-echo "All attack jobs executed and post-processing completed."
+TARGET_LLM_MODEL="$TARGET_LLM_MODEL" CUSTOM="$CUSTOM" CUSTOM_SCENARIO="$CUSTOM_SCENARIO" bash 3_final_stolen_prompt.sh

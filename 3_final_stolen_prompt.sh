@@ -9,6 +9,8 @@
 
 set -euo pipefail
 
+echo "phase 3 started"
+
 tasks="Ads Business Code Email Ideas SEO Writing Food Health Music Data Fashion Games Language Sports Study Translate Travel"
 
 TARGET_LLM_MODEL="${TARGET_LLM_MODEL:-gpt-4o}"
@@ -48,6 +50,11 @@ done
 
 wait
 
+DIFF_ARRAYS_ELAPSED=$(( $(date +%s) - DIFF_ARRAYS_START ))
+DIFF_ARRAYS_MIN=$(( DIFF_ARRAYS_ELAPSED / 60 ))
+DIFF_ARRAYS_SEC=$(( DIFF_ARRAYS_ELAPSED % 60 ))
+echo "Phase 3.1 - creating_diff_arrays_for_all_categories = ${DIFF_ARRAYS_MIN}m ${DIFF_ARRAYS_SEC}s" >> "result/final_documentation_${TARGET_LLM_MODEL}${scenario_suffix}.txt"
+
 # Merge all per-category diff arrays into one combined JSON and delete per-category files.
 # File format: {<category>: {<category_1>: diff,...., <category_18>: diff}}
 venv/bin/python3 - "$TARGET_LLM_MODEL" "$scenario_suffix" <<'PY'
@@ -60,11 +67,6 @@ scenario_suffix = sys.argv[2]
 out_path = f"result/diff_array_all_{target_model}{scenario_suffix}.json"
 utils.merge_phase3_diff_arrays(out_path, target_model, scenario_suffix)
 PY
-
-DIFF_ARRAYS_ELAPSED=$(( $(date +%s) - DIFF_ARRAYS_START ))
-DIFF_ARRAYS_MIN=$(( DIFF_ARRAYS_ELAPSED / 60 ))
-DIFF_ARRAYS_SEC=$(( DIFF_ARRAYS_ELAPSED % 60 ))
-echo "creating_diff_arrays_for_all_categories = ${DIFF_ARRAYS_MIN}m ${DIFF_ARRAYS_SEC}s" >> "result/final_documentation_${TARGET_LLM_MODEL}${scenario_suffix}.txt"
 
 ASR_START=$(date +%s)
 
@@ -87,12 +89,14 @@ PY
 ASR_ELAPSED=$(( $(date +%s) - ASR_START ))
 ASR_MIN=$(( ASR_ELAPSED / 60 ))
 ASR_SEC=$(( ASR_ELAPSED % 60 ))
-echo "calculating_stolen_prompts_asr = ${ASR_MIN}m ${ASR_SEC}s" >> "result/final_documentation_${TARGET_LLM_MODEL}${scenario_suffix}.txt"
+echo "phase 3.2 - calculating_stolen_prompts_asr = ${ASR_MIN}m ${ASR_SEC}s" >> "result/final_documentation_${TARGET_LLM_MODEL}${scenario_suffix}.txt"
 
 # Full pipeline LLM call summary (phases 1+2+3)
 venv/bin/python3 - "$TARGET_LLM_MODEL" "$scenario_suffix" <<'PY'
 import sys, utils
-utils.write_llm_call_summary(sys.argv[1], sys.argv[2], label="Full Pipeline (Phases 1+2+3)")
+utils.write_llm_call_summary(sys.argv[1], sys.argv[2], label="After phase 3")
 PY
 
 echo "All phase-3 jobs executed and diff arrays merged."
+
+echo "phase 3 ended"

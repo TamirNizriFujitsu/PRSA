@@ -30,9 +30,11 @@ def get_args():
     parser.add_argument('--scorer', default="semantic_similarity", type=str)
     parser.add_argument('--target_llm_model', default="gpt-4o", type=str,
                         help='LLM model/deployment used to generate target and stolen outputs.')
-    parser.add_argument('--generator_llm_model', default="gpt-4o-mini", type=str,
+    parser.add_argument('--generator_llm_model', default="claude-sonnet-4-5", type=str,
                         help='LLM model/deployment used for stolen-prompt generation.')
-    parser.add_argument('--gradient_llm_model', default="gpt-4o-mini", type=str,
+    parser.add_argument('--gradient_llm_model', default="gpt-5", type=str,
+                        help='LLM model/deployment used to score gradients.')
+    parser.add_argument('--attention_llm_model', default="gpt-5-mini", type=str,
                         help='LLM model/deployment used to score gradients.')
     
     args = parser.parse_args()
@@ -74,10 +76,10 @@ if __name__ == '__main__':
 
             # Creating a stolen prompt by generator-llm-model
             if gradient_dict == {}:
-                base_stolen_prompt = llm.generate_prompt(config, input_data, output_data, gpt_model=args.generator_llm_model)
+                base_stolen_prompt = llm.generate_prompt(config, input_data, output_data, generator_model=args.generator_llm_model)
                 
             else:
-                base_stolen_prompt = llm.generate_prompt(config, input_data, output_data, gradient_dict, gpt_model=args.generator_llm_model) 
+                base_stolen_prompt = llm.generate_prompt(config, input_data, output_data, gradient_dict, generator_model=args.generator_llm_model, attention_model=args.attention_llm_model) 
             
             if base_stolen_prompt == None:
                     continue
@@ -85,10 +87,10 @@ if __name__ == '__main__':
             generated_output = model.inference(input_data, base_stolen_prompt) 
 
             # compare between the output created by the stolen prompt and output created by the target prompt and get weak elements - performed by gradient-llm-model
-            gradient = optimizer.cal_gradients(generated_output, output_data)
+            gradient, scores_sum = optimizer.cal_gradients(generated_output, output_data)
             print("gradient: ", gradient)
 
-            prompt_gradient_scores[input_data] = sum(gradient.values())
+            prompt_gradient_scores[input_data] = [output_data, scores_sum]
 
             # update the attention category bu just adding 1 to the weak elements
             utils.update_gradient_dict(gradient, gradient_dict)     

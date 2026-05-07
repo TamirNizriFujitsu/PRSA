@@ -35,9 +35,10 @@ def get_args():
     parser.add_argument('--temperature', default=0.7, type=float)
 
     parser.add_argument('--target_llm_model', default="gpt-4o", type=str, help='LLM model/deployment used to generate target and stolen outputs.')
-    parser.add_argument('--generator_llm_model', default="gpt-4o-mini", type=str, help='LLM model/deployment used for stolen-prompt generation.')
-    parser.add_argument('--pruning_llm_model', default="gpt-4o-mini", type=str, help='LLM model/deployment used for prompt pre-pruning.')
-    parser.add_argument('--evaluation_llm_model', default="gpt-4o", type=str, help='LLM model/deployment used for LLM-based evaluation.')
+    parser.add_argument('--generator_llm_model', default="gpt-5", type=str, help='LLM model/deployment used for stolen-prompt generation.')
+    parser.add_argument('--pruning_llm_model', default="gpt-5-mini", type=str, help='LLM model/deployment used for prompt pre-pruning.')
+    parser.add_argument('--evaluation_llm_model', default="gpt-5", type=str, help='LLM model/deployment used for LLM-based evaluation.')
+    parser.add_argument('--editor_llm_model', default="gpt-5-mini", type=str, help='LLM model/deployment used for LLM-based evaluation.')
 
     args = parser.parse_args()
 
@@ -86,11 +87,10 @@ if __name__ == '__main__':
     # Prunning the stolen prompt
     stolen_prompt = utils.prompt_pruning_google(config, stolen_prompt, input_data, output_data, model.inference) 
     stolen_prompt = utils.format_clean(stolen_prompt)
-    edited_stolen_prompt = llm.edit_stolen_prompt(stolen_prompt, model=args.generator_llm_model)
+    edited_stolen_prompt = llm.edit_stolen_prompt(stolen_prompt, model=args.editor_llm_model)
 
     # Extracting the best input prompt for phase 3
-    best_input_prompt = utils.extract_best_input_prompt(category, args.target_llm_model, scenario_suffix)
-    target_output = model.inference(best_input_prompt, target_prompt)
+    best_input_prompt, target_output = utils.extract_best_input_prompt(category, args.target_llm_model, scenario_suffix)
 
     # document the stolen prompt
     with open(args.out, 'a') as outf:

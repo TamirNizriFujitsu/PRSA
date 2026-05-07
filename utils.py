@@ -377,18 +377,21 @@ def slice_dict(original_dict, slice_percentage=50):
     return sliced_dict
 
 
-def assign_csv_column(input_path, output_path, column, value):
+def assign_csv_column(input_path, output_path, column, value, max_rows=None):  # change samples
     import csv
     if not os.path.exists(input_path):
         print(f"[Warning] Skipping missing file: {input_path}")
         return
-    with open(input_path, newline="", encoding="utf-8") as f:
+    with open(input_path, newline="", encoding="utf-8", errors="replace") as f:
         reader = csv.DictReader(f)
         fieldnames = list(reader.fieldnames or [])
         rows = list(reader)
     if column not in fieldnames:
         raise ValueError(f"Column '{column}' not found in {input_path}")
+    if max_rows is not None:  # change samples
+        rows = rows[:max_rows]  # change samples
     for row in rows:
+        row["Preview Input"] = row[column] + "\n" + row["Preview Input"]  # change samples
         row[column] = value
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -396,12 +399,19 @@ def assign_csv_column(input_path, output_path, column, value):
         writer.writerows(rows)
     print(f"Created {output_path}")
 
+
+def _delete_files_after_success(paths):
+    for path in paths:
+        os.remove(path)
+
+
 # File format: {<category>: category, "stolen prompt": stolen_prompt, "edited stolen prompt": edited_stolen_prompt, "best_input": best_input_prompt, "target_output": target_output}
 def merge_phase2_results(output_path, target_model, scenario_suffix):
     import csv
     result_dir = os.path.dirname(output_path)
     rows = []
     fieldnames = None
+    merged_paths = []
     for category in categories:
         path = os.path.join(result_dir, f"{category}_res_{target_model}{scenario_suffix}.csv")
         if not os.path.exists(path):
@@ -413,7 +423,7 @@ def merge_phase2_results(output_path, target_model, scenario_suffix):
             for row in reader:
                 row["Category"] = category
                 rows.append(row)
-        os.remove(path)
+        merged_paths.append(path)
     if not rows:
         raise ValueError("[Warning] No result rows found to merge.")
     if "Category" not in fieldnames:
@@ -423,20 +433,23 @@ def merge_phase2_results(output_path, target_model, scenario_suffix):
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)
+    _delete_files_after_success(merged_paths)
     print(f"Merged {len(rows)} rows into {output_path}.")
 
 # File format: {<category>: {<category_1>: diff,...., <category_18>: diff}}
 def merge_phase3_diff_arrays(output_path, target_model, scenario_suffix):
     merged = {}
+    merged_paths = []
     for category in categories:
         path = f"model/diff_array_{category}_{target_model}{scenario_suffix}.json"
         if not os.path.exists(path):
             raise ValueError(f"[Warning] Missing: {path}")
         with open(path) as f:
             merged[category] = json.load(f)
-        os.remove(path)
+        merged_paths.append(path)
     with open(output_path, "w") as f:
         json.dump(merged, f, indent=2)
+    _delete_files_after_success(merged_paths)
     print(f"Merged {len(merged)} categories into {output_path}.")
 
 
@@ -464,8 +477,12 @@ def extract_best_input_prompt(theme, model, scenario_suffix=""):
         scores = json.load(f)
     if not scores:
         return None
+    # Find key with max score (score is index 1)
+    best_prompt = max(scores, key=lambda k: scores[k][1])
+
     os.remove(path)
-    return min(scores, key=scores.get) # compare all the values and return the key of the minimum value 
+
+    return best_prompt, scores[best_prompt][0] # compare all the values and return the key of the max value 
 
 def write_llm_call_summary(target_model, scenario_suffix, label=""):
     from collections import defaultdict
@@ -495,6 +512,7 @@ def write_llm_call_summary(target_model, scenario_suffix, label=""):
         f"gradient_llm_calls   = {counts.get('gradient', 0):>6}    # scoring element similarity to build attention dict",
         f"pruning_llm_calls    = {counts.get('pruning', 0):>6}    # pre-pruning stolen prompt to remove input-specific leakage",
         f"evaluation_llm_calls = {counts.get('evaluation', 0):>6}    # LLM-based multi-dimensional output evaluation",
+        f"attention_llm_calls = {counts.get('attention', 0):>6}    # LLM-based multi-dimensional output to craete attention",
         "",
         f"total_llm_calls      = {total:>6}",
         "",
@@ -505,15 +523,15 @@ def write_llm_call_summary(target_model, scenario_suffix, label=""):
 
 
 def choose_best_stolen_prompt(target_model, scenario_suffix):
-    all_arrays_path = f"model/diff_array_all_{target_model}{scenario_suffix}.json"
-    with open(all_arrays_path, 'r') as f:
-        all_arrays = json.load(f)
-    categories_aggregated_scores = scorers.MetricsScorer.calculate_aggregated_scores(all_arrays)
-    categories_diff_scores = scorers.MetricsScorer.calculate_diff_scores(all_arrays)
+    # all_arrays_path = f"result/diff_array_all_{target_model}{scenario_suffix}.json"
+    # with open(all_arrays_path, 'r') as f:
+    #     all_arrays = json.load(f)
+    # categories_aggregated_scores = scorers.MetricsScorer.calculate_aggregated_scores(all_arrays)
+    # categories_diff_scores = scorers.MetricsScorer.calculate_diff_scores(all_arrays)
 
-    categories_final_score = {}
-    for category in categories:
-        categories_final_score[category] = 0.65 * categories_aggregated_scores[category] + 0.35 * categories_diff_scores[category]
-    # change
+    # categories_final_score = {}
+    # for category in categories:
+    #     categories_final_score[category] = 0.65 * categories_aggregated_scores[category] + 0.35 * categories_diff_scores[category]
+    # # change
     # return min(categories_final_score, key=categories_final_score.get)
     return "Ads"

@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import re
 import time
 import config
 import string
@@ -209,17 +210,35 @@ def _resolve_model_runtime(model_name):
         }
 
     if provider == "azure_ai":
-        api_key = entry.get("api_key") or os.getenv(entry.get("api_key_env", "AZURE_AI_API_KEY"))
         api_base = entry.get("api_base")
         api_version = entry.get("api_version") or os.getenv("AZURE_AI_API_VERSION")
-        model_alias = entry.get("model", model_name)
+        model_alias = entry.get("model") or entry.get("deployment") or model_name
         endpoint_path = entry.get("endpoint_path")
-        request_format = entry.get("request_format", "openai_chat")
-        request_headers = entry.get("request_headers", {})
+        request_format = entry.get("request_format")
+        if request_format is None:
+            request_format = (
+                "anthropic_messages"
+                if model_alias.startswith("claude-") or "/anthropic" in (api_base or "").lower()
+                else "openai_chat"
+            )
+        if request_format == "anthropic_messages" and endpoint_path is None:
+            endpoint_path = "/v1/messages"
+        request_headers = dict(entry.get("request_headers", {}))
+        if request_format == "anthropic_messages":
+            request_headers.setdefault("anthropic-version", "2023-06-01")
+
+        api_key = entry.get("api_key")
+        api_key_env = entry.get("api_key_env")
+        if not api_key and api_key_env:
+            api_key = os.getenv(api_key_env)
+        if not api_key:
+            api_key = os.getenv("AZURE_AI_API_KEY")
+        if not api_key and request_format == "anthropic_messages":
+            api_key = os.getenv("ANTHROPIC_FOUNDRY_API_KEY") or os.getenv("AZURE_CLAUDE_API_KEY")
 
         if not api_key:
             raise RuntimeError(
-                f"No API key for azure_ai model '{model_name}'. Set {entry.get('api_key_env', 'AZURE_AI_API_KEY')} or provide api_key in catalog.json."
+                f"No API key for azure_ai model '{model_name}'. Set {api_key_env or 'AZURE_AI_API_KEY'} or provide api_key in catalog.json."
             )
         if not api_base:
             raise RuntimeError(
@@ -452,7 +471,7 @@ def extract_all_quoted_text(sentence):
 
     return quoted_texts
 
-
+#The goal is to create an attention prompt - which focuses the elements that needs to get attention when creating the stolen prompt
 def llm_attention(config, inputs, Output, attention_dict, gpt_model, characteristic=""):
     attention_text = ""
     for attention, weight in attention_dict.items():
@@ -462,15 +481,18 @@ def llm_attention(config, inputs, Output, attention_dict, gpt_model, characteris
 
             What is the {attention} of the output in one sentence?
             """
-        res = chatGPT(attention_prompt, model=gpt_model, temperature=0.0, call_source="generator")  # LLM-calls counting
+        res = chatGPT(attention_prompt, model=gpt_model, temperature=0.0, call_source="attention")  # LLM-calls counting
         attention_text += res[0]
 
     return attention_text
 
 
-def generate_prompt(config, inputs, output, gradient={}, gpt_model=None, max_tokens=4096, instruction_characteristic=""):
-    if gpt_model is None:
-        gpt_model = config.get("generator_llm_model", "gpt-4o")
+def generate_prompt(config, inputs, output, gradient={}, generator_model=None, attention_model=None, max_tokens=4096, instruction_characteristic=""):
+    if generator_model is None:
+        generator_model = config.get("generator_llm_model", "gpt-4o")
+
+    if attention_model is None:
+        attention_model = config.get("attention_llm_model", "gpt-4o")
 
     print("config.theme: ", config["theme"])
     if gradient == {}:
@@ -486,7 +508,7 @@ def generate_prompt(config, inputs, output, gradient={}, gpt_model=None, max_tok
                             The instruction is wrapped with <START> and <END>.
                             """
 
-        res_list = chatGPT(prompt_gen_template, n=1, model=gpt_model, max_tokens=max_tokens, temperature=0.0, call_source="generator")  # LLM-calls counting
+        res_list = chatGPT(prompt_gen_template, n=1, model=generator_model, max_tokens=max_tokens, temperature=0.0, call_source="generator")  # LLM-calls counting
         res = res_list[0] if res_list else None
 
         if res is None:
@@ -502,7 +524,7 @@ def generate_prompt(config, inputs, output, gradient={}, gpt_model=None, max_tok
         prompt = feedback[0]
         return prompt
 
-    attention = llm_attention(config, inputs, output, gradient, gpt_model, instruction_characteristic)
+    attention = llm_attention(config, inputs, output, gradient, attention_model, instruction_characteristic)
 
     attention_prompt = f"""
                         User_Input:
@@ -519,7 +541,7 @@ def generate_prompt(config, inputs, output, gradient={}, gpt_model=None, max_tok
                         The instruction is wrapped with <START> and <END>.
                         """
 
-    res_list = chatGPT(attention_prompt, n=1, model=gpt_model, temperature=0.0, call_source="generator")  # LLM-calls counting
+    res_list = chatGPT(attention_prompt, n=1, model=generator_model, temperature=0.0, call_source="generator")  # LLM-calls counting
     res = res_list[0] if res_list else None
 
     if res is None:
@@ -549,6 +571,11 @@ def pre_pruning(user_input, prompt, model="gpt-4o"):
     """
     res = chatGPT(instruction, n=1, model=model, temperature=0.0, call_source="pruning")[0]  # LLM-calls counting
     feedback = utils.parse_tagged_text(res, "<START>", "<END>")
+    try:
+        assert len(feedback) == 1
+    except Exception:
+        print(f"[Warning] Failed to extract a single instruction from LLM output. res was: {res}")
+        return None
     pre_prompt = feedback[0]
     return pre_prompt
 
@@ -720,6 +747,95 @@ def chatGPT_inference(
             print("Retrying......")
             time.sleep(20)
     return [choice["message"]["content"] for choice in response["choices"]]
+
+# This function is used for choosing the best stolen prompt in phase 3
+def llm_based_outputs_comparison(target_output, stolen_outputs, model="gpt-4o"):
+    system_prompt = """
+    You are an expert comparative evaluator.
+
+    You will receive:
+    - One Target Output, which is the reference output.
+    - A dictionary of Stolen Outputs, where each key is an integer ID and each value is an output to evaluate, produced by a different candidate system prompt using the same input prompt.
+
+    Your task is to evaluate how similar each Stolen Output is to the Target Output.
+
+    Important instructions:
+    1. Evaluate all stolen outputs together, not independently.
+    2. Scores must be comparative: take into account how similar each stolen output is relative to the others.
+    3. Assign each stolen output a float score from 0.0 to 1.0.
+    4. The most similar stolen output must receive the highest score.
+    5. A score of 1.0 should only be used if a stolen output is nearly identical or clearly the best match.
+    6. Use the full range when appropriate.
+    7. Do not give similar scores unless the outputs are genuinely similarly close.
+    8. Focus on behavioral and semantic similarity, not just surface wording.
+
+    Evaluate similarity using these criteria:
+    - Meaning and intent: Does it express the same core ideas?
+    - Factual alignment: Are details, claims, and conclusions consistent?
+    - Completeness: Does it include the same important information?
+    - Structure and ordering: Is the organization similar?
+    - Style and tone: Does it match formality, verbosity, phrasing style, and formatting?
+    - Instruction-following behavior: Does it respond in the same way to the prompt?
+    - Distinctive features: Does it preserve unusual choices, emphases, omissions, or formatting patterns from the target?
+
+    Penalize:
+    - Missing key points
+    - Added unsupported content
+    - Different conclusions
+    - Different level of detail
+    - Different tone or format
+    - Generic similarity without matching distinctive behavior
+
+    Return only the raw JSON object. Do not wrap it in markdown code fences. Do not use ```json.
+
+    The JSON must be a flat object where:
+    - keys are the integer IDs from the input, as JSON strings
+    - values are float similarity scores between 0.0 and 1.0
+
+    Example:
+    {
+    "1": 0.92,
+    "2": 0.31,
+    "3": 0.74
+    }
+    """
+
+    user_prompt = f"""
+    Target Output:
+    \"\"\"
+    {target_output}
+    \"\"\"
+
+    Stolen Outputs:
+    {json.dumps(stolen_outputs, indent=2)}
+    """
+
+    res = chatGPT_inference(
+        system_prompt=system_prompt,
+        text=user_prompt,
+        model=model,
+        temperature=0,
+        call_source="evaluation",
+    )[0]
+
+    print("RAW LLM RESPONSE:")
+    print(repr(res))
+
+    def clean_llm_json_response(res):
+        res = res.strip()
+
+        # Remove markdown code fence
+        if res.startswith("```"):
+            res = re.sub(r"^```(?:json)?\s*", "", res)
+            res = re.sub(r"\s*```$", "", res)
+
+        return res
+
+    if isinstance(res, str):
+        res = clean_llm_json_response(res)
+        res = json.loads(res)
+
+    return {int(k): float(v) for k, v in res.items()}
 
 
 if __name__ == "__main__":

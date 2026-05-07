@@ -1,0 +1,53 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Phase 2: Data",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/2_run_attack.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "env": {
+        "TARGET_LLM_MODEL": "cohere-command-a",
+        "CUSTOM": "true",
+        "CUSTOM_SCENARIO": "SoftwareEngineer"
+      },
+      "args": [
+        "--theme",
+        "Data",
+        "--custom",
+        "--custom_scenario",
+        "SoftwareEngineer",
+        "--target_llm_model",
+        "cohere-command-a",
+        "--out",
+        "log/Data_phase2_cohere-command-a_SoftwareEngineer.debug.txt"
+      ]
+    },
+    {
+      "name": "Debug Pipeline",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/1_prompt_attention_generation.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "env": {
+        "TARGET_LLM_MODEL": "cohere-command-a",
+        "CUSTOM": "true",
+        "CUSTOM_SCENARIO": "SoftwareEngineer"
+      },
+      "args": [
+        "--theme",
+        "Data",
+        "--custom",
+        "--custom_scenario",
+        "SoftwareEngineer",
+        "--target_llm_model",
+        "cohere-command-a"
+      ]
+    }
+  ]
+}

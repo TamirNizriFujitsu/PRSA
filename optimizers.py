@@ -1,6 +1,7 @@
 from abc import ABC
 import llm
 import re
+import json
 
 class PromptOptimizer(ABC):
     def __init__(self, args, scorer, gradient_dict):
@@ -43,43 +44,76 @@ class PAA(PromptOptimizer):
         numbers = re.findall(r"[-+]?\d*\.\d+|\d+", s)
         return numbers[0] if numbers else None
 
+    def parse_gradient_scores(self, text, elements):
+        tagged = self.parse_tagged_text(text, "<START>", "<END>")
+        payload = tagged[0] if tagged else text
+
+        try:
+            scores = json.loads(payload)
+        except json.JSONDecodeError:
+            json_match = re.search(r"\{.*\}", payload, re.DOTALL)
+            if not json_match:
+                raise
+            scores = json.loads(json_match.group(0))
+
+        if "scores" in scores and isinstance(scores["scores"], dict):
+            scores = scores["scores"]
+
+        return {
+            element: float(self.extract_number(str(scores[element])))
+            for element in elements
+            if element in scores and self.extract_number(str(scores[element])) is not None
+        }
+
     def cal_gradients(self, generated_output, output_data):
-        # This function asks LLM to judge eahc element's similarity between the two outputs, then if the score is below the threshold, that element is marked as weak = needs attention (by returning 1 as a value to this element in the dictionary)
+        # This function asks LLM to judge each element's similarity between the two outputs,
+        # then marks low-scoring elements as weak = needs attention.
         # Meaning: the generated output differs too much from the real output in tone, audience, and structure.
 
-        gradient = {}
         if self.opt["theme"] in ["Music", "Sports"]:
             self.opt["attention_threshold"] = 8
 
         elements = ['Characteristic','Topic','Argument','Structure','Style','Tone','Purpose','Sentence Type','Audience','Background']
-        for idx, element in enumerate(elements):
-            gradient_prompt = f"""
-            Generated Output:
-            "{generated_output}"
+        
+        system_prompt = """
+        You are an expert evaluator comparing two model outputs.
+        Rate how similar the Generated Output is to the Real Output for each requested element.
+        Use a score from 1 to 10 for each element. A score of 1 means very low similarity or no meaningful match for that element. Higher scores mean higher similarity, and 10 means identical or functionally equivalent for that element.
+        Return only a JSON object wrapped with <START> and <END>.
+        The JSON keys must be exactly the requested element names and the values must be numeric scores.
+        """
+        user_prompt = f"""
+        Generated Output:
+        "{generated_output}"
 
-            Real Output:
-            "{output_data}"
+        Real Output:
+        "{output_data}"
 
-            Score based on {element} similarity between Generated Output and Real Output, if full score is 10.
-            The score is wrapped with <START> and <END>
-            """
-            gradient_prompt = '\n'.join([line.lstrip() for line in gradient_prompt.split('\n')])
-            res = llm.chatGPT(gradient_prompt, model=self.opt.get("gradient_llm_model", "gpt-4o"), temperature=0.0, call_source="gradient")  # LLM-calls counting
-            feedbacks = []
-            temp = []
-            for r in res:    
-                temp += self.parse_tagged_text(r, "<START>", "<END>")
-                feedbacks = self.filter_target_score(r, temp)
-            try:
-                if float(feedbacks) < self.opt["attention_threshold"]:
-                    print("feedback score: ",feedbacks)
-                    gradient[element] = 1
-            except:
-                if float(self.extract_number(feedbacks)) < self.opt["attention_threshold"]:
-                    print("extract feedback score: ",float(self.extract_number(feedbacks)))
-                    gradient[element] = 1
+        Elements to score:
+        {json.dumps(elements)}
 
-        return gradient
+        Return a single valid JSON object wrapped with <START> and <END>.
+        The JSON object must contain exactly one numeric score from 1 to 10 for each element listed above.
+        Use the element names exactly as the JSON keys.
+        Do not include placeholders, comments, explanations, markdown, or any text outside the tags.
+        """
+        user_prompt = '\n'.join([line.lstrip() for line in user_prompt.split('\n')])
+        res = llm.chatGPT_inference(
+            system_prompt=system_prompt,
+            text=user_prompt,
+            model=self.opt.get("gradient_llm_model", "gpt-4o"),
+            temperature=0.0,
+            call_source="gradient",
+        )
+        scores = self.parse_gradient_scores(res[0], elements)
+        scores_sum = sum(scores.values())
+        gradient = {
+            element: 1
+            for element, score in scores.items()
+            if score < self.opt["attention_threshold"]
+        }
+
+        return gradient, scores_sum
 
 
     

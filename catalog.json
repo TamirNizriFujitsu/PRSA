@@ -1,50 +1,36 @@
 {
-  "CommandA": {
-  "provider": "azure_ai",
-  "api_base": "https://cohere-command-a-iuxea.eastus2.models.ai.azure.com",
-  "deployment": "CommandA",
-  "api_key_env": "AZURE_COMMANDA_API_KEY",
-  "auth_header": "Authorization",
-  "auth_prefix": "Bearer "
+  "cohere-command-a": {
+    "provider": "azure",
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com"
   },
   "gpt-4o": {
     "provider": "azure",
-    "api_base": "https://llm-sec-2.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2025-01-01-preview",
-    "api_version": "2025-01-01-preview",
-    "deployment": "gpt-4o",
-    "api_key_env": "AZURE_OPENAI_API_KEY"
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com"
   },
   "gpt-5": {
     "provider": "azure",
-    "api_base": "https://llm-sec-2.openai.azure.com",
-    "api_version": "2025-01-01-preview",
-    "deployment": "gpt-5",
-    "api_key_env": "AZURE_OPENAI_API_KEY"
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com"
+  },
+  "gpt-5-mini": {
+    "provider": "azure",
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com"
   },
   "gpt-4o-mini": {
     "provider": "azure",
-    "api_base": "https://llm-sec-2.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2025-01-01-preview",
-    "api_version": "2025-01-01-preview",
-    "deployment": "gpt-4o-mini",
-    "api_key_env": "AZURE_OPENAI_API_KEY"
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com"
   },
   "Qwen-1.5B": {
     "provider": "local_openai",
-    "api_base": "http://localhost:8000/v1",
+    "api_base": "http://localhost:11434/v1",
     "api_key": "local",
-    "model": "Qwen-1.5B"
+    "model": "qwen2.5:1.5b"
   },
   "claude-sonnet-4-5": {
   "provider": "azure_ai",
-  "api_base": "https://omer-mkkummts-eastus2.services.ai.azure.com/anthropic",
-  "endpoint_path": "/v1/messages",
-  "request_format": "anthropic_messages",
-  "request_headers": {
-    "anthropic-version": "2023-06-01"
-  },
+  "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com/anthropic",
   "deployment": "claude-sonnet-4-5",
   "api_key_env": "AZURE_CLAUDE_API_KEY",
   "auth_header": "Authorization",
   "auth_prefix": "Bearer "
-  }
+}
 }
