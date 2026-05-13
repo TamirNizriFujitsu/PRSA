@@ -1,0 +1,87 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6253.63it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6213.60it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Sports
+gradient:  {}
+1it [01:09, 69.53s/it]HTTP code 504 from API (<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+<hr><center>Microsoft-Azure-Application-Gateway/v2</center>
+</body>
+</html>
+)
+Retrying......
+config.theme:  Sports
+gradient:  {}
+2it [05:01, 165.13s/it]config.theme:  Sports
+gradient:  {}
+3it [06:15, 123.65s/it]config.theme:  Sports
+gradient:  {}
+4it [07:15, 98.52s/it] config.theme:  Sports
+gradient:  {}
+5it [08:49, 96.58s/it]config.theme:  Sports
+gradient:  {}
+6it [10:14, 92.90s/it]config.theme:  Sports
+gradient:  {}
+7it [11:21, 84.19s/it]config.theme:  Sports
+gradient:  {}
+8it [12:46, 84.69s/it]config.theme:  Sports
+gradient:  {}
+9it [13:44, 76.23s/it]config.theme:  Sports
+HTTP code 504 from API (<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+<hr><center>Microsoft-Azure-Application-Gateway/v2</center>
+</body>
+</html>
+)
+Retrying......
+HTTP code 504 from API (<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+<hr><center>Microsoft-Azure-Application-Gateway/v2</center>
+</body>
+</html>
+)
+Retrying......
+gradient:  {}
+10it [19:47, 164.66s/it]config.theme:  Sports
+gradient:  {}
+11it [20:52, 134.39s/it]config.theme:  Sports
+gradient:  {}
+12it [21:43, 109.04s/it]config.theme:  Sports
+gradient:  {}
+13it [24:24, 124.60s/it]config.theme:  Sports
+gradient:  {}
+14it [26:10, 119.17s/it]config.theme:  Sports
+gradient:  {}
+15it [27:31, 107.56s/it]15it [27:31, 110.10s/it]

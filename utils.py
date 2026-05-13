@@ -248,6 +248,10 @@ def find_topic(config, input_data, output_data):
 
 def parse_tagged_text(text, start_tag, end_tag):
     """ Parse text that is tagged with start and end tags."""
+    if not isinstance(text, str):
+        return []
+
+    original_text = text.strip()
     texts = []
     while True:
         start_index = text.find(start_tag)
@@ -259,6 +263,10 @@ def parse_tagged_text(text, start_tag, end_tag):
         start_index += len(start_tag)
         texts.append(text[start_index:end_index].strip())
         text = text[end_index+len(end_tag):]
+
+    if not texts and original_text:
+        return [original_text]
+
     return texts
 
 
@@ -414,6 +422,7 @@ def merge_phase2_results(output_path, target_model, scenario_suffix):
     merged_paths = []
     for category in categories:
         path = os.path.join(result_dir, f"{category}_res_{target_model}{scenario_suffix}.csv")
+        prompt_scores_path = os.path.join("model", f"prompt_scores_{category}_{target_model}{scenario_suffix}.json")
         if not os.path.exists(path):
             raise ValueError(f"[Warning] Missing result file: {path}")
         with open(path, newline="", encoding="utf-8") as f:
@@ -423,7 +432,7 @@ def merge_phase2_results(output_path, target_model, scenario_suffix):
             for row in reader:
                 row["Category"] = category
                 rows.append(row)
-        merged_paths.append(path)
+        merged_paths += [path, prompt_scores_path]
     if not rows:
         raise ValueError("[Warning] No result rows found to merge.")
     if "Category" not in fieldnames:
@@ -480,8 +489,6 @@ def extract_best_input_prompt(theme, model, scenario_suffix=""):
     # Find key with max score (score is index 1)
     best_prompt = max(scores, key=lambda k: scores[k][1])
 
-    os.remove(path)
-
     return best_prompt, scores[best_prompt][0] # compare all the values and return the key of the max value 
 
 def write_llm_call_summary(target_model, scenario_suffix, label=""):
@@ -513,6 +520,7 @@ def write_llm_call_summary(target_model, scenario_suffix, label=""):
         f"pruning_llm_calls    = {counts.get('pruning', 0):>6}    # pre-pruning stolen prompt to remove input-specific leakage",
         f"evaluation_llm_calls = {counts.get('evaluation', 0):>6}    # LLM-based multi-dimensional output evaluation",
         f"attention_llm_calls = {counts.get('attention', 0):>6}    # LLM-based multi-dimensional output to craete attention",
+        f"edit_llm_calls = {counts.get('edit', 0):>6}    # LLM-based multi-dimensional output to edit stolen prompt",
         "",
         f"total_llm_calls      = {total:>6}",
         "",

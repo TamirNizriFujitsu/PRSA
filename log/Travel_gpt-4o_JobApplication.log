@@ -1,0 +1,58 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6591.90it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6339.22it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Travel
+gradient:  {}
+1it [02:11, 131.98s/it]config.theme:  Travel
+gradient:  {}
+2it [03:32, 101.85s/it]config.theme:  Travel
+gradient:  {}
+3it [04:42, 87.37s/it] config.theme:  Travel
+gradient:  {}
+4it [06:06, 86.01s/it]config.theme:  Travel
+gradient:  {}
+5it [07:23, 82.61s/it]config.theme:  Travel
+gradient:  {}
+6it [08:47, 83.15s/it]config.theme:  Travel
+gradient:  {}
+7it [10:06, 81.72s/it]config.theme:  Travel
+gradient:  {}
+8it [11:28, 81.88s/it]config.theme:  Travel
+gradient:  {}
+9it [12:46, 80.77s/it]config.theme:  Travel
+gradient:  {}
+10it [13:59, 78.31s/it]config.theme:  Travel
+gradient:  {}
+11it [15:15, 77.39s/it]config.theme:  Travel
+gradient:  {}
+12it [16:41, 80.12s/it]config.theme:  Travel
+gradient:  {}
+13it [18:20, 85.91s/it]config.theme:  Travel
+gradient:  {}
+14it [19:38, 83.56s/it]config.theme:  Travel

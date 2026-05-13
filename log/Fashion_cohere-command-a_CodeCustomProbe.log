@@ -1,0 +1,60 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6484.06it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5547.28it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Fashion
+gradient:  {}
+1it [01:45, 105.74s/it]config.theme:  Fashion
+gradient:  {}
+2it [03:19, 98.81s/it] config.theme:  Fashion
+gradient:  {}
+3it [05:43, 119.18s/it]config.theme:  Fashion
+gradient:  {}
+4it [07:54, 124.17s/it]config.theme:  Fashion
+gradient:  {}
+5it [09:47, 120.14s/it]config.theme:  Fashion
+gradient:  {}
+6it [11:49, 120.64s/it]config.theme:  Fashion
+gradient:  {}
+7it [13:12, 108.35s/it]config.theme:  Fashion
+gradient:  {}
+8it [14:25, 97.05s/it] config.theme:  Fashion
+gradient:  {}
+9it [16:06, 98.42s/it]config.theme:  Fashion
+gradient:  {}
+10it [18:08, 105.49s/it]config.theme:  Fashion
+gradient:  {}
+11it [19:34, 99.69s/it] config.theme:  Fashion
+gradient:  {}
+12it [21:09, 98.05s/it]config.theme:  Fashion
+gradient:  {}
+13it [22:20, 89.88s/it]config.theme:  Fashion
+gradient:  {}
+14it [25:20, 117.31s/it]config.theme:  Fashion
+gradient:  {}
+15it [27:15, 116.55s/it]15it [27:15, 109.04s/it]

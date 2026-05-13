@@ -1,0 +1,60 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6824.85it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6030.04it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Ideas
+gradient:  {}
+1it [01:52, 112.33s/it]config.theme:  Ideas
+gradient:  {}
+2it [04:41, 145.80s/it]config.theme:  Ideas
+gradient:  {}
+3it [05:44, 107.74s/it]config.theme:  Ideas
+gradient:  {}
+4it [07:31, 107.53s/it]config.theme:  Ideas
+gradient:  {}
+5it [09:18, 107.58s/it]config.theme:  Ideas
+gradient:  {}
+6it [10:56, 104.20s/it]config.theme:  Ideas
+gradient:  {}
+7it [12:14, 95.55s/it] config.theme:  Ideas
+gradient:  {}
+8it [14:29, 108.18s/it]config.theme:  Ideas
+gradient:  {}
+9it [18:02, 140.92s/it]config.theme:  Ideas
+gradient:  {}
+10it [19:29, 124.20s/it]config.theme:  Ideas
+gradient:  {}
+11it [22:33, 142.69s/it]config.theme:  Ideas
+gradient:  {}
+12it [24:05, 127.16s/it]config.theme:  Ideas
+gradient:  {}
+13it [26:08, 125.96s/it]config.theme:  Ideas
+gradient:  {}
+14it [27:44, 116.88s/it]config.theme:  Ideas
+gradient:  {}
+15it [29:09, 107.35s/it]15it [29:09, 116.65s/it]

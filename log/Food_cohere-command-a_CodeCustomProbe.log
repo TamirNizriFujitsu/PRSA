@@ -1,0 +1,78 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5308.72it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6017.35it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Food
+gradient:  {}
+1it [00:45, 45.66s/it]config.theme:  Food
+gradient:  {}
+2it [02:40, 86.42s/it]config.theme:  Food
+gradient:  {}
+3it [05:59, 137.89s/it]config.theme:  Food
+gradient:  {}
+4it [07:14, 112.77s/it]config.theme:  Food
+gradient:  {}
+5it [08:46, 105.50s/it]config.theme:  Food
+gradient:  {}
+6it [11:13, 119.50s/it]config.theme:  Food
+gradient:  {}
+7it [12:48, 111.55s/it]config.theme:  Food
+gradient:  {}
+8it [13:41, 92.96s/it] config.theme:  Food
+gradient:  {}
+9it [15:46, 103.01s/it]config.theme:  Food
+HTTP code 504 from API (<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+<hr><center>Microsoft-Azure-Application-Gateway/v2</center>
+</body>
+</html>
+)
+Retrying......
+gradient:  {}
+10it [20:47, 163.99s/it]config.theme:  Food
+gradient:  {}
+11it [21:49, 132.85s/it]config.theme:  Food
+gradient:  {}
+12it [23:03, 114.92s/it]config.theme:  Food
+gradient:  {}
+13it [24:42, 110.00s/it]HTTP code 504 from API (<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+<hr><center>Microsoft-Azure-Application-Gateway/v2</center>
+</body>
+</html>
+)
+Retrying......
+config.theme:  Food
+gradient:  {}
+14it [28:10, 139.62s/it]config.theme:  Food
+gradient:  {}
+15it [29:48, 127.04s/it]15it [29:48, 119.20s/it]

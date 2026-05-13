@@ -27,6 +27,30 @@ def _log_llm_call(source: str, model: str):
         fcntl.flock(f, fcntl.LOCK_UN)
 
 
+def _warn_if_empty_completion_response(response, model, call_source):
+    try:
+        choices = response["choices"]
+    except Exception:
+        print(f"[Warning] LLM response has no choices. source={call_source} model={model}")
+        return True
+
+    if not choices:
+        print(f"[Warning] LLM response choices are empty. source={call_source} model={model}")
+        return True
+
+    try:
+        content = choices[0]["message"]["content"]
+    except Exception:
+        print(f"[Warning] LLM response first choice has no message content. source={call_source} model={model}")
+        return True
+
+    if not isinstance(content, str) or not content.strip():
+        print(f"[Warning] LLM response content is empty. source={call_source} model={model}")
+        return True
+    
+    return False
+
+
 class Predictor(ABC):
     def __init__(self, config):
         self.config = config
@@ -291,157 +315,181 @@ def _resolve_model_runtime(model_name):
 
 def _create_chat_completion(messages, model, temperature, n, top_p, max_tokens, call_source="unknown"):  # LLM-calls counting
     _log_llm_call(call_source, model)  # LLM-calls counting
-    runtime = _resolve_model_runtime(model)
-    is_gpt5_family = isinstance(model, str) and model.startswith("gpt-5")
-    token_param = (
-        {"max_completion_tokens": max_tokens}
-        if is_gpt5_family
-        else {"max_tokens": max_tokens}
-    )
-    sampling_params = {}
-    if is_gpt5_family:
-        # GPT-5 endpoints may reject non-default temperature values.
-        if top_p is not None:
-            sampling_params["top_p"] = top_p
-    else:
-        sampling_params = {
-            "temperature": temperature,
-            "top_p": top_p,
-            "presence_penalty": 0,
-            "frequency_penalty": 0,
-        }
-
-    if runtime["provider"] == "azure":
-        openai.api_type = "azure"
-        openai.api_key = runtime["api_key"]
-        openai.api_base = runtime["api_base"]
-        openai.api_version = runtime["api_version"]
-
-        return openai.ChatCompletion.create(
-            engine=runtime["deployment"],
-            n=n,
-            messages=messages,
-            timeout=(300, 300),
-            **sampling_params,
-            **token_param,
+    for i in range(3):
+        runtime = _resolve_model_runtime(model)
+        is_gpt5_family = isinstance(model, str) and model.startswith("gpt-5")
+        token_param = (
+            {"max_completion_tokens": max_tokens}
+            if is_gpt5_family
+            else {"max_tokens": max_tokens}
         )
-
-    if runtime["provider"] == "openai":
-        openai.api_key = runtime["api_key"]
-        return openai.ChatCompletion.create(
-            model=runtime["model"],
-            n=n,
-            messages=messages,
-            timeout=(300, 300),
-            **sampling_params,
-            **token_param,
-        )
-
-    # vLLM change
-    if runtime["provider"] == "local_openai":
-        openai.api_type = "open_ai"
-        openai.api_key = runtime["api_key"]
-        openai.api_base = runtime["api_base"]
-        return openai.ChatCompletion.create(
-            model=runtime["model"],
-            n=n,
-            messages=messages,
-            timeout=(300, 300),
-            **sampling_params,
-            **token_param,
-        )
-
-    if runtime["provider"] == "azure_ai":
-        request_format = runtime.get("request_format", "openai_chat")
-        if request_format == "anthropic_messages":
-            system_chunks = []
-            anthropic_messages = []
-            for msg in messages:
-                role = msg.get("role")
-                content = msg.get("content", "")
-                if role == "system":
-                    if isinstance(content, str) and content:
-                        system_chunks.append(content)
-                    continue
-                if role in ("user", "assistant"):
-                    anthropic_messages.append({"role": role, "content": content})
-
-            payload = {
-                "model": runtime["model"],
-                "messages": anthropic_messages,
-                "max_tokens": max_tokens,
-            }
-            if system_chunks:
-                payload["system"] = "\n\n".join(system_chunks)
-            # Some Anthropic-backed endpoints reject requests that specify
-            # both temperature and top_p at the same time.
-            if temperature is not None:
-                payload["temperature"] = temperature
-            elif top_p is not None:
-                payload["top_p"] = top_p
+        sampling_params = {}
+        if is_gpt5_family:
+            # GPT-5 endpoints may reject non-default temperature values.
+            if top_p is not None:
+                sampling_params["top_p"] = top_p
         else:
-            payload = {
-                "model": runtime["model"],
-                "messages": messages,
+            sampling_params = {
                 "temperature": temperature,
-                "n": n,
                 "top_p": top_p,
-                "max_tokens": max_tokens,
+                "presence_penalty": 0,
+                "frequency_penalty": 0,
             }
-        body = json.dumps(payload).encode("utf-8")
-        headers = {"Content-Type": "application/json"}
-        auth_header = runtime.get("auth_header", "api-key")
-        auth_prefix = runtime.get("auth_prefix", "")
-        headers[auth_header] = f"{auth_prefix}{runtime['api_key']}".strip()
-        extra_headers = runtime.get("request_headers", {})
-        if isinstance(extra_headers, dict):
-            headers.update(extra_headers)
 
-        req = Request(runtime["endpoint"], data=body, headers=headers, method="POST")
-        try:
-            with urlopen(req, timeout=300) as resp:
-                raw = resp.read().decode("utf-8")
-        except HTTPError as e:
-            err_body = e.read().decode("utf-8", errors="ignore")
-            raise RuntimeError(f"azure_ai HTTP {e.code}: {err_body}") from e
-        except URLError as e:
-            raise RuntimeError(f"azure_ai connection error: {e}") from e
+        if runtime["provider"] == "azure":
+            openai.api_type = "azure"
+            openai.api_key = runtime["api_key"]
+            openai.api_base = runtime["api_base"]
+            openai.api_version = runtime["api_version"]
 
-        data = json.loads(raw)
-        if request_format == "anthropic_messages" and isinstance(data, dict):
-            content_parts = data.get("content")
-            if isinstance(content_parts, list):
-                text_parts = []
-                for part in content_parts:
-                    if isinstance(part, dict) and part.get("type") == "text":
-                        text_parts.append(part.get("text", ""))
-                return {"choices": [{"message": {"content": "".join(text_parts)}}]}
+            response = openai.ChatCompletion.create(
+                engine=runtime["deployment"],
+                n=n,
+                messages=messages,
+                timeout=(300, 300),
+                **sampling_params,
+                **token_param,
+            )
+            response_is_empty = _warn_if_empty_completion_response(response, model, call_source)
+            if response_is_empty and i<2:
+                continue
+            return response
 
-        # Normalize non-OpenAI-like responses to the shape used by current code.
-        if isinstance(data, dict) and "choices" in data:
-            for c in data.get("choices", []):
-                msg = c.get("message")
-                if isinstance(msg, dict) and isinstance(msg.get("content"), list):
-                    parts = []
-                    for part in msg["content"]:
+        if runtime["provider"] == "openai":
+            openai.api_key = runtime["api_key"]
+            response = openai.ChatCompletion.create(
+                model=runtime["model"],
+                n=n,
+                messages=messages,
+                timeout=(300, 300),
+                **sampling_params,
+                **token_param,
+            )
+            response_is_empty = _warn_if_empty_completion_response(response, model, call_source)
+            if response_is_empty and i<2:
+                continue
+            return response
+
+        # vLLM change
+        if runtime["provider"] == "local_openai":
+            openai.api_type = "open_ai"
+            openai.api_key = runtime["api_key"]
+            openai.api_base = runtime["api_base"]
+            response = openai.ChatCompletion.create(
+                model=runtime["model"],
+                n=n,
+                messages=messages,
+                timeout=(300, 300),
+                **sampling_params,
+                **token_param,
+            )
+            response_is_empty = _warn_if_empty_completion_response(response, model, call_source)
+            if response_is_empty and i<2:
+                continue
+            return response
+
+        if runtime["provider"] == "azure_ai":
+            request_format = runtime.get("request_format", "openai_chat")
+            if request_format == "anthropic_messages":
+                system_chunks = []
+                anthropic_messages = []
+                for msg in messages:
+                    role = msg.get("role")
+                    content = msg.get("content", "")
+                    if role == "system":
+                        if isinstance(content, str) and content:
+                            system_chunks.append(content)
+                        continue
+                    if role in ("user", "assistant"):
+                        anthropic_messages.append({"role": role, "content": content})
+
+                payload = {
+                    "model": runtime["model"],
+                    "messages": anthropic_messages,
+                    "max_tokens": max_tokens,
+                }
+                if system_chunks:
+                    payload["system"] = "\n\n".join(system_chunks)
+                # Some Anthropic-backed endpoints reject requests that specify
+                # both temperature and top_p at the same time.
+                if temperature is not None:
+                    payload["temperature"] = temperature
+                elif top_p is not None:
+                    payload["top_p"] = top_p
+            else:
+                payload = {
+                    "model": runtime["model"],
+                    "messages": messages,
+                    "temperature": temperature,
+                    "n": n,
+                    "top_p": top_p,
+                    "max_tokens": max_tokens,
+                }
+            body = json.dumps(payload).encode("utf-8")
+            headers = {"Content-Type": "application/json"}
+            auth_header = runtime.get("auth_header", "api-key")
+            auth_prefix = runtime.get("auth_prefix", "")
+            headers[auth_header] = f"{auth_prefix}{runtime['api_key']}".strip()
+            extra_headers = runtime.get("request_headers", {})
+            if isinstance(extra_headers, dict):
+                headers.update(extra_headers)
+
+            req = Request(runtime["endpoint"], data=body, headers=headers, method="POST")
+            try:
+                with urlopen(req, timeout=300) as resp:
+                    raw = resp.read().decode("utf-8")
+            except HTTPError as e:
+                err_body = e.read().decode("utf-8", errors="ignore")
+                raise RuntimeError(f"azure_ai HTTP {e.code}: {err_body}") from e
+            except URLError as e:
+                raise RuntimeError(f"azure_ai connection error: {e}") from e
+
+            data = json.loads(raw)
+            if request_format == "anthropic_messages" and isinstance(data, dict):
+                content_parts = data.get("content")
+                if isinstance(content_parts, list):
+                    text_parts = []
+                    for part in content_parts:
                         if isinstance(part, dict) and part.get("type") == "text":
-                            parts.append(part.get("text", ""))
-                    c["message"]["content"] = "".join(parts)
-            return data
+                            text_parts.append(part.get("text", ""))
+                    response = {"choices": [{"message": {"content": "".join(text_parts)}}]}
+                    response_is_empty = _warn_if_empty_completion_response(response, model, call_source)
+                    if response_is_empty and i<2:
+                        continue
+                    return response
 
-        text = ""
-        if isinstance(data, dict):
-            if isinstance(data.get("output_text"), str):
-                text = data["output_text"]
-            elif isinstance(data.get("content"), str):
-                text = data["content"]
-            elif isinstance(data.get("response"), str):
-                text = data["response"]
-        if not text:
-            text = str(data)
-        return {"choices": [{"message": {"content": text}}]}
+            # Normalize non-OpenAI-like responses to the shape used by current code.
+            if isinstance(data, dict) and "choices" in data:
+                for c in data.get("choices", []):
+                    msg = c.get("message")
+                    if isinstance(msg, dict) and isinstance(msg.get("content"), list):
+                        parts = []
+                        for part in msg["content"]:
+                            if isinstance(part, dict) and part.get("type") == "text":
+                                parts.append(part.get("text", ""))
+                        c["message"]["content"] = "".join(parts)
+                response_is_empty = _warn_if_empty_completion_response(data, model, call_source)
+                if response_is_empty and i<2:
+                    continue
+                return data
 
-    raise RuntimeError(f"Unsupported runtime provider: {runtime.get('provider')}")
+            text = ""
+            if isinstance(data, dict):
+                if isinstance(data.get("output_text"), str):
+                    text = data["output_text"]
+                elif isinstance(data.get("content"), str):
+                    text = data["content"]
+                elif isinstance(data.get("response"), str):
+                    text = data["response"]
+            if not text:
+                text = str(data)
+            response = {"choices": [{"message": {"content": text}}]}
+            response_is_empty = _warn_if_empty_completion_response(response, model, call_source)
+            if response_is_empty and i<2:
+                continue
+            return response
+
+        raise RuntimeError(f"Unsupported runtime provider: {runtime.get('provider')}")
 
 
 def parse_sectioned_prompt(s):
@@ -473,18 +521,49 @@ def extract_all_quoted_text(sentence):
 
 #The goal is to create an attention prompt - which focuses the elements that needs to get attention when creating the stolen prompt
 def llm_attention(config, inputs, Output, attention_dict, gpt_model, characteristic=""):
-    attention_text = ""
-    for attention, weight in attention_dict.items():
-        attention_prompt = f"""
-            output:
-            \"{Output}\"
+    attention_items = list(attention_dict.keys())
+    attention_items_text = ", ".join(attention_items)
 
-            What is the {attention} of the output in one sentence?
-            """
-        res = chatGPT(attention_prompt, model=gpt_model, temperature=0.0, call_source="attention")  # LLM-calls counting
-        attention_text += res[0]
+    system_prompt = f"""
+    You will receive an output text and a list of aspects to analyze.
+    Your task is to describe each requested aspect of the output in exactly one sentence.
 
-    return attention_text
+    Rules:
+    - Analyze only the provided output.
+    - Address every requested aspect.
+    - Write exactly one sentence per aspect.
+    - Keep each sentence concise and specific.
+    - Do not add extra aspects.
+    - Do not include introductions, conclusions, or unnecessary explanation.
+    - Return the result as one paragraph, where each sentence starts with the aspect name and describes this aspect of the output
+    """
+
+    user_prompt = f"""
+    Output:
+    \"\"\"
+    {Output}
+    \"\"\"
+
+    Aspects to analyze:
+    {attention_items_text}
+
+    Question:
+    What is the {attention_items_text} of the output? Write about each one of them in one sentence.
+    """
+
+    res = chatGPT_inference(
+        system_prompt=system_prompt,
+        text=user_prompt,
+        model=gpt_model,
+        temperature=0.0,
+        call_source="attention"
+    )
+
+    if not res or not isinstance(res[0], str) or not res[0].strip():
+        print("[Warning] llm_attention returned empty response.")
+        return ""
+    return res[0]
+
 
 
 def generate_prompt(config, inputs, output, gradient={}, generator_model=None, attention_model=None, max_tokens=4096, instruction_characteristic=""):
@@ -559,6 +638,10 @@ def generate_prompt(config, inputs, output, gradient={}, generator_model=None, a
 
 
 def pre_pruning(user_input, prompt, model="gpt-4o"):
+    if not isinstance(prompt, str) or not prompt.strip():
+        print(f"[Warning] Skipping pre-pruning because prompt is empty or invalid: {type(prompt)}")
+        return prompt
+
     instruction = f"""
     User Input:
     \"{user_input}\"
@@ -569,14 +652,22 @@ def pre_pruning(user_input, prompt, model="gpt-4o"):
     I provide a Prompt and User Input. Please identify all parts of the Prompt that are semantically tied to the User Input, and replace them with placeholders "{{}}". Keep the sentence structure intact. Return only the masked prompt.
     The masked prompt is wrapped with <START> and <END>.
     """
-    res = chatGPT(instruction, n=1, model=model, temperature=0.0, call_source="pruning")[0]  # LLM-calls counting
+    res_list = chatGPT(instruction, n=1, model=model, temperature=0.0, call_source="pruning")  # LLM-calls counting
+    res = res_list[0] if res_list else ""
+    if not isinstance(res, str) or not res.strip():
+        print("[Warning] Pre-pruning LLM returned an empty response. Keeping original prompt.")
+        return prompt
+
     feedback = utils.parse_tagged_text(res, "<START>", "<END>")
     try:
         assert len(feedback) == 1
     except Exception:
-        print(f"[Warning] Failed to extract a single instruction from LLM output. res was: {res}")
-        return None
+        print(f"[Warning] Failed to extract a single instruction from LLM output. Keeping original prompt. res was: {res}")
+        return prompt
     pre_prompt = feedback[0]
+    if not pre_prompt:
+        print("[Warning] Pre-pruning LLM returned empty tagged content. Keeping original prompt.")
+        return prompt
     return pre_prompt
 
 
@@ -600,9 +691,13 @@ Return only the edited prompt with no additional commentary."""
         text=f'Prompt:\n"{stolen_prompt}"',
         model=model,
         temperature=0.0,
-        call_source="generator",
+        call_source="editor",
     )
-    return res[0] if res else stolen_prompt
+    edited = res[0] if res else ""
+    if not isinstance(edited, str) or not edited.strip():
+        print("[Warning] Editor returned an empty prompt. Keeping unedited stolen prompt.")
+        return stolen_prompt
+    return edited
 
 
 def llm_based_evaluation(target_output, generated_output, model="gpt-4o"):
@@ -685,7 +780,7 @@ def chatGPT(
                     return []
             print(e)
             print("Retrying......")
-            time.sleep(20)
+            time.sleep(5)
     if response is None:
         return None
     return [choice["message"]["content"] for choice in response["choices"]]
@@ -750,6 +845,12 @@ def chatGPT_inference(
 
 # This function is used for choosing the best stolen prompt in phase 3
 def llm_based_outputs_comparison(target_output, stolen_outputs, model="gpt-4o"):
+    expected_ids = {str(k) for k in stolen_outputs.keys()}
+    expected_ids_sorted = sorted(
+        expected_ids,
+        key=lambda x: int(x) if x.isdigit() else x,
+    )
+
     system_prompt = """
     You are an expert comparative evaluator.
 
@@ -768,6 +869,11 @@ def llm_based_outputs_comparison(target_output, stolen_outputs, model="gpt-4o"):
     6. Use the full range when appropriate.
     7. Do not give similar scores unless the outputs are genuinely similarly close.
     8. Focus on behavioral and semantic similarity, not just surface wording.
+    9. ID handling is strict:
+       - Each Stolen Output is identified only by its dictionary key.
+       - Score each output under the exact same key it has in the input dictionary.
+       - Return exactly the same set of keys as the Stolen Outputs dictionary: no extra keys and no missing keys.
+       - Do not renumber outputs, create new sequential IDs, infer missing IDs, or add summary rows.
 
     Evaluate similarity using these criteria:
     - Meaning and intent: Does it express the same core ideas?
@@ -789,8 +895,10 @@ def llm_based_outputs_comparison(target_output, stolen_outputs, model="gpt-4o"):
     Return only the raw JSON object. Do not wrap it in markdown code fences. Do not use ```json.
 
     The JSON must be a flat object where:
-    - keys are the integer IDs from the input, as JSON strings
-    - values are float similarity scores between 0.0 and 1.0
+    - keys exactly match the IDs from the input Stolen Outputs dictionary, as JSON strings
+    - every input ID appears exactly once
+    - no ID appears unless it exists in the input Stolen Outputs dictionary
+    - each value is the float similarity score between 0.0 and 1.0 for the output stored under that exact key
 
     Example:
     {
@@ -808,6 +916,9 @@ def llm_based_outputs_comparison(target_output, stolen_outputs, model="gpt-4o"):
 
     Stolen Outputs:
     {json.dumps(stolen_outputs, indent=2)}
+
+    Expected JSON keys exactly:
+    {json.dumps(expected_ids_sorted)}
     """
 
     res = chatGPT_inference(
@@ -835,7 +946,20 @@ def llm_based_outputs_comparison(target_output, stolen_outputs, model="gpt-4o"):
         res = clean_llm_json_response(res)
         res = json.loads(res)
 
-    return {int(k): float(v) for k, v in res.items()}
+    parsed_scores = {str(k): float(v) for k, v in res.items()}
+    actual_ids = set(parsed_scores.keys())
+    extra_ids = actual_ids - expected_ids
+    missing_ids = expected_ids - actual_ids
+
+    if extra_ids:
+        print(f"[Warning] llm_based_outputs_comparison ignored unexpected IDs: {sorted(extra_ids)}")
+    if missing_ids:
+        print(f"[Warning] llm_based_outputs_comparison missing scores for IDs: {sorted(missing_ids)}; using 0.0")
+
+    return {
+        int(k): max(0.0, min(1.0, parsed_scores.get(k, 0.0)))
+        for k in expected_ids_sorted
+    }
 
 
 if __name__ == "__main__":

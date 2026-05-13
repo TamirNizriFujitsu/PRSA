@@ -1,0 +1,60 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7057.31it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5452.27it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Business
+gradient:  {}
+1it [00:24, 24.06s/it]config.theme:  Business
+gradient:  {}
+2it [00:42, 20.92s/it]config.theme:  Business
+gradient:  {'Sentence Type': 1}
+3it [02:20, 56.09s/it]config.theme:  Business
+gradient:  {'Argument': 1, 'Style': 1, 'Audience': 1}
+4it [02:45, 43.73s/it]config.theme:  Business
+gradient:  {'Argument': 1, 'Structure': 1, 'Style': 1, 'Audience': 1}
+5it [03:07, 35.97s/it]config.theme:  Business
+gradient:  {'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+6it [04:19, 48.28s/it]config.theme:  Business
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Background': 1}
+7it [04:42, 39.80s/it]config.theme:  Business
+gradient:  {'Structure': 1, 'Background': 1}
+8it [05:06, 35.01s/it]config.theme:  Business
+gradient:  {'Argument': 1, 'Style': 1}
+9it [05:28, 30.72s/it]config.theme:  Business
+gradient:  {'Argument': 1, 'Sentence Type': 1, 'Background': 1}
+10it [07:33, 59.84s/it]config.theme:  Business
+gradient:  {}
+11it [07:50, 46.86s/it]config.theme:  Business
+gradient:  {'Argument': 1, 'Style': 1, 'Background': 1}
+12it [08:12, 39.28s/it]config.theme:  Business
+gradient:  {'Argument': 1, 'Sentence Type': 1, 'Background': 1}
+13it [10:10, 63.15s/it]config.theme:  Business
+gradient:  {'Argument': 1, 'Structure': 1, 'Style': 1, 'Audience': 1, 'Background': 1}
+14it [10:40, 53.15s/it]config.theme:  Business
+gradient:  {}
+15it [12:17, 66.28s/it]15it [12:17, 49.17s/it]

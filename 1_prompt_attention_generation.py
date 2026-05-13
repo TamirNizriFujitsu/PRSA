@@ -30,11 +30,11 @@ def get_args():
     parser.add_argument('--scorer', default="semantic_similarity", type=str)
     parser.add_argument('--target_llm_model', default="gpt-4o", type=str,
                         help='LLM model/deployment used to generate target and stolen outputs.')
-    parser.add_argument('--generator_llm_model', default="claude-sonnet-4-5", type=str,
+    parser.add_argument('--generator_llm_model', default="gpt-5", type=str,
                         help='LLM model/deployment used for stolen-prompt generation.')
-    parser.add_argument('--gradient_llm_model', default="gpt-5", type=str,
+    parser.add_argument('--gradient_llm_model', default="gpt-4o-mini", type=str,
                         help='LLM model/deployment used to score gradients.')
-    parser.add_argument('--attention_llm_model', default="gpt-5-mini", type=str,
+    parser.add_argument('--attention_llm_model', default="gpt-4.1-mini", type=str,
                         help='LLM model/deployment used to score gradients.')
     
     args = parser.parse_args()
@@ -76,10 +76,10 @@ if __name__ == '__main__':
 
             # Creating a stolen prompt by generator-llm-model
             if gradient_dict == {}:
-                base_stolen_prompt = llm.generate_prompt(config, input_data, output_data, generator_model=args.generator_llm_model)
+                base_stolen_prompt = llm.generate_prompt(config, input_data, output_data)
                 
             else:
-                base_stolen_prompt = llm.generate_prompt(config, input_data, output_data, gradient_dict, generator_model=args.generator_llm_model, attention_model=args.attention_llm_model) 
+                base_stolen_prompt = llm.generate_prompt(config, input_data, output_data, gradient_dict) 
             
             if base_stolen_prompt == None:
                     continue

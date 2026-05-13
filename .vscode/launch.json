@@ -12,18 +12,18 @@
       "env": {
         "TARGET_LLM_MODEL": "cohere-command-a",
         "CUSTOM": "true",
-        "CUSTOM_SCENARIO": "SoftwareEngineer"
+        "CUSTOM_SCENARIO": "SkinCare"
       },
       "args": [
         "--theme",
-        "Data",
+        "Health",
         "--custom",
         "--custom_scenario",
-        "SoftwareEngineer",
+        "SkinCare",
         "--target_llm_model",
         "cohere-command-a",
         "--out",
-        "log/Data_phase2_cohere-command-a_SoftwareEngineer.debug.txt"
+        "log/Data_phase2_cohere-command-a_SkinCare.debug.txt"
       ]
     },
     {
@@ -37,14 +37,14 @@
       "env": {
         "TARGET_LLM_MODEL": "cohere-command-a",
         "CUSTOM": "true",
-        "CUSTOM_SCENARIO": "SoftwareEngineer"
+        "CUSTOM_SCENARIO": "SkinCare"
       },
       "args": [
         "--theme",
-        "Data",
+        "Health",
         "--custom",
         "--custom_scenario",
-        "SoftwareEngineer",
+        "SkinCare",
         "--target_llm_model",
         "cohere-command-a"
       ]

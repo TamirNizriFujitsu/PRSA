@@ -1,0 +1,45 @@
+phase 1 total time: 16m 55s
+=== LLM Call Summary — After Phase 1 ===
+Model: Qwen-1.5B
+
+target_llm_calls     =    180    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =     90    # generating stolen prompt candidates
+gradient_llm_calls   =     90    # scoring element similarity to build attention dict
+pruning_llm_calls    =      0    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =      0    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =     62    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =    422
+
+Phase 2 - creating_stolen_prompts_and_pruning = 10m 1s
+=== LLM Call Summary — After Phase 2 ===
+Model: Qwen-1.5B
+
+target_llm_calls     =    117    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =     18    # generating stolen prompt candidates
+gradient_llm_calls   =      0    # scoring element similarity to build attention dict
+pruning_llm_calls    =     18    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =      0    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =     18    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =    189
+
+Phase 3.1 - creating_diff_arrays_for_all_categories = 29m 24s
+Phase 3.1 - creating_diff_arrays_for_all_categories = 21m 21s
+Phase 3.1 - creating_diff_arrays_for_all_categories = 21m 7s
+phase 3.2 - calculating_stolen_prompts_asr = 0m 55s
+=== LLM Call Summary — After phase 3 ===
+Model: Qwen-1.5B
+
+target_llm_calls     =    324    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =      0    # generating stolen prompt candidates
+gradient_llm_calls   =      0    # scoring element similarity to build attention dict
+pruning_llm_calls    =      0    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =     18    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =      0    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =    342
+

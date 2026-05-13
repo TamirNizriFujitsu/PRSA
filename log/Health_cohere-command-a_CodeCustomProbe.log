@@ -1,0 +1,69 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5717.64it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5287.55it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Health
+gradient:  {}
+1it [01:12, 72.95s/it]config.theme:  Health
+gradient:  {}
+2it [03:34, 113.57s/it]config.theme:  Health
+HTTP code 504 from API (<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+<hr><center>Microsoft-Azure-Application-Gateway/v2</center>
+</body>
+</html>
+)
+Retrying......
+gradient:  {}
+3it [07:45, 176.28s/it]config.theme:  Health
+gradient:  {}
+4it [09:40, 151.98s/it]config.theme:  Health
+gradient:  {}
+5it [12:26, 157.05s/it]config.theme:  Health
+gradient:  {}
+6it [14:21, 142.82s/it]config.theme:  Health
+gradient:  {}
+7it [16:01, 128.85s/it]config.theme:  Health
+gradient:  {}
+8it [18:04, 126.71s/it]config.theme:  Health
+gradient:  {}
+9it [19:11, 108.33s/it]config.theme:  Health
+gradient:  {}
+10it [20:19, 95.81s/it]config.theme:  Health
+gradient:  {}
+11it [21:36, 90.11s/it]config.theme:  Health
+gradient:  {}
+12it [23:18, 93.57s/it]config.theme:  Health
+gradient:  {}
+13it [25:07, 98.36s/it]config.theme:  Health
+gradient:  {}
+14it [27:07, 104.69s/it]config.theme:  Health
+gradient:  {}
+15it [28:50, 104.26s/it]15it [28:50, 115.36s/it]
