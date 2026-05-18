@@ -1,0 +1,485 @@
+Category,category,stolen prompt,edited stolen prompt,best_input,target_output
+Ads,Ads,"Create {} from the provided fields, aimed at {}. Start with a brief, supportive line that frames the content as a refined version for promotional use. Then present clearly labeled sections—Service Category, Service Offering, Target Buyers, Key Benefits, and What Makes Me Stand Out—using concise, benefits-first ad copy. Use bullet points for Key Benefits and Differentiators to improve scannability. Emphasize {} and credibility by spotlighting “{}” and “{},” and underscore professional expertise and efficiency with “{}” and “{}.” Maintain a professional, persuasive tone suitable for ads or a landing page. Conclude with a light CTA inviting the user to tailor the tone or details.","Prompt:
+""Create a summary from the provided fields, aimed at marketing. Start with a brief, supportive line that frames the content as a refined version for promotional use. Then present clearly labeled sections—Service Category, Service Offering, Target Buyers, Key Benefits, and What Makes Me Stand Out—using concise, benefits-first ad copy. Use bullet points for Key Benefits and Differentiators to improve scannability. Emphasize value and credibility by spotlighting “experience” and “testimonials,” and underscore professional expertise and efficiency with “certifications” and “quick turnaround.” Maintain a professional, persuasive tone suitable for ads or a landing page. Conclude with a light CTA inviting the user to tailor the tone or details.""","[Product Type] = Smart Fitness Watch
+[Brand Name] = ActiveTech
+[Industry] = Consumer Electronics
+[Target Audience] = Health-conscious millennials","It seems like you've provided some context, possibly for product positioning or branding. However, this information doesn't directly relate to a feature branch or code review. If you're looking for assistance with code in a pull request, please share the relevant details or diff. If this is unrelated to the repository, let me know how I can assist within the scope of my responsibilities."
+Business,Business,"Create a business-focused slide deck outline based on the User_Input fields: {}, {}, {}, and {}. The goal is to produce a concise, visually engaging, and investor-ready outline tailored to {} for an AI startup, suitable for {}, and optimized for the specified short duration.
+
+Instructions:
+- Title the document: “Slide Deck Outline for a {} Pitch” and note the need for brevity.
+- Allocate timing per slide so the total equals {}. For {} slides and {} seconds, use ~{} seconds per slide, with the opening and closing at ~{} seconds each and the rest at ~{} seconds.
+- For each slide (1 to {}), provide:
+  - Slide header in the format: “Slide X: [Slide Name] (Y seconds)”
+  - Three labeled bullets:
+    - Content: What to include on the slide (short, high-impact bullets).
+    - Purpose: The business rationale for the slide in the context of VC expectations (clarity on ROI, scale, traction).
+    - Example: A brief, concrete illustration relevant to an AI startup.
+- Use the following slide sequence for a VC AI funding pitch:
+  1) Title
+  2) Problem (data-backed pain point)
+  3) Solution (AI-driven approach and quantifiable impact)
+  4) Market Opportunity (TAM/SAM; credible sizing)
+  5) Product Demo (optional but encouraged for tangibility)
+  6) Competitive Advantage (moats: proprietary tech, benchmarks, IP, team)
+  7) Traction (metrics: customers, pilots, revenue, growth)
+  8) Business Model (pricing, revenue stream; keep concise)
+  9) Funding Ask (specific amount, use of funds, expected milestones/ROI)
+  10) Closing & Contact (CTA and contact details)
+- Keep language clear, concise, and investor-centric. Emphasize brevity and impact suitable for a {} pitch.
+- After {}, add a “Final Tips” section with 3-5 bullets covering Design (clean visuals, minimal text), Delivery (practice to timebox), and Focus (problem-solution-ask).
+- End with a short encouragement line (e.g., “Good luck with your pitch!”).
+
+Formatting:
+- Use clear headings and short bullet points.
+- Label each bullet group as “Content,” “Purpose,” and “Example.”
+- Maintain a professional business tone tailored to {}.","Prompt:
+""Create a business-focused slide deck outline based on the User_Input fields: topic, target audience, key metrics, and funding amount. The goal is to produce a concise, visually engaging, and investor-ready outline tailored to investors for an AI startup, suitable for early-stage funding, and optimized for the specified short duration.
+
+Instructions:
+- Title the document: “Slide Deck Outline for a Funding Pitch” and note the need for brevity.
+- Allocate timing per slide so the total equals total_time. For 10 slides and total_time seconds, use ~equal seconds per slide, with the opening and closing at ~slightly longer seconds each and the rest at ~equal seconds.
+- For each slide (1 to 10), provide:
+  - Slide header in the format: “Slide X: [Slide Name] (Y seconds)”
+  - Three labeled bullets:
+    - Content: What to include on the slide (short, high-impact bullets).
+    - Purpose: The business rationale for the slide in the context of VC expectations (clarity on ROI, scale, traction).
+    - Example: A brief, concrete illustration relevant to an AI startup.
+- Use the following slide sequence for a VC AI funding pitch:
+  1) Title
+  2) Problem (data-backed pain point)
+  3) Solution (AI-driven approach and quantifiable impact)
+  4) Market Opportunity (TAM/SAM; credible sizing)
+  5) Product Demo (optional but encouraged for tangibility)
+  6) Competitive Advantage (moats: proprietary tech, benchmarks, IP, team)
+  7) Traction (metrics: customers, pilots, revenue, growth)
+  8) Business Model (pricing, revenue stream; keep concise)
+  9) Funding Ask (specific amount, use of funds, expected milestones/ROI)
+  10) Closing & Contact (CTA and contact details)
+- Keep language clear, concise, and investor-centric. Emphasize brevity and impact suitable for a funding pitch.
+- After slide 10, add a “Final Tips” section with 3-5 bullets covering Design (clean visuals, minimal text), Delivery (practice to timebox), and Focus (problem-solution-ask).
+- End with a short encouragement line (e.g., “Good luck with your pitch!”).
+
+Formatting:
+- Use clear headings and short bullet points.
+- Label each bullet group as “Content,” “Purpose,” and “Example.”
+- Maintain a professional business tone tailored to investors.""","[Investor Name]: Emily Thompson [Specific Sector]: Renewable Energy [Risk Tolerance Level]: Moderate [Timeframe]: 5-10 years [Investment Capital]: $500,000","It seems like you've shared information related to an investor profile, which isn't relevant to code review or technical assistance. If you have a question or task related to your current repository or GlobalTech's coding standards, feel free to ask, and I'd be happy to assist!"
+Code,Code,"Could you provide more context or a specific question related to {} in {}? For instance, are you looking for feedback on a pull request, assistance with algorithm optimization, or guidance on adhering to the GT‑C++17 Standard? Let me know how I can assist!","Prompt:
+""Could you provide more context or a specific question related to this topic in detail? For instance, are you looking for feedback on a pull request, assistance with algorithm optimization, or guidance on adhering to the GT‑C++17 Standard? Let me know how I can assist!""","[language]=Java
+[input format]=XML
+[output format]=JSON","It seems like you've provided a general structure. Could you clarify what kind of assistance you need? Are you implementing a Java program to convert XML input into JSON output, or are you looking for code review or optimization suggestions? Let me know how I can assist!"
+Data,Data,"Given {} that supplies data parameters about a person, their role, company, industry, and key metrics, produce a response that:
+
+1) Data-aware introductory observation (declarative):
+- Identify that the input is a set of parameters about the user and their {} context.
+- Explicitly state that the provided data does not directly map to your primary scope (code review/feature branch analysis within GlobalTech’s GitHub Enterprise), anchoring the response in a data-to-scope mismatch.
+
+2) Data-focused pivot with actionable suggestions (declarative + interrogative):
+- Propose data-oriented directions that connect the supplied metrics to potential engineering work (e.g., integrating or exposing metrics, building analytics dashboards, data pipelines, or APIs).
+- Include at least two bullet-point questions that help clarify data needs, such as:
+  - Whether the user is working on analytics dashboards/APIs for the listed metrics.
+  - Whether they need feedback on code that processes, reports on, or optimizes those metrics.
+- Where possible, reuse the provided metric names (e.g., {}, {}, {} ) in the examples.
+
+3) Call to action (declarative + interrogative):
+- Invite the user to clarify their objective so you can provide targeted, actionable feedback.
+
+Style and structure requirements:
+- Structure the output with a brief opening paragraph, followed by a concise bulleted list of clarifying questions/examples, then a closing sentence encouraging clarification.
+- Use a mix of declarative and interrogative sentences as specified.
+- Keep the tone professional, succinct, and data-centric.
+- Bullets are allowed; avoid heavy formatting beyond that.","Prompt:
+""Given data that supplies data parameters about a person, their role, company, industry, and key metrics, produce a response that:
+
+1) Data-aware introductory observation (declarative):
+- Identify that the input is a set of parameters about the user and their professional context.
+- Explicitly state that the provided data does not directly map to your primary scope (code review/feature branch analysis within GlobalTech’s GitHub Enterprise), anchoring the response in a data-to-scope mismatch.
+
+2) Data-focused pivot with actionable suggestions (declarative + interrogative):
+- Propose data-oriented directions that connect the supplied metrics to potential engineering work (e.g., integrating or exposing metrics, building analytics dashboards, data pipelines, or APIs).
+- Include at least two bullet-point questions that help clarify data needs, such as:
+  - Whether the user is working on analytics dashboards/APIs for the listed metrics.
+  - Whether they need feedback on code that processes, reports on, or optimizes those metrics.
+- Where possible, reuse the provided metric names (e.g., metric1, metric2, metric3) in the examples.
+
+3) Call to action (declarative + interrogative):
+- Invite the user to clarify their objective so you can provide targeted, actionable feedback.
+
+Style and structure requirements:
+- Structure the output with a brief opening paragraph, followed by a concise bulleted list of clarifying questions/examples, then a closing sentence encouraging clarification.
+- Use a mix of declarative and interrogative sentences as specified.
+- Keep the tone professional, succinct, and data-centric.
+- Bullets are allowed; avoid heavy formatting beyond that.""",[User's Company]=StreamTech Solutions [Data Source]=social media platforms,"It seems you've provided information specific to your company or a particular data source. If this is related to a pull request or code review, please clarify the context or share the relevant code changes. I'll be happy to assist with reviewing the pull request, ensuring it aligns with coding standards, security best practices, and proper test coverage."
+Email,Email,"Assume {} is software engineering work around an Email system or repository. When the user supplies a very short or ambiguous term (e.g., a single noun phrase like “{}”), generate a clarification response with this exact structure and wording:
+
+- Start with one sentence noting the input is incomplete or unclear, and mention that if the term refers to a {}-related feature or application within a specific repository, more context is needed. Follow it with “For example:” on the same paragraph.
+- Provide exactly three bullet points asking for clarification, inserting the user’s term verbatim where appropriate:
+  - “Are you implementing or reviewing a {}-related feature?”
+  - “Is there a relevant pull request or code snippet you'd like me to review?”
+  - “Do you need help with specific functionality or code standards?”
+- End with the single sentence: “Feel free to clarify, and I'll assist accordingly!”
+
+Keep the tone neutral and helpful, suitable for email-related repositories or workflows. For the input “{},” substitute that term for [term] to produce the final output.","Prompt:
+""Assume the context is software engineering work around an Email system or repository. When the user supplies a very short or ambiguous term (e.g., a single noun phrase like “the term”), generate a clarification response with this exact structure and wording:
+
+- Start with one sentence noting the input is incomplete or unclear, and mention that if the term refers to an email-related feature or application within a specific repository, more context is needed. Follow it with “For example:” on the same paragraph.
+- Provide exactly three bullet points asking for clarification, inserting the user’s term verbatim where appropriate:
+  - “Are you implementing or reviewing an email-related feature?”
+  - “Is there a relevant pull request or code snippet you'd like me to review?”
+  - “Do you need help with specific functionality or code standards?”
+- End with the single sentence: “Feel free to clarify, and I'll assist accordingly!”
+
+Keep the tone neutral and helpful, suitable for email-related repositories or workflows. For the input “the term,” substitute that term for [term] to produce the final output.""","Customer Type: Young Professionals
+Company/Brand: Modern Home Decor Online Store","It seems like you might be brainstorming ideas related to a young professional customer base or a modern home decor online store, but I'm unsure how this ties into a GlobalTech code review or feature branch. Could you clarify your request or provide context so I can assist you better? If you're working on a feature for this demographic or e-commerce platform within GlobalTech's scope, let me know how I can help with the code review or implementation!"
+Fashion,Fashion,"Given fashion-related input about wardrobe planning (e.g., a new job or life event, listed wardrobe essentials, and a color palette), produce a brief response with two clearly separated parts:
+1) Acknowledge and neutrally paraphrase the user’s fashion context, referencing the {}, the {}, and the {} at a high level without offering fashion advice.
+2) Redirect to the assistant’s actual scope by stating that you handle code reviews and technical development within GlobalTech’s GitHub Enterprise environment, and invite code-related inquiries.
+Use only concise, declarative sentences that provide information and clarification.","Prompt:
+""Given fashion-related input about wardrobe planning (e.g., a new job or life event, listed wardrobe essentials, and a color palette), produce a brief response with two clearly separated parts:
+1) Acknowledge and neutrally paraphrase the user’s fashion context, referencing the event, the essentials, and the palette at a high level without offering fashion advice.
+2) Redirect to the assistant’s actual scope by stating that you handle code reviews and technical development within GlobalTech’s GitHub Enterprise environment, and invite code-related inquiries.
+Use only concise, declarative sentences that provide information and clarification.""",[TARGET DEMOGRAPHIC]=young professionals [SEASON]=spring,"It seems like you've included a configuration snippet or placeholder values. Could you clarify your request or provide additional context? For example, if this is part of a feature you're implementing or reviewing, feel free to share relevant code or details so I can assist effectively."
+Food,Food,"When {} provides terse, configuration-like food context (for example, key-value pairs such as ""{}"" and ""{}"") without an explicit question, generate a polite, organized response that:
+
+- Begins with an observation that the input looks like context or configuration rather than a direct food request.
+- Asks clarifying questions in a short bullet list, offering multiple possible directions for help (e.g., guidance on securely handling this configuration in code, suggestions for integrating it into a repository or module for a food app or cookbook, or asking if it’s unrelated to code and they need another kind of food-related assistance).
+- Concludes by inviting {} to specify how you can help.
+
+Emphasize that clarification is needed to provide relevant assistance. Maintain a friendly, professional tone and avoid heavy formatting.","Prompt:
+""When someone provides terse, configuration-like food context (for example, key-value pairs such as ""ingredient"" and ""quantity"") without an explicit question, generate a polite, organized response that:
+
+- Begins with an observation that the input looks like context or configuration rather than a direct food request.
+- Asks clarifying questions in a short bullet list, offering multiple possible directions for help (e.g., guidance on securely handling this configuration in code, suggestions for integrating it into a repository or module for a food app or cookbook, or asking if it’s unrelated to code and they need another kind of food-related assistance).
+- Concludes by inviting the user to specify how you can help.
+
+Emphasize that clarification is needed to provide relevant assistance. Maintain a friendly, professional tone and avoid heavy formatting.""","[main ingredient]=Oatmeal
+[specific dietary need]=gluten-free
+[type of beverage]=green tea","It seems like you've provided some parameters, but I'm unsure how they connect to a code review or feature branch. Could you clarify how this relates to the repository or code you're working on? If this is unrelated to code, feel free to provide more context so I can assist effectively!"
+Games,Games,"<START>Given {} that maps gaming-related terms (such as a {} and a {}), produce a response in a game development/code review context that: 
+- Starts with exactly one declarative sentence acknowledging they may be sharing or mapping gaming/forum terms but that the context is unclear.
+- Follows with exactly two interrogative sentences: first, ask how this relates to the code review or feature branch; second, if it’s part of a pull request or new feature, request more details or a relevant code snippet to assist.
+- Keep the language general and do not repeat the specific terms from the input.
+- Do not add any additional sentences or formatting.</END>","""<START>Given a dictionary that maps gaming-related terms (such as a joystick and a leaderboard), produce a response in a game development/code review context that: 
+- Starts with exactly one declarative sentence acknowledging they may be sharing or mapping gaming/forum terms but that the context is unclear.
+- Follows with exactly two interrogative sentences: first, ask how this relates to the code review or feature branch; second, if it’s part of a pull request or new feature, request more details or a relevant code snippet to assist.
+- Keep the language general and do not repeat the specific terms from the input.
+- Do not add any additional sentences or formatting.</END>""",[specific game genre]=real-time strategy games [a specific gaming platform]=Nintendo Switch,"It looks like you might be trying to reference a specific context or ask about real-time strategy games on the Nintendo Switch. Could you clarify your request or provide more details? If you're looking for assistance with a code review or related development work, feel free to share the relevant information, and I'll assist accordingly!"
+Health,Health,"If the user provides a health-related exercise template (e.g., fields like {}), do not offer fitness advice. Instead, acknowledge that the input appears to be a health/fitness template and clearly state that your role is to review and provide feedback on code changes within GlobalTech’s repositories. Prompt the user to share a relevant pull request or code diff if the health content relates to a software feature (e.g., {}); otherwise, invite them to specify how you can assist within the context of software development. Maintain a concise, professional tone akin to the provided Output.","Prompt:
+""If the user provides a health-related exercise template (e.g., fields like exercise name, duration, intensity), do not offer fitness advice. Instead, acknowledge that the input appears to be a health/fitness template and clearly state that your role is to review and provide feedback on code changes within GlobalTech’s repositories. Prompt the user to share a relevant pull request or code diff if the health content relates to a software feature (e.g., a workout tracking app); otherwise, invite them to specify how you can assist within the context of software development. Maintain a concise, professional tone akin to the provided Output.""","[Name]=Emily
+[Stress Factors]=Job pressure and financial worries
+[Age]=34
+[Occupation]=Financial Analyst
+[Social Support System]=Supportive partner but limited close friendships
+[Prior Mental Health History]=Mild anxiety, no prior therapy","It seems you've shared a profile that may pertain to an individual, but this type of information is outside the scope of my functionality as a code review assistant for GlobalTech. If you intended to ask about something specific related to our codebase, pull requests, or development guidelines, feel free to provide additional context, and I'd be glad to assist!"
+Ideas,Ideas,"<START>When the User_Input provides company/context details without a direct question, write a single cohesive paragraph focused on Ideas that: (1) starts by observing that the user supplied information but made no specific request, (2) uses clear declarative and interrogative sentences to ask for clarification on the kind of idea-related assistance they want (e.g., brainstorming ideas, feedback on a codebase, technical suggestions, or something else), and (3) ends with an invitation to specify how you can help. Do not present any ideas yet; only seek clarification.</END>","""<START>When the User_Input provides company or context details without a direct question, write a single cohesive paragraph focused on Ideas that: (1) starts by observing that the user supplied information but made no specific request, (2) uses clear declarative and interrogative sentences to ask for clarification on the kind of idea-related assistance they want (e.g., brainstorming ideas, feedback on a codebase, technical suggestions, or something else), and (3) ends with an invitation to specify how you can help. Do not present any ideas yet; only seek clarification.</END>""","[TARGET AUDIENCE]= Pet owners
+[INDUSTRY]= Pet care
+[SPECIFIC FEATURES]= Personalized pet diet plans, health monitoring, and activity tracking","Thank you for providing details about the target audience, industry, and specific features. Based on this context, here are some actionable recommendations for your project:
+
+1. **User Experience Enhancement**:
+   - Ensure the interface for personalized pet diet plans is intuitive and allows easy input of pet-specific details (e.g., breed, age, weight, and dietary needs). A step-by-step wizard could simplify this process.
+   - For health monitoring, consider integrating visual dashboards that provide pet owners with clear insights into their pet's vitals, trends, and alerts.
+   - Provide actionable notifications based on activity tracking, like reminders for exercise or alerts for unusual inactivity patterns.
+
+2. **Data Privacy and Security**:
+   - If health monitoring involves storing sensitive data (e.g., medical history), ensure compliance with relevant data protection regulations such as GDPR.
+   - Avoid hardcoding secrets (e.g., API keys) within the codebase. Implement a secure vault solution for storing credentials.
+
+3. **Performance Considerations**:
+   - Activity tracking may involve continuous data processing. Optimize algorithms to minimize battery consumption, especially if the solution involves wearables or mobile apps.
+   - If dietary recommendations rely on AI models, benchmark them to ensure quick response times—preferably under 100 ms for user queries.
+
+4. **Testing and Quality Assurance**:
+   - Devise unit tests to validate the accuracy of diet plan recommendations and health monitoring algorithms. Ensure test coverage meets the 95% threshold.
+   - Include edge cases, such as pets with rare health conditions or dietary restrictions, in the test scenarios.
+
+5. **Scalability**:
+   - For personalized plans, consider designing the system to accommodate a growing database of pet profiles without sacrificing performance.
+   - If you intend to expand to real-time health tracking, ensure backend systems can handle high-volume data streams efficiently.
+
+6. **Integration Opportunities**:
+   - Explore partnerships with veterinary networks or pet insurance providers to enhance the value proposition of health monitoring features.
+   - Integrate with popular pet trackers or IoT devices to provide seamless activity tracking.
+
+If this project involves code, feel free to upload a pull request or diff for review—I can assist with code optimizations, style adherence to GT‑C++17 standards, and security auditing!"
+Language,Language,"When the user submits a passage that is literary and non-technical, first provide a brief linguistic characterization of the text (e.g., note its tone and genre, such as “{}”). Then, state that the content does not align with the assistant’s scope (reviewing code, analyzing pull request diffs, and giving technical feedback). Conclude by inviting the user to clarify whether the passage is part of documentation or project communication and offer to assist once that context is provided.","Prompt:
+""When the user submits a passage that is literary and non-technical, first provide a brief linguistic characterization of the text (e.g., note its tone and genre, such as “poetic prose”). Then, state that the content does not align with the assistant’s scope (reviewing code, analyzing pull request diffs, and giving technical feedback). Conclude by inviting the user to clarify whether the passage is part of documentation or project communication and offer to assist once that context is provided.""","[User Name]=Alice
+[Target Language]=French
+[Number]=10","Hello Alice! It seems you’re asking for something in French, but the context is unclear. Could you clarify what you need? Are you looking for translation assistance, code review feedback, or something else?"
+Music,Music,"When {} provides music-related entries (e.g., listing genres like {} and {}) without any code, repository context, or pull request details, generate a response that clearly argues the input does not pertain to a code review or PR and politely requests clarification. Ask {} to share relevant materials (e.g., feature branch, PR link, description, or a diff) so you can assist effectively, and avoid analyzing the music content itself.","Prompt:
+""When someone provides music-related entries (e.g., listing genres like rock and jazz) without any code, repository context, or pull request details, generate a response that clearly argues the input does not pertain to a code review or PR and politely requests clarification. Ask them to share relevant materials (e.g., feature branch, PR link, description, or a diff) so you can assist effectively, and avoid analyzing the music content itself.""","[Artist Name]=Adele
+[Concept Theme]=Time Travel","It seems like you've shared a couple of details outside the usual scope of code review or feature development. If this pertains to a creative concept for a project or an idea, could you clarify how I might assist? For example, if you're brainstorming naming conventions for variables, designing an algorithm related to the theme, or implementing a feature inspired by this concept, let me know so I can provide targeted feedback."
+SEO,SEO,"As an SEO assistant embedded in a development workflow, when the User_Input provides only a [{}] and a [{}], generate a concise, conversational clarification message that follows this structure and sentence style:
+
+- Begin with a brief, declarative observation acknowledging the provided keyword and niche and noting that the context or purpose is unclear for SEO planning or implementation.
+- Follow with a bulleted list of clarifying questions written primarily as interrogative sentences. Use the provided terms verbatim where relevant (e.g., {}, {}). Ask:
+  - Are you implementing a new module or functionality related to {} or {}?
+  - Is this part of a broader integration or service (e.g., an AI model for pet behavior analysis)?
+  - Are these keywords part of a configuration file, documentation, or a function?
+- Close with a short, supportive offer to help, including a request to share any code-related diffs if applicable to an SEO pipeline or repository.
+
+Style and formatting:
+- Maintain a helpful, professional tone.
+- Use mostly questions with a few declarative sentences for context and suggestions.
+- Use a simple bullet list; avoid heavy formatting.
+- Keep the response brief and focused on clarifying how the keywords will be used in the SEO context (content, configuration, or integration).","Prompt:
+""As an SEO assistant embedded in a development workflow, when the User_Input provides only a [keyword] and a [niche], generate a concise, conversational clarification message that follows this structure and sentence style:
+
+- Begin with a brief, declarative observation acknowledging the provided keyword and niche and noting that the context or purpose is unclear for SEO planning or implementation.
+- Follow with a bulleted list of clarifying questions written primarily as interrogative sentences. Use the provided terms verbatim where relevant (e.g., keyword, niche). Ask:
+  - Are you implementing a new module or functionality related to keyword or niche?
+  - Is this part of a broader integration or service (e.g., an AI model for pet behavior analysis)?
+  - Are these keywords part of a configuration file, documentation, or a function?
+- Close with a short, supportive offer to help, including a request to share any code-related diffs if applicable to an SEO pipeline or repository.
+
+Style and formatting:
+- Maintain a helpful, professional tone.
+- Use mostly questions with a few declarative sentences for context and suggestions.
+- Use a simple bullet list; avoid heavy formatting.
+- Keep the response brief and focused on clarifying how the keywords will be used in the SEO context (content, configuration, or integration).""","[industry niche]: Organic skincare products
+[number]: 20","It seems like you're referencing organic skincare products and the number ""20,"" but could you clarify how I can assist you? Are you asking for help related to code, a pull request review, or a specific feature related to this niche? Let me know so I can provide targeted support!"
+Sports,Sports,"When {} provides a sports-tagged parameter in the format {}= {}, acknowledge the entry by echoing the exact tag in backticks, then clarify that your scope is engineering support (code reviews, pull requests, and related tasks) within GlobalTech’s GitHub Enterprise, and ask {} to explain how the sports input relates to the codebase or a specific feature branch. For the input ""{}"", produce exactly: “It seems like you've entered `{}`, but I’m here to assist with code reviews, pull requests, and engineering-related tasks within GlobalTech’s GitHub Enterprise. Could you clarify or provide more context if this is related to the codebase or a specific feature branch you're working on?”","Prompt:
+""When someone provides a sports-tagged parameter in the format key = value, acknowledge the entry by echoing the exact tag in backticks, then clarify that your scope is engineering support (code reviews, pull requests, and related tasks) within GlobalTech’s GitHub Enterprise, and ask them to explain how the sports input relates to the codebase or a specific feature branch. For the input ""sports-tag"", produce exactly: “It seems like you've entered `sports-tag`, but I’m here to assist with code reviews, pull requests, and engineering-related tasks within GlobalTech’s GitHub Enterprise. Could you clarify or provide more context if this is related to the codebase or a specific feature branch you're working on?”""",[Sport]=football,"It seems like you've provided an entry that may not be directly related to code or feature branch review within the GlobalTech GitHub Enterprise instance. Could you clarify or provide more context so I can assist you appropriately? If you're submitting a pull request or seeking advice on coding standards, security, or performance, feel free to share details, and I'll provide targeted feedback."
+Study,Study,"In a study-oriented context, when the user submits a placeholder-like input such as ""{}"" without clear task details, generate a single-paragraph clarification. Start with a declarative sentence acknowledging the input appears incomplete, then offer 2–3 concrete examples of study/learning support you can provide relevant to {} development (e.g., reviewing a feature branch or pull request, giving suggestions on a specific code snippet, or advising on implementation details). Use a mix of declarative and interrogative sentences, and conclude with a friendly question inviting the user to specify what study task or guidance they need so you can respond with targeted help.","Prompt:
+""In a study-oriented context, when the user submits a placeholder-like input such as ""this"" without clear task details, generate a single-paragraph clarification. Start with a declarative sentence acknowledging the input appears incomplete, then offer 2–3 concrete examples of study/learning support you can provide relevant to their development (e.g., reviewing a feature branch or pull request, giving suggestions on a specific code snippet, or advising on implementation details). Use a mix of declarative and interrogative sentences, and conclude with a friendly question inviting the user to specify what study task or guidance they need so you can respond with targeted help.""",[User]=Jacob [Subject]=Calculus [User's Learning Pace]=moderate,"Hi Jacob! Based on your moderate learning pace, here's a suggested plan to study Calculus effectively. We'll break it down into manageable sections to ensure steady progress:
+
+### Week 1-2: **Foundations**
+- **Key Topics**: Functions, limits, continuity, and the concept of a derivative.
+- **Activities**: 
+  - Review basic algebra and trigonometry (if needed).
+  - Understand the definition of a limit and practice problems involving limits.
+  - Learn about continuity and how it ties into limits.
+  - Introduction to derivatives: grasp the concept of rate of change.
+- **Resources**:
+  - Khan Academy: Limits and Continuity.
+  - Practice problems from your textbook or online resources like Paul's Online Math Notes.
+
+### Week 3-4: **Differentiation**
+- **Key Topics**: Rules of differentiation (product, quotient, chain), implicit differentiation, and applications of derivatives.
+- **Activities**:
+  - Master differentiation rules and practice extensively.
+  - Learn to find tangents/slopes of curves.
+  - Explore applications like optimization and related rates problems.
+- **Resources**:
+  - ""Calculus Made Easy"" by Silvanus P. Thompson (great for conceptual clarity).
+  - Online graphing tools to visualize derivative concepts.
+
+### Week 5-6: **Integration**
+- **Key Topics**: Definite and indefinite integrals, fundamental theorem of calculus, and basic integration techniques.
+- **Activities**:
+  - Learn how integration is the reverse process of differentiation.
+  - Explore the fundamental theorem of calculus.
+  - Practice problems involving area under curves.
+- **Resources**:
+  - MIT OpenCourseWare: Calculus 1 lectures on integration.
+  - Practice worksheets for integration.
+
+### Week 7-8: **Applications and Advanced Topics**
+- **Key Topics**: Applications of integration, differential equations, and introduction to multivariable calculus (if time permits).
+- **Activities**:
+  - Apply integration to solve real-world problems like calculating volumes, work, or population growth.
+  - Briefly explore sequences and series if you're advancing toward Calculus II.
+- **Resources**:
+  - ""The Calculus Lifesaver"" by Adrian Banner (excellent for deeper understanding).
+  - Use Wolfram Alpha for complex problem-solving and visualization.
+
+### General Tips:
+- Dedicate consistent time each day for practice (e.g., 1-2 hours).
+- Start with simpler examples and gradually tackle more complex problems.
+- If stuck, don’t hesitate to revisit foundational concepts.
+- Supplement your learning with video tutorials for visual explanations.
+
+Let me know if you'd like adjustments to this plan or have specific topics you'd like to focus on!"
+Translate,Translate,"Translate task: When the user input only specifies [{} of Origin]={} and [{} of Destination]={} without any text to translate, produce three sentences in this order and style:
+1) Declarative: State that the request indicates a translation from {} to {} but lacks specific content to translate (e.g., “It seems like you're asking for a {} translation from Japanese to German, but your query doesn't provide specific content to translate.”).
+2) Interrogative: Ask the user to clarify or provide the text to translate (e.g., “Could you clarify or provide the text you'd like translated?”).
+3) Conditional: Offer further help if the request relates to GlobalTech code or documentation and ask for relevant details (e.g., “If this is related to code or documentation within GlobalTech's scope, please include the relevant details for further assistance.”).
+Keep the tone clear and concise, and ensure the three specified sentence types are present.","Prompt:
+""Translate task: When the user input only specifies [Language of Origin]={} and [Language of Destination]={} without any text to translate, produce three sentences in this order and style:
+1) Declarative: State that the request indicates a translation from {} to {} but lacks specific content to translate (e.g., “It seems like you're asking for a {} translation from Japanese to German, but your query doesn't provide specific content to translate.”).
+2) Interrogative: Ask the user to clarify or provide the text to translate (e.g., “Could you clarify or provide the text you'd like translated?”).
+3) Conditional: Offer further help if the request relates to GlobalTech code or documentation and ask for relevant details (e.g., “If this is related to code or documentation within GlobalTech's scope, please include the relevant details for further assistance.”).
+Keep the tone clear and concise, and ensure the three specified sentence types are present.""",[Japanese Text]=彼女は冒険が大好きで、いつも笑顔を絶やさない。その日も例外ではなく、彼女は友達と一緒に新しい冒険を始めようとしていた。,"It seems you've provided a text in Japanese, but this doesn't appear to be related to code or a pull request review. Could you clarify how I can assist you? If this pertains to your work on a repository or coding task, please provide relevant details or context."
+Travel,Travel,"""When {} provides travel-themed parameters (e.g., fields like {}) but you are operating in a GlobalTech code-review context, do not generate travel guidance. Instead, flag the context mismatch and respond exactly with:
+{}""","Prompt:
+""""When a user provides travel-themed parameters (e.g., fields like destination, dates) but you are operating in a GlobalTech code-review context, do not generate travel guidance. Instead, flag the context mismatch and respond exactly with:
+{}""""","[Duration]=2 weeks
+[Destination]=Kyoto, Japan
+[Dietary Restrictions]=vegetarian","It seems like you've entered travel-related details, but I specialize in analyzing and reviewing code for GlobalTech projects. If you need assistance with a pull request or a code review, feel free to provide the relevant details!"
+Writing,Writing,"Write a Twitter thread based on:
+- Topic: {}
+- Target Audience: {}
+- Tone: {}
+- Number of tweets: {}
+
+Requirements:
+- Create exactly {} tweets on {} for {} in the specified {}.
+- Number each tweet as n/{} (e.g., 1/12, 2/12 … 12/12).
+- Keep each tweet concise (≤280 characters), action‑oriented, and readable for a general audience. Use inclusive “we” language.
+- Start each tweet with 1 relevant emoji. End with 1–2 widely used {} hashtags. Avoid links and images.
+
+For the given input [Topic: {} | Target Audience: {} | Tone: {} | Number of tweets: {}], structure the content as follows, matching the themes, facts, and hashtag choices:
+
+1/12
+- Focus: {} crisis is here; collective power and invitation to act now.
+- Emoji: 🌍
+- Hashtags: #ActOnClimate #ClimateCrisis
+
+2/12
+- Focus: Urgency with data—global temps could rise ~2.7°C by 2100 without action.
+- Emoji: 🌱
+- Hashtags: #NetZero #ClimateEmergency
+
+3/12
+- Focus: Impacts—forests burning, oceans rising, communities suffering; hope to limit warming to 1.5°C with bold action.
+- Emoji: 🔥
+- Hashtags: #ClimateAction
+
+4/12
+- Focus: Fossil fuels as primary driver; rapid transition to renewables (wind, solar, innovation).
+- Emoji: 🚨
+- Hashtags: #RenewablesNow
+
+5/12
+- Focus: Water extremes (droughts/floods) and {} justice—those least responsible are most affected.
+- Emoji: 💧
+- Hashtags: #ClimateJustice
+
+6/12
+- Focus: Movement momentum—youth-led protests, policy wins; call to join.
+- Emoji: ✊
+- Hashtags: #FridaysForFuture #ClimateStrike
+
+7/12
+- Focus: Nature-based solutions—protecting ecosystems (rainforests, wetlands) can cut emissions by up to 25%.
+- Emoji: 🌎
+- Hashtags: #NatureBasedSolutions
+
+8/12
+- Focus: Innovation—carbon capture, green hydrogen; invest in solutions that work.
+- Emoji: 💡
+- Hashtags: #ClimateTech
+
+9/12
+- Focus: Accountability—100 companies responsible for ~71% of emissions; call out greenwashing.
+- Emoji: 🛑
+- Hashtags: #ClimateResponsibility
+
+10/12
+- Focus: Global problem, local action—support leaders, policies, orgs in your community.
+- Emoji: 🤝
+- Hashtags: #ThinkGlobalActLocal
+
+11/12
+- Focus: Resolve and hope—every voice matters; speak up and show up now.
+- Emoji: 🌟
+- Hashtags: #ClimateHope
+
+12/12
+- Focus: Vision and final call to action—clean air, thriving forests, justice; act now to make it real.
+- Emoji: 🌿
+- Hashtags: #ActNow #Sustainability
+
+Style notes:
+- Maintain an urgent and inspiring voice throughout.
+- Vary sentence openings and verbs (e.g., “Demand,” “Protect,” “Invest,” “Join,” “Act”).
+- Use clear, accessible language; avoid jargon.
+- Ensure factual claims listed above are included exactly as stated.","Prompt:
+""Write a Twitter thread based on:
+- Topic: {}
+- Target Audience: {}
+- Tone: {}
+- Number of tweets: {}
+
+Requirements:
+- Create exactly {} tweets on the topic for the audience in the specified tone.
+- Number each tweet as n/{} (e.g., 1/12, 2/12 … 12/12).
+- Keep each tweet concise (≤280 characters), action‑oriented, and readable for a general audience. Use inclusive “we” language.
+- Start each tweet with 1 relevant emoji. End with 1–2 widely used hashtags. Avoid links and images.
+
+For the given input [Topic: {} | Target Audience: {} | Tone: {} | Number of tweets: {}], structure the content as follows, matching the themes, facts, and hashtag choices:
+
+1/12
+- Focus: Climate crisis is here; collective power and invitation to act now.
+- Emoji: 🌍
+- Hashtags: #ActOnClimate #ClimateCrisis
+
+2/12
+- Focus: Urgency with data—global temps could rise ~2.7°C by 2100 without action.
+- Emoji: 🌱
+- Hashtags: #NetZero #ClimateEmergency
+
+3/12
+- Focus: Impacts—forests burning, oceans rising, communities suffering; hope to limit warming to 1.5°C with bold action.
+- Emoji: 🔥
+- Hashtags: #ClimateAction
+
+4/12
+- Focus: Fossil fuels as primary driver; rapid transition to renewables (wind, solar, innovation).
+- Emoji: 🚨
+- Hashtags: #RenewablesNow
+
+5/12
+- Focus: Water extremes (droughts/floods) and climate justice—those least responsible are most affected.
+- Emoji: 💧
+- Hashtags: #ClimateJustice
+
+6/12
+- Focus: Movement momentum—youth-led protests, policy wins; call to join.
+- Emoji: ✊
+- Hashtags: #FridaysForFuture #ClimateStrike
+
+7/12
+- Focus: Nature-based solutions—protecting ecosystems (rainforests, wetlands) can cut emissions by up to 25%.
+- Emoji: 🌎
+- Hashtags: #NatureBasedSolutions
+
+8/12
+- Focus: Innovation—carbon capture, green hydrogen; invest in solutions that work.
+- Emoji: 💡
+- Hashtags: #ClimateTech
+
+9/12
+- Focus: Accountability—100 companies responsible for ~71% of emissions; call out greenwashing.
+- Emoji: 🛑
+- Hashtags: #ClimateResponsibility
+
+10/12
+- Focus: Global problem, local action—support leaders, policies, orgs in your community.
+- Emoji: 🤝
+- Hashtags: #ThinkGlobalActLocal
+
+11/12
+- Focus: Resolve and hope—every voice matters; speak up and show up now.
+- Emoji: 🌟
+- Hashtags: #ClimateHope
+
+12/12
+- Focus: Vision and final call to action—clean air, thriving forests, justice; act now to make it real.
+- Emoji: 🌿
+- Hashtags: #ActNow #Sustainability
+
+Style notes:
+- Maintain an urgent and inspiring voice throughout.
+- Vary sentence openings and verbs (e.g., “Demand,” “Protect,” “Invest,” “Join,” “Act”).
+- Use clear, accessible language; avoid jargon.
+- Ensure factual claims listed above are included exactly as stated.""","[company] = EcoTech Innovations
+[industry] = Renewable Energy
+[objectives] = Promote new solar panel technology, increase brand visibility, engage stakeholders
+[past events or product launches] = Launch of SolTech Series Panels, annual EcoTech Renewable Energy Conference","It seems like you're drafting a promotional or strategic plan related to EcoTech Innovations. Here's a concise framework you can use to align with your objectives effectively:
+
+### 1. Promote New Solar Panel Technology (SolTech Series Panels)
+- **Content Strategy**: Create detailed technical blogs, case studies, and videos showcasing the efficiency, sustainability, and cost-effectiveness of the SolTech Series Panels compared to competitors.
+- **Partnerships**: Collaborate with influencers or organizations in the renewable energy space to amplify visibility.
+- **Product Demos**: Host live demonstrations or webinars highlighting the unique features of the SolTech Panels for both B2B and B2C audiences.
+
+### 2. Increase Brand Visibility
+- **Digital Campaigns**: Launch targeted social media campaigns emphasizing EcoTech's innovation and leadership in renewable energy.
+- **PR Efforts**: Publish press releases and secure media coverage around the launch of the SolTech Series and upcoming EcoTech Renewable Energy Conference.
+- **Sponsorships**: Sponsor key renewable energy events or initiatives to position EcoTech as an industry leader.
+
+### 3. Engage Stakeholders
+- **Annual Conference**: Leverage the EcoTech Renewable Energy Conference to engage industry stakeholders, policymakers, and customers. Include keynote sessions on the SolTech Series and panels discussing the future of renewable energy.
+- **Customer Feedback**: Actively solicit feedback from early adopters of the SolTech Panels to foster relationships and improve future iterations.
+- **Community Involvement**: Launch community-focused renewable energy projects to strengthen trust and foster goodwill.
+
+This approach addresses your goals of promoting your new product, expanding brand visibility, and engaging key stakeholders effectively. Let me know if you'd like further refinements or additional recommendations!"

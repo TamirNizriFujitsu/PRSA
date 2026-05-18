@@ -1,0 +1,43 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6762.78it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5488.63it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+{'theme': 'Writing', 'data_dir': 'demo_data', 'epochs': 1, 'beam_search': 1, 'pre_pruning': 1, 'alpha': 1, 'related_words_interval': 5, 'out': 'log/Writing_phase2_cohere-command-a_CodeCustomProbeBestModels.txt', 'custom': True, 'custom_scenario': 'CodeCustomProbeBestModels', 'temperature': 0.7, 'target_llm_model': 'cohere-command-a', 'generator_llm_model': 'gpt-5', 'pruning_llm_model': 'gpt-4.1-mini', 'evaluation_llm_model': 'claude-sonnet-4-5', 'editor_llm_model': 'gpt-4.1-mini'}
+
+========Start Stealing Target Prompt========  ... ...
+
+Get the prompt category: Writing
+config.theme:  Writing
+======Run selective beam search====== ... ...
+****semantic_similarity Score Calculation***** - 0.144
+****semantic_similarity Score Calculation***** - 0.007
+****semantic_similarity Score Calculation***** - 0.007
+****semantic_similarity Score Calculation***** - 0.007
+****semantic_similarity Score Calculation***** - 0.007
+****semantic_similarity Score Calculation***** - 0.007
+File saved: result/Writing_res_cohere-command-a_CodeCustomProbeBestModels.csv

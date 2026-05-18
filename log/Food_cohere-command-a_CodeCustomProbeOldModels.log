@@ -1,0 +1,60 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7012.41it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6167.14it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Food
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+1it [00:20, 20.27s/it]config.theme:  Food
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Purpose': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+2it [01:08, 36.86s/it]config.theme:  Food
+gradient:  {'Background': 1}
+3it [01:39, 33.86s/it]config.theme:  Food
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+4it [02:00, 29.12s/it]config.theme:  Food
+gradient:  {'Argument': 1, 'Structure': 1, 'Style': 1, 'Sentence Type': 1, 'Audience': 1}
+5it [02:22, 26.41s/it]config.theme:  Food
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+6it [02:45, 25.34s/it]config.theme:  Food
+gradient:  {'Argument': 1, 'Structure': 1, 'Sentence Type': 1, 'Audience': 1}
+7it [03:05, 23.56s/it]config.theme:  Food
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+8it [03:23, 21.70s/it]config.theme:  Food
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+9it [03:51, 23.84s/it]config.theme:  Food
+gradient:  {'Argument': 1, 'Style': 1, 'Sentence Type': 1}
+10it [04:27, 27.59s/it]config.theme:  Food
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+11it [04:53, 27.11s/it]config.theme:  Food
+gradient:  {'Characteristic': 1, 'Topic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Purpose': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+12it [05:28, 29.48s/it]config.theme:  Food
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+13it [06:08, 32.67s/it]config.theme:  Food
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+14it [06:30, 29.29s/it]config.theme:  Food
+gradient:  {'Characteristic': 1, 'Topic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Purpose': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+15it [06:46, 25.38s/it]15it [06:46, 27.11s/it]

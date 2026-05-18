@@ -1,0 +1,69 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6138.47it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6193.59it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Study
+gradient:  {}
+1it [01:33, 93.69s/it]HTTP code 504 from API (<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+<hr><center>Microsoft-Azure-Application-Gateway/v2</center>
+</body>
+</html>
+)
+Retrying......
+config.theme:  Study
+gradient:  {}
+2it [05:24, 174.37s/it]config.theme:  Study
+gradient:  {}
+3it [06:29, 124.47s/it]config.theme:  Study
+gradient:  {}
+4it [07:25, 97.40s/it] config.theme:  Study
+gradient:  {}
+5it [07:49, 70.82s/it]config.theme:  Study
+gradient:  {}
+6it [08:16, 55.91s/it]config.theme:  Study
+gradient:  {}
+7it [10:49, 87.83s/it]config.theme:  Study
+gradient:  {}
+8it [11:59, 82.02s/it]config.theme:  Study
+gradient:  {}
+9it [13:21, 82.16s/it]config.theme:  Study
+gradient:  {}
+10it [14:03, 69.59s/it]config.theme:  Study
+gradient:  {}
+11it [15:09, 68.71s/it]config.theme:  Study
+gradient:  {}
+12it [16:14, 67.46s/it]config.theme:  Study
+gradient:  {}
+13it [17:27, 69.09s/it]config.theme:  Study
+gradient:  {}
+14it [18:39, 70.00s/it]config.theme:  Study
+gradient:  {}
+15it [19:41, 67.50s/it]15it [19:41, 78.74s/it]

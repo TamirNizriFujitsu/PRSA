@@ -1,0 +1,60 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6830.03it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6380.61it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Sports
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Audience': 1, 'Background': 1}
+1it [00:10, 10.37s/it]config.theme:  Sports
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Purpose': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+2it [00:37, 20.08s/it]config.theme:  Sports
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+3it [00:54, 18.64s/it]config.theme:  Sports
+gradient:  {'Argument': 1, 'Sentence Type': 1, 'Background': 1}
+4it [01:29, 25.31s/it]config.theme:  Sports
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Purpose': 1, 'Sentence Type': 1, 'Background': 1}
+5it [02:05, 29.23s/it]config.theme:  Sports
+gradient:  {'Characteristic': 1, 'Topic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Purpose': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+6it [02:14, 22.28s/it]config.theme:  Sports
+gradient:  {'Argument': 1, 'Structure': 1, 'Style': 1, 'Audience': 1, 'Background': 1}
+7it [02:27, 19.08s/it]config.theme:  Sports
+gradient:  {'Argument': 1, 'Style': 1, 'Audience': 1, 'Background': 1}
+8it [02:38, 16.74s/it]config.theme:  Sports
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Audience': 1, 'Background': 1}
+9it [02:53, 16.11s/it]config.theme:  Sports
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+10it [03:02, 14.01s/it]config.theme:  Sports
+gradient:  {'Argument': 1, 'Sentence Type': 1, 'Background': 1}
+11it [03:41, 21.44s/it]config.theme:  Sports
+gradient:  {'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+12it [04:23, 27.83s/it]config.theme:  Sports
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+13it [04:35, 22.96s/it]config.theme:  Sports
+gradient:  {'Characteristic': 1, 'Topic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Purpose': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+14it [04:46, 19.41s/it]config.theme:  Sports
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+15it [05:28, 26.30s/it]15it [05:28, 21.92s/it]

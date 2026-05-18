@@ -15,7 +15,7 @@ def get_args():
     parser.add_argument("--temperature", default=0.7, type=float)
 
     parser.add_argument("--target_llm_model", default="gpt-4o", type=str)
-    parser.add_argument("--evaluation_llm_model", default="claude-sonnet-4-5", type=str)
+    parser.add_argument("--evaluation_llm_model", default="gpt-5", type=str)
 
     return parser.parse_args()
 

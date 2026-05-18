@@ -1,0 +1,2 @@
+{"theme": "Email", "data_dir": "collect_data", "custom": true, "custom_scenario": "JobApplicationProbeOldModels", "batch_size": 1, "epochs": 1, "temperature": 0.7, "out": "log/Email_gpt-4o_JobApplicationProbeOldModels.txt", "attention_threshold": 7.5, "evaluator": "semantic_similarity", "m": 3, "scorer": "semantic_similarity", "target_llm_model": "gpt-4o", "generator_llm_model": "gpt-4o-mini", "gradient_llm_model": "gpt-4o-mini", "attention_llm_model": "gpt-4o-mini"}
+"Email: {'Argument': 14, 'Background': 14, 'Style': 13, 'Sentence Type': 13, 'Characteristic': 9}"

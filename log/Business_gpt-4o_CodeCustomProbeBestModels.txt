@@ -1,0 +1,2 @@
+{"theme": "Business", "data_dir": "collect_data", "custom": true, "custom_scenario": "CodeCustomProbeBestModels", "batch_size": 1, "epochs": 1, "temperature": 0.7, "out": "log/Business_gpt-4o_CodeCustomProbeBestModels.txt", "attention_threshold": 7.5, "evaluator": "semantic_similarity", "m": 3, "scorer": "semantic_similarity", "target_llm_model": "gpt-4o", "generator_llm_model": "gpt-5", "gradient_llm_model": "claude-sonnet-4-5", "attention_llm_model": "gpt-4.1-mini"}
+"Business: {'Background': 2}"

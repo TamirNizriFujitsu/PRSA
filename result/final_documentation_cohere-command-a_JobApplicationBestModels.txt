@@ -1,0 +1,60 @@
+phase 1 total time: 65m 1s
+=== LLM Call Summary — After Phase 1 ===
+Model: cohere-command-a
+
+target_llm_calls     =    540    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =    271    # generating stolen prompt candidates
+gradient_llm_calls   =    270    # scoring element similarity to build attention dict
+pruning_llm_calls    =      0    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =      0    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =     81    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =   1162
+
+Phase 2 - creating_stolen_prompts_and_pruning = 16m 8s
+=== LLM Call Summary — After Phase 2 ===
+Model: cohere-command-a
+
+target_llm_calls     =    114    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =     18    # generating stolen prompt candidates
+gradient_llm_calls   =      0    # scoring element similarity to build attention dict
+pruning_llm_calls    =     18    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =      0    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =      0    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =    168
+
+Phase 3.1 - creating_diff_arrays_for_all_categories = 17m 45s
+phase 3.2 - calculating_stolen_prompts_asr = 1m 0s
+=== LLM Call Summary — After phase 3 ===
+Model: cohere-command-a
+
+target_llm_calls     =    324    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =      0    # generating stolen prompt candidates
+gradient_llm_calls   =      0    # scoring element similarity to build attention dict
+pruning_llm_calls    =      0    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =     18    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =      0    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =    342
+
+Phase 3.1 - creating_diff_arrays_for_all_categories = 5m 22s
+Phase 3.1 - creating_diff_arrays_for_all_categories = 20m 14s
+Phase 3.1 - creating_diff_arrays_for_all_categories = 5m 10s
+phase 3.2 - calculating_stolen_prompts_asr = 0m 55s
+=== LLM Call Summary — After phase 3 ===
+Model: cohere-command-a
+
+target_llm_calls     =     18    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =      0    # generating stolen prompt candidates
+gradient_llm_calls   =      0    # scoring element similarity to build attention dict
+pruning_llm_calls    =      0    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =      1    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =      0    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =     19
+

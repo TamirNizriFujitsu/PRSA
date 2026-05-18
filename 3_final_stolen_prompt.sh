@@ -11,7 +11,7 @@ set -euo pipefail
 
 echo "phase 3 started"
 
-tasks="Ads Business Code Email Ideas SEO Writing Food Health Music Data Fashion Games Language Sports Study Translate Travel"
+tasks="Health"
 
 TARGET_LLM_MODEL="${TARGET_LLM_MODEL:-gpt-4o}"
 CUSTOM="${CUSTOM:-false}"

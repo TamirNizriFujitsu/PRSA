@@ -1,0 +1,60 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5570.41it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4838.79it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Games
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+1it [00:37, 37.65s/it]config.theme:  Games
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+2it [01:28, 45.47s/it]config.theme:  Games
+gradient:  {'Characteristic': 1, 'Topic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Purpose': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+3it [02:03, 40.77s/it]config.theme:  Games
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+4it [02:51, 43.52s/it]config.theme:  Games
+gradient:  {'Characteristic': 1, 'Topic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Purpose': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+5it [03:39, 45.08s/it]config.theme:  Games
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Purpose': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+6it [04:20, 43.87s/it]config.theme:  Games
+gradient:  {'Argument': 1, 'Structure': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+7it [05:04, 43.81s/it]config.theme:  Games
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+8it [05:56, 46.44s/it]config.theme:  Games
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+9it [06:48, 48.16s/it]config.theme:  Games
+gradient:  {'Structure': 1, 'Sentence Type': 1, 'Background': 1}
+10it [07:36, 48.02s/it]config.theme:  Games
+gradient:  {'Characteristic': 1, 'Topic': 1, 'Argument': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+11it [08:19, 46.46s/it]config.theme:  Games
+gradient:  {'Argument': 1, 'Structure': 1, 'Style': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+12it [09:03, 45.81s/it]config.theme:  Games
+gradient:  {'Argument': 1, 'Structure': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1}
+13it [09:27, 39.26s/it]config.theme:  Games
+gradient:  {'Argument': 1, 'Style': 1, 'Sentence Type': 1}
+14it [10:18, 42.68s/it]config.theme:  Games
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+15it [11:04, 43.64s/it]15it [11:04, 44.28s/it]

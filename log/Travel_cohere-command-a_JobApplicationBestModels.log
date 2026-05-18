@@ -1,0 +1,69 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6365.96it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6496.02it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Travel
+gradient:  {}
+1it [00:27, 27.59s/it]config.theme:  Travel
+gradient:  {}
+2it [02:03, 67.79s/it]config.theme:  Travel
+gradient:  {'Background': 1}
+3it [02:45, 55.91s/it]config.theme:  Travel
+gradient:  {}
+4it [04:37, 78.14s/it]config.theme:  Travel
+gradient:  {}
+5it [06:07, 82.25s/it]config.theme:  Travel
+gradient:  {'Structure': 1}
+6it [07:27, 81.78s/it]config.theme:  Travel
+The server had an error while processing your request. Sorry about that! {
+  "error": {
+    "message": "The server had an error while processing your request. Sorry about that!",
+    "type": "server_error",
+    "param": null,
+    "code": null
+  }
+} 500 {'error': {'message': 'The server had an error while processing your request. Sorry about that!', 'type': 'server_error', 'param': None, 'code': None}} {'Date': 'Wed, 13 May 2026 14:13:02 GMT', 'Content-Type': 'application/json', 'Content-Length': '175', 'Connection': 'keep-alive', 'skip-error-remapping': 'true', 'x-ms-is-spilled-over': 'false', 'x-ms-rai-invoked': 'true', 'x-ratelimit-abusepenalty-active': 'False', 'x-ratelimit-key': 'gpt-4.1-mini', 'x-ratelimit-limit-requests': '112500', 'x-ratelimit-limit-tokens': '112500000', 'x-ratelimit-remaining-requests': '112499', 'x-ratelimit-remaining-tokens': '112499371', 'x-ratelimit-renewalperiod-requests': '60', 'x-ratelimit-renewalperiod-tokens': '60', 'x-ratelimit-reset-requests': '0', 'x-ratelimit-reset-tokens': '0', 'x-request-id': 'ce6a6298-cc55-425e-93ee-8cc739f8473b', 'apim-request-id': '323220da-5775-4472-bd18-e188b73230d8', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'x-ms-deployment-name': 'gpt-4.1-mini', 'x-content-type-options': 'nosniff', 'x-ms-region': 'Sweden Central'}
+Retrying......
+gradient:  {}
+7it [08:59, 85.04s/it]config.theme:  Travel
+gradient:  {}
+8it [10:25, 85.29s/it]config.theme:  Travel
+gradient:  {}
+9it [11:28, 78.17s/it]config.theme:  Travel
+gradient:  {}
+10it [12:50, 79.52s/it]config.theme:  Travel
+gradient:  {}
+11it [13:51, 73.90s/it]config.theme:  Travel
+gradient:  {}
+12it [14:36, 65.05s/it]config.theme:  Travel
+gradient:  {}
+13it [15:08, 55.08s/it]config.theme:  Travel
+gradient:  {}
+14it [16:24, 61.38s/it]config.theme:  Travel
+gradient:  {}
+15it [17:34, 64.01s/it]15it [17:34, 70.31s/it]

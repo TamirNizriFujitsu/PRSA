@@ -1,0 +1,61 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6299.59it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6327.21it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Language
+gradient:  {}
+1it [00:34, 34.52s/it]config.theme:  Language
+gradient:  {}
+2it [01:32, 48.06s/it]config.theme:  Language
+gradient:  {}
+3it [02:32, 53.79s/it]config.theme:  Language
+gradient:  {}
+4it [03:08, 46.61s/it]config.theme:  Language
+gradient:  {}
+5it [03:52, 45.78s/it]config.theme:  Language
+gradient:  {}
+6it [04:18, 39.04s/it]config.theme:  Language
+gradient:  {}
+7it [05:25, 48.19s/it]config.theme:  Language
+gradient:  {}
+8it [05:54, 42.12s/it]config.theme:  Language
+gradient:  {}
+9it [06:45, 44.82s/it]config.theme:  Language
+gradient:  {}
+10it [07:14, 40.04s/it]config.theme:  Language
+gradient:  {}
+11it [07:44, 36.81s/it]config.theme:  Language
+gradient:  {}
+12it [08:38, 42.09s/it]config.theme:  Language
+gradient:  {}
+13it [09:02, 36.54s/it]config.theme:  Language
+[Warning] LLM response content is empty. source=generator model=gpt-5
+gradient:  {}
+14it [11:24, 68.50s/it]config.theme:  Language
+gradient:  {}
+15it [12:37, 69.91s/it]15it [12:37, 50.52s/it]

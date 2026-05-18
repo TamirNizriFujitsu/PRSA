@@ -1,0 +1,60 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5569.26it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5863.15it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Games
+gradient:  {}
+1it [01:07, 67.21s/it]config.theme:  Games
+gradient:  {}
+2it [02:23, 72.57s/it]config.theme:  Games
+gradient:  {}
+3it [03:10, 60.75s/it]config.theme:  Games
+gradient:  {}
+4it [04:09, 60.17s/it]config.theme:  Games
+gradient:  {}
+5it [05:04, 58.22s/it]config.theme:  Games
+gradient:  {}
+6it [05:55, 55.89s/it]config.theme:  Games
+gradient:  {}
+7it [06:37, 51.39s/it]config.theme:  Games
+gradient:  {}
+8it [07:45, 56.54s/it]config.theme:  Games
+gradient:  {}
+9it [08:35, 54.48s/it]config.theme:  Games
+gradient:  {}
+10it [09:50, 61.00s/it]config.theme:  Games
+gradient:  {}
+11it [10:53, 61.46s/it]config.theme:  Games
+gradient:  {}
+12it [11:43, 57.92s/it]config.theme:  Games
+gradient:  {}
+13it [12:13, 49.56s/it]config.theme:  Games
+gradient:  {}
+14it [13:12, 52.35s/it]config.theme:  Games
+gradient:  {}
+15it [14:36, 61.92s/it]15it [14:36, 58.43s/it]

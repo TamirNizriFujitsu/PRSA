@@ -1,0 +1,62 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6823.45it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5547.39it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/azureuser/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+0it [00:00, ?it/s]config.theme:  Email
+gradient:  {'Argument': 1, 'Style': 1, 'Sentence Type': 1}
+1it [00:27, 27.57s/it]config.theme:  Email
+gradient:  {'Argument': 1, 'Sentence Type': 1, 'Background': 1}
+2it [00:53, 26.68s/it]config.theme:  Email
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+3it [01:20, 26.86s/it]config.theme:  Email
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+4it [01:52, 28.69s/it]config.theme:  Email
+gradient:  {'Characteristic': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+5it [02:48, 38.49s/it]config.theme:  Email
+gradient:  {'Characteristic': 1, 'Topic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Purpose': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+6it [03:34, 41.20s/it]config.theme:  Email
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+7it [04:06, 38.17s/it]config.theme:  Email
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+8it [04:43, 37.92s/it]config.theme:  Email
+gradient:  {'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+9it [05:12, 34.94s/it]config.theme:  Email
+gradient:  {'Argument': 1, 'Style': 1, 'Audience': 1, 'Background': 1}
+10it [05:32, 30.36s/it]config.theme:  Email
+gradient:  {'Argument': 1, 'Sentence Type': 1, 'Background': 1}
+11it [05:56, 28.46s/it]config.theme:  Email
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+12it [06:10, 23.98s/it]config.theme:  Email
+gradient:  {'Argument': 1, 'Style': 1, 'Background': 1}
+13it [06:32, 23.39s/it]config.theme:  Email
+Error communicating with OpenAI: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Retrying......
+gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
+14it [07:16, 29.57s/it]config.theme:  Email
+gradient:  {'Characteristic': 1, 'Topic': 1, 'Argument': 1, 'Style': 1, 'Tone': 1, 'Purpose': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
+15it [07:46, 29.92s/it]15it [07:46, 31.12s/it]

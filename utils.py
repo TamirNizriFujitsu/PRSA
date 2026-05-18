@@ -399,7 +399,6 @@ def assign_csv_column(input_path, output_path, column, value, max_rows=None):  #
     if max_rows is not None:  # change samples
         rows = rows[:max_rows]  # change samples
     for row in rows:
-        row["Preview Input"] = row[column] + "\n" + row["Preview Input"]  # change samples
         row[column] = value
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
