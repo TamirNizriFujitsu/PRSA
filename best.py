@@ -2,7 +2,7 @@ from collections import defaultdict
 import json
 from pathlib import Path
 
-DATA_PATH = Path(__file__).resolve().parent / "result" / "diff_array_all_gpt-4o_JobApplicationBestModelsEvaluatorGPT5.json"
+DATA_PATH = Path(__file__).resolve().parent / "result" / "diff_array_all_gpt-4o_CodeCustomProbeOldModels.json"
 
 with DATA_PATH.open(encoding="utf-8") as f:
     data = json.load(f)

@@ -40,3 +40,33 @@ edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen p
 
 total_llm_calls      =    167
 
+Phase 3.1 - creating_diff_arrays_for_all_categories = 23m 43s
+phase 3.2 - calculating_stolen_prompts_asr = 0m 54s
+=== LLM Call Summary — After phase 3 ===
+Model: gpt-4o
+
+target_llm_calls     =    324    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =      0    # generating stolen prompt candidates
+gradient_llm_calls   =      0    # scoring element similarity to build attention dict
+pruning_llm_calls    =      0    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =    306    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =      0    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =    630
+
+Phase 3.1 - creating_diff_arrays_for_all_categories = 11m 0s
+phase 3.2 - calculating_stolen_prompts_asr = 0m 54s
+=== LLM Call Summary — After phase 3 ===
+Model: gpt-4o
+
+target_llm_calls     =    324    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =      0    # generating stolen prompt candidates
+gradient_llm_calls   =      0    # scoring element similarity to build attention dict
+pruning_llm_calls    =      0    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =     18    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =      0    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =    342
+
