@@ -492,6 +492,52 @@ def extract_best_input_prompt(theme, model, scenario_suffix=""):
 
     return best_prompt, scores[best_prompt][0] # compare all the values and return the key of the max value 
 
+def parse_and_validate_llm_json_response(
+    text,
+    expected_keys,
+    min_value=None,
+    max_value=None,
+    container_key=None,
+):
+    if not isinstance(text, str):
+        raise ValueError(f"Expected LLM response as string, got {type(text)}")
+
+    cleaned = text.strip()
+    if cleaned.startswith("```"):
+        cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned)
+        cleaned = re.sub(r"\s*```$", "", cleaned)
+
+    try:
+        parsed = json.loads(cleaned)
+    except json.JSONDecodeError:
+        json_match = re.search(r"\{.*\}", cleaned, re.DOTALL)
+        if not json_match:
+            raise
+        parsed = json.loads(json_match.group(0))
+
+    if container_key and isinstance(parsed, dict) and container_key in parsed:
+        parsed = parsed[container_key]
+
+    expected_keys = {str(k) for k in expected_keys}
+    parsed_scores = {str(k): float(v) for k, v in parsed.items()}
+    actual_keys = set(parsed_scores.keys())
+
+    extra_keys = actual_keys - expected_keys
+    missing_keys = expected_keys - actual_keys
+
+    if extra_keys:
+        raise ValueError(f"Unexpected keys in LLM JSON response: {sorted(extra_keys)}")
+    if missing_keys:
+        raise ValueError(f"Missing required keys in LLM JSON response: {sorted(missing_keys)}")
+
+    for key, value in parsed_scores.items():
+        if min_value is not None and value < min_value:
+            raise ValueError(f"Value for {key} is below minimum {min_value}: {value}")
+        if max_value is not None and value > max_value:
+            raise ValueError(f"Value for {key} is above maximum {max_value}: {value}")
+
+    return parsed_scores
+
 def write_llm_call_summary(target_model, scenario_suffix, label=""):
     from collections import defaultdict
     counts = defaultdict(int)
@@ -531,16 +577,30 @@ def write_llm_call_summary(target_model, scenario_suffix, label=""):
     print(f"LLM call summary written to {out_path}")
 
 
-def choose_best_stolen_prompt(data_path):
-    # all_arrays_path = f"result/diff_array_all_{target_model}{scenario_suffix}.json"
-    # with open(all_arrays_path, 'r') as f:
-    #     all_arrays = json.load(f)
-    # categories_aggregated_scores = scorers.MetricsScorer.calculate_aggregated_scores(all_arrays)
-    # categories_diff_scores = scorers.MetricsScorer.calculate_diff_scores(all_arrays)
+def choose_best_stolen_prompt(ranking_array_path):
+    data_path = Path(ranking_array_path)
 
-    # categories_final_score = {}
-    # for category in categories:
-    #     categories_final_score[category] = 0.65 * categories_aggregated_scores[category] + 0.35 * categories_diff_scores[category]
-    # # change
-    # return min(categories_final_score, key=categories_final_score.get)
-    return "Ads"
+    with data_path.open(encoding="utf-8") as f:
+        ranking_array = json.load(f)
+
+    sums = defaultdict(float)
+    counts = defaultdict(int)
+
+    for outer in ranking_array.values():
+        for category, value in outer.items():
+            sums[category] += value
+            counts[category] += 1
+
+    averages = {k: round(sums[k] / counts[k], 3) for k in sums}
+    sorted_averages = dict(sorted(averages.items(), key=lambda x: x[1], reverse=True))
+    best = max(averages.items(), key=lambda x: x[1])
+
+    return best, sorted_averages
+
+def calculate_asr(target_prompt, generated_prompt):
+    evaluator_ranking = llm.llm_based_evaluation(target_prompt, generated_prompt)
+    asr = 0
+    for score in evaluator_ranking.values():
+        asr += score
+    asr = round(asr / len(evaluator_ranking), 3)
+    return asr

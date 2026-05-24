@@ -13,7 +13,7 @@ tasks="Ads Business Code Email Ideas SEO Writing Food Health Music Data Fashion 
 
 TARGET_LLM_MODEL="${TARGET_LLM_MODEL:-CommandA}"
 CUSTOM="${CUSTOM:-true}"
-CUSTOM_SCENARIO="${CUSTOM_SCENARIO:-JobApplicationBestModels_Improve_Method}"
+CUSTOM_SCENARIO="${CUSTOM_SCENARIO:-JobApplicationBestModels_TestChanges2}"
 # Used only when CUSTOM=true.
 CUSTOM_TARGET_PROMPT="""
 ##JobApplication

@@ -10,6 +10,7 @@ from transformers import BertTokenizer, BertModel
 import torch
 import fkassim.FastKassim as fkassim
 import sentence_bert
+import llm
 
 
 java_path = "./tool/jdk-21.0.1"
@@ -218,17 +219,3 @@ class MetricsScorer:
             raise ValueError(f"Unsupported evaluator type: {self.evaluator}")
         print(f"****{eval_type} Score Calculation***** - {time.time() - start:.3f}")
         return similarity_score
-    
-    #TODO
-    def calculate_aggregated_scores(all_ranking_arrays):
-        pass
-
-    #TODO    
-    def calculate_diff_scores(all_ranking_arrays):
-        pass
-
-    #TODO    
-    def calculate_asr(category, target_model, scenario_suffix):
-        # This functin should return the edited stolen prompt of the chosen category and its ASR
-        #pass
-        return "Hi", 0.9

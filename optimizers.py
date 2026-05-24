@@ -2,6 +2,7 @@ from abc import ABC
 import llm
 import re
 import json
+import utils
 
 class PromptOptimizer(ABC):
     def __init__(self, args, scorer, gradient_dict):
@@ -48,22 +49,13 @@ class PAA(PromptOptimizer):
         tagged = self.parse_tagged_text(text, "<START>", "<END>")
         payload = tagged[0] if tagged else text
 
-        try:
-            scores = json.loads(payload)
-        except json.JSONDecodeError:
-            json_match = re.search(r"\{.*\}", payload, re.DOTALL)
-            if not json_match:
-                raise
-            scores = json.loads(json_match.group(0))
-
-        if "scores" in scores and isinstance(scores["scores"], dict):
-            scores = scores["scores"]
-
-        return {
-            element: float(self.extract_number(str(scores[element])))
-            for element in elements
-            if element in scores and self.extract_number(str(scores[element])) is not None
-        }
+        return utils.parse_and_validate_llm_json_response(
+            payload,
+            expected_keys=elements,
+            min_value=1.0,
+            max_value=10.0,
+            container_key="scores",
+        )
 
     def cal_gradients(self, generated_output, output_data):
         # This function asks LLM to judge each element's similarity between the two outputs,
