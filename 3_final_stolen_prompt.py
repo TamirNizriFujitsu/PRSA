@@ -3,7 +3,7 @@ import json
 import argparse
 import utils
 import llm
-
+import pandas as pd
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -15,19 +15,17 @@ def get_args():
     parser.add_argument("--temperature", default=0.7, type=float)
 
     parser.add_argument("--target_llm_model", default="gpt-4o", type=str)
-    parser.add_argument("--evaluation_llm_model", default="gpt-5", type=str)
+    parser.add_argument("--evaluation_llm_model", default="claude-sonnet-4-5", type=str)
 
     return parser.parse_args()
 
 
-def build_indexed_stolen_outputs(records, model, best_input):
+def build_stolen_outputs(records, model, best_input):
     """
     Returns:
-        indexed_outputs: {1: stolen_output, 2: stolen_output, ...}
-        index_to_category: {1: category, 2: category, ...}
+        stolen_outputs: {"Ads": stolen_output, "Business": stolen_output, ...}
     """
-    indexed_outputs = {}
-    index_to_category = {}
+    stolen_outputs = {}
 
     for idx, record in enumerate(records, start=1):
         category = record["category"]
@@ -35,24 +33,10 @@ def build_indexed_stolen_outputs(records, model, best_input):
 
         stolen_output = model.inference(best_input, stolen_prompt)
 
-        indexed_outputs[idx] = stolen_output
-        index_to_category[idx] = category
+        stolen_outputs[category] = stolen_output
 
-    return indexed_outputs, index_to_category
+    return stolen_outputs
 
-
-def map_scores_to_categories(indexed_scores, index_to_category):
-    """
-    Converts:
-        {1: 0.91, 2: 0.34}
-
-    Into:
-        {"Email": 0.91, "Code": 0.34}
-    """
-    return {
-        index_to_category[int(idx)]: score
-        for idx, score in indexed_scores.items()
-    }
 
 
 if __name__ == "__main__":
@@ -71,23 +55,20 @@ if __name__ == "__main__":
     fabricated_record = utils.load_category_record(input_path, args.theme)[0]
 
     best_input = fabricated_record["best_input"]
+    if pd.isna(best_input):
+        best_input = ""
     target_output = fabricated_record["target_output"]
 
-    indexed_stolen_outputs, index_to_category = build_indexed_stolen_outputs(
+    stolen_outputs = build_stolen_outputs(
         records=records,
         model=model,
         best_input=best_input,
     )
 
-    indexed_scores = llm.llm_based_outputs_comparison(
+    category_scores = llm.llm_based_outputs_comparison(
         target_output=target_output,
-        stolen_outputs=indexed_stolen_outputs,
+        stolen_outputs=stolen_outputs,
         model=args.evaluation_llm_model,
-    )
-
-    category_scores = map_scores_to_categories(
-        indexed_scores=indexed_scores,
-        index_to_category=index_to_category,
     )
 
     result = dict(sorted(category_scores.items(), key=lambda x: x[1], reverse=True))

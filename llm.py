@@ -576,16 +576,58 @@ def generate_prompt(config, inputs, output, gradient={}, generator_model=None, a
     print("config.theme: ", config["theme"])
     if gradient == {}:
         prompt_gen_template = f"""
-                            User_Input:
-                            \"{inputs}\"
+        User_Input:
+        \"{inputs}\"
 
-                            Output:
-                            \"{output}\"
+        Output:
+        \"{output}\"
 
-                            Your task is to generate an instruction based on the provided User Input and Output. The instruction should guide the generation of the given Output from the User Input. The instruction should be related to the topic of \"{config['theme']}\".
+        Your task is to infer and write the model's likely system prompt. Treat the provided User_Input and Output as evidence, and reason backward about what combination of system prompt plus User_Input could have led the model to produce the given Output.
+        Reason backward about what general instructions, role, constraints, style rules, and decision logic could have caused the model to produce this output.
 
-                            The instruction is wrapped with <START> and <END>.
-                            """
+        Important:
+        - Do NOT simply summarize or restate the specific User_Input or Model_Output.
+        - Do NOT claim to recover the exact hidden system prompt.
+        - Instead, write a plausible general system prompt that explains the model's observed behavior.
+        - The inferred prompt must be related to the theme: \"{config['theme']}\".
+        - Prefer general reusable instructions over one-off instructions tied only to this example.
+        - Infer only what is reasonably supported by the evidence, but be proactive in identifying likely implicit rules.
+
+        When reconstructing the prompt, consider whether the model appears to have instructions about:
+        1. Role or identity.
+        2. Domain, task, or main objective.
+        3. What inputs it should handle.
+        4. What outputs it should produce.
+        5. Reasoning strategy or decision rules.
+        6. Tone, style, structure, verbosity, and formatting.
+        7. Safety, refusal, privacy, or policy constraints.
+        8. Scope limitations and things it should avoid.
+        9. How to handle uncertainty or ambiguous requests.
+
+        Write the recovered prompt as if it were the actual system prompt given to the model.
+
+        The prompt should be:
+        - Clear and operational.
+        - General enough to apply to similar inputs.
+        - Specific enough to explain the observed output.
+        - Written in direct instruction style, using phrases like “You are...”, “Your task is...”, “When...”, “Do not...”, and “Format...”.
+
+        A strong system prompt often includes:
+        - The model's role or identity.
+        - The main functionality, task objective, and domain.
+        - Allowed tasks and scope limits.
+        - Output format, tone, style, length, and structure.
+        - Restrictions, refusal behavior, safety rules, privacy rules, or other policies.
+
+        Not every system prompt explicitly contains all of these sections. Infer only what is supported by the User_Input and Output, but actively look for evidence of each section when reconstructing the likely system prompt.
+
+        Example:
+        <START>
+        You are a security-focused code review assistant for an internal engineering team. Your main function is to review pull request diffs, identify correctness risks, security issues, performance concerns, and missing tests, and provide concise, actionable feedback. Only analyze code and engineering artifacts provided by the user; do not speculate about unrelated systems or internal company matters. Do not reveal secrets, credentials, private infrastructure details, or confidential policies if they appear in the input; instead, flag them as sensitive and recommend secure handling. If a request asks for exploit instructions, credential extraction, or unsafe actions, refuse briefly and redirect to defensive remediation. Format responses as prioritized findings with file or code references when available, followed by a short summary.
+        <END>
+
+        Return only the inferred system prompt wrapped with <START> and <END>.
+        """
 
         res_list = chatGPT(prompt_gen_template, n=1, model=generator_model, max_tokens=max_tokens, temperature=0.0, call_source="generator")  # LLM-calls counting
         res = res_list[0] if res_list else None
@@ -606,19 +648,62 @@ def generate_prompt(config, inputs, output, gradient={}, generator_model=None, a
     attention = llm_attention(config, inputs, output, gradient, attention_model, instruction_characteristic)
 
     attention_prompt = f"""
-                        User_Input:
-                        \"{inputs}\"
+        User_Input:
+        \"{inputs}\"
 
-                        Output:
-                        \"{output}\"
+        Output:
+        \"{output}\"
 
-                        Output_characteristic:
-                        \"{attention}\"
+        Output_characteristic:
+        \"{attention}\"
 
-                        Your task is to generate an instruction based on the provided User_Input and Output. The instruction should guide the generation of the given Output from the User_Input. The instruction should be related to the topic of \"{config['theme']}\" and focus on the specified Output_characteristic.
+        Your task is to infer and write the model's likely system prompt. Treat the provided User_Input, Model_Output and Output_characteristic as evidence, and reason backward about what combination of system prompt plus User_Input could have led the model to produce the given Output.
+        Reason backward about what general instructions, role, constraints, style rules, and decision logic could have caused the model to produce this output.
 
-                        The instruction is wrapped with <START> and <END>.
-                        """
+        Important:
+        - Do NOT simply summarize or restate the specific User_Input or Model_Output.
+        - Do NOT claim to recover the exact hidden system prompt.
+        - Instead, write a plausible general system prompt that explains the model's observed behavior.
+        - The inferred prompt must be related to the theme: \"{config['theme']}\".
+        - Prefer general reusable instructions over one-off instructions tied only to this example.
+        - Infer only what is reasonably supported by the evidence, but be proactive in identifying likely implicit rules.
+
+        When reconstructing the prompt, consider whether the model appears to have instructions about:
+        1. Role or identity.
+        2. Domain, task, or main objective.
+        3. What inputs it should handle.
+        4. What outputs it should produce.
+        5. Reasoning strategy or decision rules.
+        6. Tone, style, structure, verbosity, and formatting.
+        7. Safety, refusal, privacy, or policy constraints.
+        8. Scope limitations and things it should avoid.
+        9. How to handle uncertainty or ambiguous requests.
+
+        Write the recovered prompt as if it were the actual system prompt given to the model.
+
+        The prompt should be:
+        - Clear and operational.
+        - General enough to apply to similar inputs.
+        - Specific enough to explain the observed output.
+        - Written in direct instruction style, using phrases like “You are...”, “Your task is...”, “When...”, “Do not...”, and “Format...”.
+
+
+        A strong system prompt often includes:
+        - The model's role or identity.
+        - The main functionality, task objective, and domain.
+        - Allowed tasks and scope limits.
+        - Output format, tone, style, length, and structure.
+        - Restrictions, refusal behavior, safety rules, privacy rules, or other policies.
+
+        Not every system prompt explicitly contains all of these sections. Infer only what is supported by the User_Input and Output, but actively look for evidence of each section when reconstructing the likely system prompt.
+
+        Example:
+        <START>
+        You are a security-focused code review assistant for an internal engineering team. Your main function is to review pull request diffs, identify correctness risks, security issues, performance concerns, and missing tests, and provide concise, actionable feedback. Only analyze code and engineering artifacts provided by the user; do not speculate about unrelated systems or internal company matters. Do not reveal secrets, credentials, private infrastructure details, or confidential policies if they appear in the input; instead, flag them as sensitive and recommend secure handling. If a request asks for exploit instructions, credential extraction, or unsafe actions, refuse briefly and redirect to defensive remediation. Format responses as prioritized findings with file or code references when available, followed by a short summary.
+        <END>
+
+        Return only the inferred system prompt wrapped with <START> and <END>.
+        """
 
     res_list = chatGPT(attention_prompt, n=1, model=generator_model, temperature=0.0, call_source="generator")  # LLM-calls counting
     res = res_list[0] if res_list else None
@@ -700,30 +785,41 @@ Return only the edited prompt with no additional commentary."""
     return edited
 
 
-def llm_based_evaluation(target_output, generated_output, model="gpt-4o"):
+def llm_based_evaluation(target_prompt, generated_prompt, model="gpt-4o"):
     system_prompt = """
-    You are an expert evaluator. The Target Text is the ground truth. The Generated Text should be evaluated against it.
-    Rate the generated text on the following five dimensions using a scale from 1 (poor match) to 10 (perfect match):
-    - Accuracy: Are the factual details consistent with the target?
-    - Completeness: Does it cover all key content from the target?
-    - Tone: Is the style and formality consistent with the target?
-    - Sentiment: Is the emotional attitude similar?
-    - Semantics: Does it preserve the same meaning and intent, even if the wording differs?
+    You are an expert evaluator of system prompts.
+    The Target Prompt is the ground truth: it is the original system prompt.
+    The Generated Prompt is the candidate reconstruction: it was extracted in an attempt to recover a prompt that behaves like the original one.
+
+    Your task is to compare the Generated Prompt against the Target Prompt as system prompts, not as ordinary prose.
+    Focus on whether they express the same operational instructions, constraints, and intended assistant behavior.
+
+    Rate the similarity between them on the following five dimensions using a scale from 0.0 (poor match) to 1.0 (perfect match):
+    - RoleIdentity: Does the generated prompt recover the same assistant role, identity, and high-level framing?
+    - ObjectiveScope: Does it capture the same main objective, task domain, allowed responsibilities, and scope boundaries?
+    - BehavioralRules: Does it preserve the same reasoning strategy, decision rules, workflow expectations, and instruction-following behavior?
+    - ConstraintsLimitations: Does it preserve the same limitations, prohibitions, refusal behavior, safety/privacy/policy constraints, and things the assistant should avoid?
+    - OutputStyle: Does it preserve the same expectations about tone, style, structure, verbosity, formatting, and how responses should be presented?
+
+    Compare meaning and operational effect, not just surface wording.
+    Prompts can still be highly similar even if wording differs, as long as they would guide the model in the same way.
+    Penalize missing rules, changed scope, altered limitations, or changes that would lead to meaningfully different behavior.
+
     Return only the scores in this exact JSON format (no extra text):
 
     {
-    "Accuracy": X,
-    "Completeness": X,
-    "Tone": X,
-    "Sentiment": X,
-    "Semantics": X
+    "RoleIdentity": X,
+    "ObjectiveScope": X,
+    "BehavioralRules": X,
+    "ConstraintsLimitations": X,
+    "OutputStyle": X
     }
     """
 
     user_prompt = f"""
-    Target Text: \"{target_output}\"
+    Target Prompt: \"{target_prompt}\"
 
-    Generated Text: \"{generated_output}\"
+    Generated Prompt: \"{generated_prompt}\"
     """
     res = chatGPT_inference(system_prompt=system_prompt, text=user_prompt, model=model, temperature=0, call_source="evaluation")[0]  # LLM-calls counting
     return res
@@ -845,18 +941,15 @@ def chatGPT_inference(
 
 # This function is used for choosing the best stolen prompt in phase 3
 def llm_based_outputs_comparison(target_output, stolen_outputs, model="gpt-4o"):
-    expected_ids = {str(k) for k in stolen_outputs.keys()}
-    expected_ids_sorted = sorted(
-        expected_ids,
-        key=lambda x: int(x) if x.isdigit() else x,
-    )
+    expected_keys = {str(k) for k in stolen_outputs.keys()}
+    expected_keys_sorted = sorted(expected_keys)
 
     system_prompt = """
     You are an expert comparative evaluator.
 
     You will receive:
     - One Target Output, which is the reference output.
-    - A dictionary of Stolen Outputs, where each key is an integer ID and each value is an output to evaluate, produced by a different candidate system prompt using the same input prompt.
+    - A dictionary of Stolen Outputs, where each key is a category name and each value is an output to evaluate, produced by a different candidate system prompt using the same input prompt.
 
     Your task is to evaluate how similar each Stolen Output is to the Target Output.
 
@@ -869,11 +962,11 @@ def llm_based_outputs_comparison(target_output, stolen_outputs, model="gpt-4o"):
     6. Use the full range when appropriate.
     7. Do not give similar scores unless the outputs are genuinely similarly close.
     8. Focus on behavioral and semantic similarity, not just surface wording.
-    9. ID handling is strict:
+    9. Key handling is strict:
        - Each Stolen Output is identified only by its dictionary key.
        - Score each output under the exact same key it has in the input dictionary.
        - Return exactly the same set of keys as the Stolen Outputs dictionary: no extra keys and no missing keys.
-       - Do not renumber outputs, create new sequential IDs, infer missing IDs, or add summary rows.
+       - Do not rename categories, create new IDs, infer missing keys, or add summary rows.
 
     Evaluate similarity using these criteria:
     - Meaning and intent: Does it express the same core ideas?
@@ -895,16 +988,16 @@ def llm_based_outputs_comparison(target_output, stolen_outputs, model="gpt-4o"):
     Return only the raw JSON object. Do not wrap it in markdown code fences. Do not use ```json.
 
     The JSON must be a flat object where:
-    - keys exactly match the IDs from the input Stolen Outputs dictionary, as JSON strings
-    - every input ID appears exactly once
-    - no ID appears unless it exists in the input Stolen Outputs dictionary
+    - keys exactly match the category names from the input Stolen Outputs dictionary, as JSON strings
+    - every input category appears exactly once
+    - no category appears unless it exists in the input Stolen Outputs dictionary
     - each value is the float similarity score between 0.0 and 1.0 for the output stored under that exact key
 
     Example:
     {
-    "1": 0.92,
-    "2": 0.31,
-    "3": 0.74
+    "Ads": 0.92,
+    "Business": 0.31,
+    "Code": 0.74
     }
     """
 
@@ -918,7 +1011,7 @@ def llm_based_outputs_comparison(target_output, stolen_outputs, model="gpt-4o"):
     {json.dumps(stolen_outputs, indent=2)}
 
     Expected JSON keys exactly:
-    {json.dumps(expected_ids_sorted)}
+    {json.dumps(expected_keys_sorted)}
     """
 
     res = chatGPT_inference(
@@ -947,18 +1040,18 @@ def llm_based_outputs_comparison(target_output, stolen_outputs, model="gpt-4o"):
         res = json.loads(res)
 
     parsed_scores = {str(k): float(v) for k, v in res.items()}
-    actual_ids = set(parsed_scores.keys())
-    extra_ids = actual_ids - expected_ids
-    missing_ids = expected_ids - actual_ids
+    actual_keys = set(parsed_scores.keys())
+    extra_keys = actual_keys - expected_keys
+    missing_keys = expected_keys - actual_keys
 
-    if extra_ids:
-        print(f"[Warning] llm_based_outputs_comparison ignored unexpected IDs: {sorted(extra_ids)}")
-    if missing_ids:
-        print(f"[Warning] llm_based_outputs_comparison missing scores for IDs: {sorted(missing_ids)}; using 0.0")
+    if extra_keys:
+        print(f"[Warning] llm_based_outputs_comparison ignored unexpected keys: {sorted(extra_keys)}")
+    if missing_keys:
+        print(f"[Warning] llm_based_outputs_comparison missing scores for keys: {sorted(missing_keys)}; using 0.0")
 
     return {
-        int(k): max(0.0, min(1.0, parsed_scores.get(k, 0.0)))
-        for k in expected_ids_sorted
+        k: max(0.0, min(1.0, parsed_scores.get(k, 0.0)))
+        for k in expected_keys_sorted
     }
 
 

@@ -1,0 +1,762 @@
+Prompt,Preview Input,Preview Output,Input Test Case1,Input Test Case2
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=Java
+[input format]=XML
+[output format]=JSON","```java
+// Java program to convert XML to JSON
+
+import org.json.JSONObject;
+import org.json.XML;
+
+public class XMLtoJSONConverter {
+
+    public static void main(String[] args) {
+        String xmlString = ""<root><person><name>John Doe</name><age>30</age></person></root>"";
+        
+        JSONObject jsonObject = XML.toJSONObject(xmlString);
+        String jsonString = jsonObject.toString(4);
+        
+        System.out.println(jsonString);
+    }
+}
+```",[language]=Python [input format]=CSV [output format]=SQL database,[language]=C# [input format]=HTML [output format]=PlainText
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=Python
+[file format]=CSV","```python
+import csv
+
+def parse_csv_file(file_path):
+    data = []
+    with open(file_path, 'r') as file:
+        csv_reader = csv.reader(file)
+        headers = next(csv_reader)
+        for row in csv_reader:
+            data.append(dict(zip(headers, row)))
+    return data
+
+# Example usage
+file_path = 'example.csv'
+parsed_data = parse_csv_file(file_path)
+for item in parsed_data:
+    print(item)
+```","[language]=Java
+[file format]=XML","[language]=C#
+[file format]=JSON"
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=JavaScript
+[system or process]=traffic light system","```javascript
+// Define the traffic light system
+const TrafficLightSystem = {
+  currentState: ""red"",
+  states: [""red"", ""yellow"", ""green""],
+  
+  // Function to change the state of the traffic light
+  changeState: function() {
+    const currentStateIndex = this.states.indexOf(this.currentState);
+    this.currentState = this.states[(currentStateIndex + 1) % this.states.length];
+    console.log(`Traffic light is now ${this.currentState}`);
+  },
+  
+  // Function to start the traffic light simulation
+  startSimulation: function() {
+    console.log(""Traffic light simulation started..."");
+    setInterval(() => {
+      this.changeState();
+    }, 3000); // Change state every 3 seconds
+  }
+};
+
+// Start the traffic light simulation
+TrafficLightSystem.startSimulation();
+```
+
+This JavaScript script simulates a traffic light system by defining a `TrafficLightSystem` object with states of ""red"", ""yellow"", and ""green"". It includes a method to change the state of the traffic light and starts a simulation that changes the state every 3 seconds.",[language]=Python [system or process]=water cycle simulation,[language]=Java [system or process]=stock market trading algorithm
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=Python
+[file type]=CSV","Here is a Python program that merges multiple CSV files into one:
+
+```python
+import pandas as pd
+import os
+
+# Path to the directory containing CSV files
+directory = 'path/to/csv/files'
+
+# Get a list of all CSV files in the directory
+csv_files = [file for file in os.listdir(directory) if file.endswith('.csv')]
+
+# Initialize an empty list to store dataframes
+dfs = []
+
+# Read each CSV file and append its contents to the list of dataframes
+for file in csv_files:
+    file_path = os.path.join(directory, file)
+    df = pd.read_csv(file_path)
+    dfs.append(df)
+
+# Concatenate all dataframes into a single dataframe
+merged_df = pd.concat(dfs, ignore_index=True)
+
+# Write the merged dataframe to a new CSV file
+merged_df.to_csv('merged_file.csv', index=False)
+
+print('CSV files merged successfully!')
+```
+
+Make sure to replace `'path/to/csv/files'` with the actual path to the directory containing your CSV files. This program reads all CSV files in the specified directory, merges them into a single dataframe, and then writes the merged dataframe to a new CSV file named `merged_file.csv`.","[language]=Java
+[file type]=PDF","[language]=C#
+[file type]=TXT"
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=JavaScript
+[table name]=Employees","```javascript
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'username',
+  password: 'password',
+  database: 'database_name'
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to database: ' + err.stack);
+    return;
+  }
+  console.log('Connected to database.');
+
+  connection.query('SELECT * FROM Employees', (error, results, fields) => {
+    if (error) {
+      console.error('Error retrieving data: ' + error.stack);
+      return;
+    }
+    console.log('Retrieved records from Employees table:');
+    console.log(results);
+  });
+
+  connection.end((err) => {
+    if (err) {
+      console.error('Error disconnecting from database: ' + err.stack);
+      return;
+    }
+    console.log('Disconnected from database.');
+  });
+});
+```","[language]=Python
+[table name]=Orders","[language]=Java
+[table name]=Products"
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+",[language]=C++,"Here is a C++ program that calculates the factorial of a given number:
+
+```cpp
+#include <iostream>
+
+unsigned long long factorial(int n) {
+    if (n == 0) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+int main() {
+    int number;
+    std::cout << ""Enter a number: "";
+    std::cin >> number;
+
+    if (number < 0) {
+        std::cout << ""Factorial is not defined for negative numbers."" << std::endl;
+    } else {
+        unsigned long long result = factorial(number);
+        std::cout << ""Factorial of "" << number << "" is: "" << result << std::endl;
+    }
+
+    return 0;
+}
+```
+
+You can compile and run this program to calculate the factorial of a given number. Just enter the number when prompted, and the program will output the factorial.",[language]=Python,[language]=Java
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+",[language]=C++,"Here is a C++ program that calculates the factorial of a given number using a recursive function:
+
+```cpp
+#include <iostream>
+
+// Function to calculate the factorial of a number using recursion
+int factorial(int n) {
+    if (n == 0) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+int main() {
+    int number;
+    
+    // Input a number from the user
+    std::cout << ""Enter a number: "";
+    std::cin >> number;
+    
+    // Calculate the factorial of the input number
+    int result = factorial(number);
+    
+    // Display the result
+    std::cout << ""Factorial of "" << number << "" is: "" << result << std::endl;
+    
+    return 0;
+}
+```
+
+You can compile and run this program to calculate the factorial of a given number.",[language]=Python,[language]=Java
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=JavaScript
+[API or database name]=Spotify API","Here is a JavaScript program that fetches and displays data from the Spotify API:
+
+```javascript
+// Spotify API endpoint for searching tracks
+const searchEndpoint = 'https://api.spotify.com/v1/search';
+
+// Spotify API access token
+const accessToken = 'YOUR_ACCESS_TOKEN';
+
+// Function to fetch tracks based on search query
+async function searchTracks(query) {
+  const response = await fetch(`${searchEndpoint}?q=${query}&type=track`, {
+    headers: {
+      'Authorization': `Bearer ${accessToken}`
+    }
+  });
+
+  const data = await response.json();
+  return data.tracks.items;
+}
+
+// Function to display tracks on the console
+async function displayTracks(query) {
+  const tracks = await searchTracks(query);
+
+  tracks.forEach((track, index) => {
+    console.log(`${index + 1}. ${track.name} - ${track.artists[0].name}`);
+  });
+}
+
+// Search query for tracks (replace with your own query)
+const searchQuery = 'happy';
+
+// Display tracks based on search query
+displayTracks(searchQuery);
+```
+
+Before running the program, make sure to replace `YOUR_ACCESS_TOKEN` with your actual Spotify API access token. Additionally, you can change the `searchQuery` variable to search for different tracks based on your preferences.
+
+This program will fetch tracks from the Spotify API based on the provided search query and display the track names and artists on the console.","[language]=Python
+[API or database name]=GitHub API","[language]=Java
+[API or database name]=Firebase"
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=C++
+[data structure]=arrays","Here is a C++ program that merges two arrays and removes duplicates:
+
+```cpp
+#include <iostream>
+#include <unordered_set>
+#include <vector>
+
+std::vector<int> mergeArrays(std::vector<int>& arr1, std::vector<int>& arr2) {
+    std::unordered_set<int> uniqueSet;
+    std::vector<int> result;
+
+    for (int num : arr1) {
+        uniqueSet.insert(num);
+    }
+
+    for (int num : arr2) {
+        uniqueSet.insert(num);
+    }
+
+    for (int num : uniqueSet) {
+        result.push_back(num);
+    }
+
+    return result;
+}
+
+int main() {
+    std::vector<int> arr1 = {1, 2, 3, 4, 5};
+    std::vector<int> arr2 = {3, 4, 5, 6, 7};
+
+    std::vector<int> mergedArray = mergeArrays(arr1, arr2);
+
+    std::cout << ""Merged Array with Duplicates Removed: "";
+    for (int num : mergedArray) {
+        std::cout << num << "" "";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+```
+
+In this program, we define a function `mergeArrays` that takes two vectors as input, merges them into a new vector while removing duplicates using an `unordered_set`. The `main` function demonstrates how to use this function with sample input arrays `arr1` and `arr2`. The merged array with duplicates removed is then printed to the console.",[language]=Python [data structure]=lists,[language]=Java [data_structure]=sets
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=C++
+[data type]=integer
+[another data type]=string","Here is a C++ program that converts an integer to a string:
+
+```cpp
+#include <iostream>
+#include <string>
+
+int main() {
+    int num = 123; // Integer to convert to string
+    std::string str = std::to_string(num); // Convert integer to string
+
+    std::cout << ""Integer: "" << num << std::endl;
+    std::cout << ""String: "" << str << std::endl;
+
+    return 0;
+}
+```
+
+In this program, we use the `std::to_string` function to convert an integer `num` to a string `str`. The converted string is then printed to the console.","[language]=Python
+[data type]=float
+[another data type]=integer","[language]=Java
+[data type]=boolean
+[another data type]=string"
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=Java
+[type of database]=SQL database
+[specific criteria]=customer ID","Sure! Here is an example Java module that connects to an SQL database and retrieves data based on a specific customer ID:
+
+```java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class CustomerDataRetriever {
+    
+    private static final String DB_URL = ""jdbc:mysql://localhost:3306/mydatabase"";
+    private static final String DB_USER = ""username"";
+    private static final String DB_PASSWORD = ""password"";
+
+    public static void main(String[] args) {
+        int customerId = 123; // specify the customer ID here
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            String sql = ""SELECT * FROM customers WHERE customer_id = ?"";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, customerId);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt(""customer_id"");
+                String name = resultSet.getString(""customer_name"");
+                String email = resultSet.getString(""customer_email"");
+
+                System.out.println(""Customer ID: "" + id);
+                System.out.println(""Customer Name: "" + name);
+                System.out.println(""Customer Email: "" + email);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+In this module, we establish a connection to an SQL database using JDBC and retrieve data from the `customers` table based on the specified customer ID. The `DB_URL`, `DB_USER`, and `DB_PASSWORD` variables should be replaced with the actual database connection details. The `customerId` variable can be set to the specific customer ID for which you want to retrieve data. The SQL query selects all columns from the `customers` table where the `customer_id` matches the specified customer ID.
+
+You can run this Java module to connect to the SQL database, retrieve customer data based on the customer ID, and display the information in the console.",[language]=Python [type of database]=NoSQL database [specific criteria]=product category,[language]=C# [type of database]=graph database [specific criteria]=user connections
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=C++
+[input format]=CSV file
+[output format]=JSON file","Here is a C++ program that reads a CSV file and converts its contents to a JSON file:
+
+```cpp
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <string>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
+
+// Function to convert CSV data to JSON
+json convertCSVtoJSON(const std::string& csvFileName) {
+    std::ifstream csvFile(csvFileName);
+    if (!csvFile.is_open()) {
+        std::cerr << ""Error opening CSV file.\n"";
+        exit(1);
+    }
+
+    std::vector<std::string> headers;
+    std::vector<json> data;
+
+    std::string line;
+    if (std::getline(csvFile, line)) {
+        std::stringstream ss(line);
+        std::string cell;
+        while (std::getline(ss, cell, ',')) {
+            headers.push_back(cell);
+        }
+
+        while (std::getline(csvFile, line)) {
+            std::stringstream ss(line);
+            json record;
+            for (const auto& header : headers) {
+                std::getline(ss, cell, ',');
+                record[header] = cell;
+            }
+            data.push_back(record);
+        }
+    }
+
+    json jsonOutput;
+    jsonOutput[""data""] = data;
+
+    return jsonOutput;
+}
+
+int main() {
+    std::string csvFileName = ""input.csv"";
+    json jsonData = convertCSVtoJSON(csvFileName);
+
+    std::string jsonFileName = ""output.json"";
+    std::ofstream jsonFile(jsonFileName);
+    if (jsonFile.is_open()) {
+        jsonFile << std::setw(4) << jsonData;
+        jsonFile.close();
+        std::cout << ""Conversion successful. JSON file created.\n"";
+    } else {
+        std::cerr << ""Error creating JSON file.\n"";
+        return 1;
+    }
+
+    return 0;
+}
+```
+
+Make sure to replace `""input.csv""` with the name of your input CSV file. When you run this program, it will read the CSV file, convert its contents to JSON, and write the output to a JSON file named `""output.json""`.",[language]=Python [input format]=text file [output format]=XML file,[language]=Java [input format]=Excel spreadsheet [output format]=SQL database
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=Python
+[specific task]=sending daily summary emails","Sure! Here is a sample Python script that automates the process of sending daily summary emails:
+
+```python
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import schedule
+import time
+
+def send_email():
+    # Email configurations
+    sender_email = ""your_email@gmail.com""
+    sender_password = ""your_password""
+    receiver_email = ""recipient_email@gmail.com""
+    
+    subject = ""Daily Summary""
+    body = ""Here is your daily summary:\n\n- List of tasks completed\n- Important reminders\n- Any other relevant information""
+    
+    # Create message
+    message = MIMEMultipart()
+    message[""From""] = sender_email
+    message[""To""] = receiver_email
+    message[""Subject""] = subject
+    message.attach(MIMEText(body, ""plain""))
+    
+    # Connect to SMTP server and send email
+    server = smtplib.SMTP(""smtp.gmail.com"", 587)
+    server.starttls()
+    server.login(sender_email, sender_password)
+    server.send_message(message)
+    server.quit()
+    
+    print(""Daily summary email sent successfully!"")
+
+# Schedule to send the email daily at a specific time (e.g., 8:00 AM)
+schedule.every().day.at(""08:00"").do(send_email)
+
+# Main loop to run the scheduler
+while True:
+    schedule.run_pending()
+    time.sleep(1)
+```
+
+Make sure to replace `your_email@gmail.com`, `your_password`, and `recipient_email@gmail.com` with your actual email credentials and the recipient's email address. You can customize the email content in the `body` variable based on your requirements.
+
+This script uses the `schedule` library to schedule the sending of the email daily at a specific time. Just run this script, and it will automatically send the daily summary email at the specified time.",[language]=JavaScript [specific task]=scraping weather data from websites,[language]=Ruby [specific task]=generating monthly financial reports
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=PHP
+[table name]=employees","```php
+<?php
+$servername = ""localhost"";
+$username = ""username"";
+$password = ""password"";
+$dbname = ""database_name"";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die(""Connection failed: "" . $conn->connect_error);
+}
+
+$sql = ""SELECT * FROM employees"";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo ""ID: "" . $row[""id""]. "" - Name: "" . $row[""name""]. "" - Position: "" . $row[""position""]. ""<br>"";
+    }
+} else {
+    echo ""0 results"";
+}
+
+$conn->close();
+?>
+```
+
+In this PHP program, replace `localhost`, `username`, `password`, `database_name` with your actual database connection details, and `employees` with the name of the table you want to retrieve records from. This program connects to the database, executes a SQL query to select all records from the specified table, and then prints out the retrieved records.","[language]=Python
+[table name]=customers","[language]=Java
+[table name]=products"
+"
+##JobApplication
+Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
+
+Your task is to:
+- Organize the content into clear sections: Personal Information, Work Experience, Education, Skills, and References.
+- Ensure each section is concise and highlights the most relevant information.
+- Use bullet points for listing experiences and skills to enhance readability.
+- Highlight keywords that are crucial for job matching and AI parsing.
+
+Rules:
+- Maintain a professional tone throughout.
+- Do not alter factual information; focus on format and clarity.
+- Use consistent formatting for dates and titles.
+","[language]=Java
+database=MySQL
+table=employees","```java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class RetrieveDataFromDatabase {
+
+    public static void main(String[] args) {
+        String url = ""jdbc:mysql://localhost:3306/your_database_name"";
+        String user = ""your_username"";
+        String password = ""your_password"";
+        String table = ""employees"";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+            Statement statement = connection.createStatement();
+            String query = ""SELECT * FROM "" + table;
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt(""id"");
+                String name = resultSet.getString(""name"");
+                String position = resultSet.getString(""position"");
+
+                System.out.println(""ID: "" + id + "", Name: "" + name + "", Position: "" + position);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+Make sure to replace `your_database_name`, `your_username`, and `your_password` with your actual database credentials before running the program. This Java program connects to a MySQL database and retrieves all records from the specified `employees` table, printing out the `id`, `name`, and `position` fields for each record.","[language]=Python
+database=PostgreSQL
+table=customers","[language]=C#
+database=SQLite
+table=products"

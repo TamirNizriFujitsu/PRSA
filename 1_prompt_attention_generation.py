@@ -3,6 +3,7 @@ import os
 from tqdm import tqdm
 import json
 import argparse
+import pandas as pd
 import scorers
 import dataset
 import llm
@@ -70,6 +71,8 @@ if __name__ == '__main__':
     for epoch in range(args.epochs): # Loops over each line from specific dataset to infer shared category traits
         for _, batch in tqdm(enumerate(collect_data)):
             input_data = batch['Preview Input']
+            if pd.isna(input_data):
+                input_data = ""
             target_prompt = batch['Prompt']
             # Creating ground truth output (from original system prompt + user input) by target-llm
             output_data = model.inference(input_data, target_prompt) 

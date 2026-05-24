@@ -14,6 +14,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import google_news_related_words
 import llm
+from collections import defaultdict
+from pathlib import Path
 
 
 nltk.download('punkt')
@@ -21,7 +23,7 @@ nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 nltk.download('averaged_perceptron_tagger')
 
-categories = ["Ads", "Business", "Code", "Data", "Email", "Fashion", "Food", "Games", "Health", "Ideas", "Language", "Music", "SEO", "Sports", "Study", "Translate", "Travel", "Writing"]
+categories = ["Ads", "Business", "Code", "Data", "Email", "Fashion", "Food", "Games", "Health", "Ideas", "Language", "Music", "SEO", "Sports", "Study", "Translate", "Travel", "Writing", "NoCategory"]
 model_path = 'tool/GoogleNews-vectors-negative300.bin.gz'
 sim_model = KeyedVectors.load_word2vec_format(model_path, binary=True)
 nlp = spacy.load('en_core_web_md')
@@ -529,7 +531,7 @@ def write_llm_call_summary(target_model, scenario_suffix, label=""):
     print(f"LLM call summary written to {out_path}")
 
 
-def choose_best_stolen_prompt(target_model, scenario_suffix):
+def choose_best_stolen_prompt(data_path):
     # all_arrays_path = f"result/diff_array_all_{target_model}{scenario_suffix}.json"
     # with open(all_arrays_path, 'r') as f:
     #     all_arrays = json.load(f)

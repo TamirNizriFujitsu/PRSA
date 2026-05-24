@@ -68,12 +68,25 @@ class PAA(PromptOptimizer):
     def cal_gradients(self, generated_output, output_data):
         # This function asks LLM to judge each element's similarity between the two outputs,
         # then marks low-scoring elements as weak = needs attention.
-        # Meaning: the generated output differs too much from the real output in tone, audience, and structure.
+        # Meaning: the generated output differs too much from the real output in
+        # system-prompt-related behavioral signals.
 
         if self.opt["theme"] in ["Music", "Sports"]:
             self.opt["attention_threshold"] = 8
 
-        elements = ['Characteristic','Topic','Argument','Structure','Style','Tone','Purpose','Sentence Type','Audience','Background']
+        element_descriptions = {
+            "Role": "The assistant identity, persona, expertise, or institutional role implied by the output.",
+            "Allowed Tasks": "The kinds of user requests the assistant appears permitted or expected to handle.",
+            "Scope Limits": "Boundaries on what the assistant discusses, analyzes, or avoids as outside scope.",
+            "Refusal Behavior": "When and how the assistant declines, redirects, or limits an answer.",
+            "Output Style": "Tone, level of detail, concision, directness, and overall writing style.",
+            "Formatting Requirements": "Required structure, sections, bullets, labels, code blocks, or other presentation rules.",
+            "Safety Boundaries": "Safety, privacy, security, policy, or harm-prevention limits reflected in the output.",
+            "Confidentiality Handling": "How sensitive, private, secret, or internal information is protected or omitted.",
+            "Reasoning Rules": "Decision criteria, prioritization, verification, uncertainty handling, or analysis process implied by the output.",
+            "Domain Constraints": "Domain-specific standards, terminology, assumptions, references, or required expertise reflected in the output.",
+        }
+        elements = list(element_descriptions.keys())
         
         system_prompt = """
         You are an expert evaluator comparing two model outputs.
@@ -90,10 +103,10 @@ class PAA(PromptOptimizer):
         "{output_data}"
 
         Elements to score:
-        {json.dumps(elements)}
+        {json.dumps(element_descriptions, indent=2)}
 
         Return a single valid JSON object wrapped with <START> and <END>.
-        The JSON object must contain exactly one numeric score from 1 to 10 for each element listed above.
+        The JSON object must contain exactly one numeric score from 1 to 10 for each element name listed above.
         Use the element names exactly as the JSON keys.
         Do not include placeholders, comments, explanations, markdown, or any text outside the tags.
         """
