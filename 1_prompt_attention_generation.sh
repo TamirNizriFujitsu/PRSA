@@ -15,7 +15,7 @@ TARGET_LLM_MODEL="${TARGET_LLM_MODEL:-CommandA}"
 CUSTOM="${CUSTOM:-true}"
 CUSTOM_SCENARIO="${CUSTOM_SCENARIO:-JobApplicationBestModels_Improve_Method2}"
 # Used only when CUSTOM=true.
-CUSTOM_TARGET_PROMPT="""
+DEFAULT_CUSTOM_TARGET_PROMPT="""
 Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
 
 Your task is to:
@@ -29,6 +29,7 @@ Rules:
 - Do not alter factual information; focus on format and clarity.
 - Use consistent formatting for dates and titles.
 """
+CUSTOM_TARGET_PROMPT="${CUSTOM_TARGET_PROMPT:-$DEFAULT_CUSTOM_TARGET_PROMPT}"
 
 parallel_jobs=6
 
