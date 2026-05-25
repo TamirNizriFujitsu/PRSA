@@ -77,7 +77,7 @@ best_category_with_ranking, categories_average = utils.choose_best_stolen_prompt
 best_category = best_category_with_ranking[0]
 print(f"Best stolen prompt category: {best_category}")
 
-target_prompt_path = f"demo_data/demo_data_all_categories_{target_model}{scenario_suffix}.csv"
+target_prompt_path = f"demo_data/demo_data_all_categories{scenario_suffix}.csv"
 with open(target_prompt_path, newline="", encoding="utf-8", errors="replace") as f:
     reader = csv.DictReader(f)
     target_prompt = list(reader)[0]["Prompt"]

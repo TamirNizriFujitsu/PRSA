@@ -1,0 +1,31 @@
+phase 1 total time: 64m 46s
+=== LLM Call Summary — After Phase 1 ===
+Model: cohere-command-a
+
+target_llm_calls     =    570    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =    285    # generating stolen prompt candidates
+gradient_llm_calls   =    285    # scoring element similarity to build attention dict
+pruning_llm_calls    =      0    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =      0    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =    240    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =   1380
+
+Phase 2 - creating_stolen_prompts_and_pruning = 18m 26s
+=== LLM Call Summary — After Phase 2 ===
+Model: cohere-command-a
+
+target_llm_calls     =     99    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =     19    # generating stolen prompt candidates
+gradient_llm_calls   =      0    # scoring element similarity to build attention dict
+pruning_llm_calls    =     19    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =      0    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =     19    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =    175
+
+categories_average = {'NoCategory': 0.516, 'Writing': 0.489, 'Travel': 0.485, 'Code': 0.475, 'Health': 0.473, 'Food': 0.454, 'SEO': 0.414, 'Games': 0.407, 'Ideas': 0.394, 'Fashion': 0.361, 'Music': 0.357, 'Business': 0.356, 'Language': 0.344, 'Ads': 0.336, 'Data': 0.274, 'Translate': 0.266, 'Email': 0.229, 'Study': 0.22, 'Sports': 0.162}
+best_category = ('NoCategory', 0.516)
+asr = 0.68

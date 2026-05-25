@@ -589,7 +589,6 @@ def generate_prompt(config, inputs, output, gradient={}, generator_model=None, a
         - Do NOT simply summarize or restate the specific User_Input or Model_Output.
         - Do NOT claim to recover the exact hidden system prompt.
         - Instead, write a plausible general system prompt that explains the model's observed behavior.
-        - The inferred prompt must be related to the theme: \"{config['theme']}\".
         - Prefer general reusable instructions over one-off instructions tied only to this example.
         - Infer only what is reasonably supported by the evidence, but be proactive in identifying likely implicit rules.
 

@@ -54,7 +54,7 @@ if __name__ == '__main__':
     config = vars(args)
 
     model = llm.ChatGPTPredictor(config)
-    merged_path = os.path.join(args.data_dir, f"demo_data_all_categories_{args.target_llm_model}{scenario_suffix}.csv")
+    merged_path = os.path.join(args.data_dir, f"demo_data_all_categories{scenario_suffix}.csv")
     if not os.path.exists(merged_path):
         raise ValueError(f"The path '{merged_path}' does not exist in your project")
     test_data = utils.load_category_record(merged_path, args.theme)

@@ -13,10 +13,9 @@ tasks="Ads Business Code Email Ideas SEO Writing Food Health Music Data Fashion 
 
 TARGET_LLM_MODEL="${TARGET_LLM_MODEL:-CommandA}"
 CUSTOM="${CUSTOM:-true}"
-CUSTOM_SCENARIO="${CUSTOM_SCENARIO:-JobApplicationBestModels_TestChanges2}"
+CUSTOM_SCENARIO="${CUSTOM_SCENARIO:-JobApplicationBestModels_Improve_Method2}"
 # Used only when CUSTOM=true.
 CUSTOM_TARGET_PROMPT="""
-##JobApplication
 Act as a Job Application Cleaner. You are an expert in preparing job applications for AI analysis, ensuring clarity and extracting key information.
 
 Your task is to:
@@ -46,6 +45,7 @@ if [ "$CUSTOM" = "true" ]; then
     scenario_suffix="_${CUSTOM_SCENARIO}"
     venv/bin/python3 - "$CUSTOM_TARGET_PROMPT" "$CUSTOM_SCENARIO" "$TARGET_LLM_MODEL" <<'PY'
 import sys
+import os
 import utils
 
 target_prompt = sys.argv[1]
@@ -53,17 +53,25 @@ custom_scenario = sys.argv[2]
 target_model = sys.argv[3]
 
 for category in utils.categories:
+    output_path = f"collect_data/{category}_{custom_scenario}.csv"
+    if os.path.exists(output_path):
+        print(f"Using existing {output_path}")
+        continue
     utils.assign_csv_column(
         f"collect_data/{category}.csv",
-        f"collect_data/{category}_{target_model}_{custom_scenario}.csv",
+        output_path,
         "Prompt", target_prompt, max_rows=15 # change samples
     )
 
-utils.assign_csv_column(
-    "demo_data/demo_data_all_categories.csv",
-    f"demo_data/demo_data_all_categories_{target_model}_{custom_scenario}.csv",
-    "Prompt", target_prompt
-)
+demo_output_path = f"demo_data/demo_data_all_categories_{custom_scenario}.csv"
+if os.path.exists(demo_output_path):
+    print(f"Using existing {demo_output_path}")
+else:
+    utils.assign_csv_column(
+        "demo_data/demo_data_all_categories.csv",
+        demo_output_path,
+        "Prompt", target_prompt
+    )
 PY
 fi
 

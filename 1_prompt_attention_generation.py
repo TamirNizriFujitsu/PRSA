@@ -55,7 +55,7 @@ if __name__ == '__main__':
     config = vars(args)
     data_config = dict(config)
     if args.custom:
-        data_config["theme"] = f"{args.theme}_{args.target_llm_model}_{args.custom_scenario}"
+        data_config["theme"] = f"{args.theme}_{args.custom_scenario}"
     data = dataset.Datasets(data_config) #15 samples per cateory
     scorer = scorers.MetricsScorer(args.evaluator, args.m)
     model = llm.ChatGPTPredictor(config)
