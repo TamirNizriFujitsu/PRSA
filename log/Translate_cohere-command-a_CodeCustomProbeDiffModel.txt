@@ -1,2 +1,0 @@
-{"theme": "Translate", "data_dir": "collect_data", "custom": true, "custom_scenario": "CodeCustomProbeDiffModel", "batch_size": 1, "epochs": 1, "temperature": 0.7, "out": "log/Translate_cohere-command-a_CodeCustomProbeDiffModel.txt", "attention_threshold": 7.5, "evaluator": "semantic_similarity", "m": 3, "scorer": "semantic_similarity", "target_llm_model": "cohere-command-a", "generator_llm_model": "gpt-5", "gradient_llm_model": "gpt-4o-mini", "attention_llm_model": "gpt-4.1-mini"}
-"Translate: {'Sentence Type': 4, 'Background': 3}"

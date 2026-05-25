@@ -1,60 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6061.39it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5356.81it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Health
-gradient:  {}
-1it [00:48, 48.44s/it]config.theme:  Health
-gradient:  {}
-2it [02:06, 65.64s/it]config.theme:  Health
-gradient:  {}
-3it [03:19, 69.12s/it]config.theme:  Health
-gradient:  {}
-4it [04:18, 65.07s/it]config.theme:  Health
-gradient:  {}
-5it [05:29, 67.33s/it]config.theme:  Health
-gradient:  {}
-6it [06:20, 61.59s/it]config.theme:  Health
-gradient:  {}
-7it [06:56, 53.53s/it]config.theme:  Health
-gradient:  {'Style': 1, 'Tone': 1}
-8it [07:39, 50.00s/it]config.theme:  Health
-gradient:  {}
-9it [08:23, 48.13s/it]config.theme:  Health
-gradient:  {}
-10it [08:53, 42.47s/it]config.theme:  Health
-gradient:  {}
-11it [09:31, 41.17s/it]config.theme:  Health
-gradient:  {}
-12it [11:53, 71.84s/it]config.theme:  Health
-gradient:  {}
-13it [12:49, 67.11s/it]config.theme:  Health
-gradient:  {}
-14it [13:24, 57.22s/it]config.theme:  Health
-gradient:  {}
-15it [14:10, 54.11s/it]15it [14:10, 56.73s/it]

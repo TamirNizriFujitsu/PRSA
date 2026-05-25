@@ -1,60 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6425.14it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5365.87it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Food
-gradient:  {}
-1it [00:51, 51.78s/it]config.theme:  Food
-gradient:  {}
-2it [02:11, 68.03s/it]config.theme:  Food
-gradient:  {}
-3it [03:45, 79.94s/it]config.theme:  Food
-gradient:  {}
-4it [04:39, 69.85s/it]config.theme:  Food
-gradient:  {}
-5it [05:57, 72.83s/it]config.theme:  Food
-gradient:  {}
-6it [06:19, 55.44s/it]config.theme:  Food
-gradient:  {}
-7it [07:39, 63.61s/it]config.theme:  Food
-gradient:  {}
-8it [08:45, 64.36s/it]config.theme:  Food
-gradient:  {}
-9it [10:18, 73.20s/it]config.theme:  Food
-gradient:  {}
-10it [11:29, 72.56s/it]config.theme:  Food
-gradient:  {}
-11it [12:51, 75.50s/it]config.theme:  Food
-gradient:  {}
-12it [13:49, 70.02s/it]config.theme:  Food
-gradient:  {}
-13it [14:55, 68.86s/it]config.theme:  Food
-gradient:  {}
-14it [15:50, 64.57s/it]config.theme:  Food
-gradient:  {}
-15it [16:42, 61.00s/it]15it [16:42, 66.86s/it]

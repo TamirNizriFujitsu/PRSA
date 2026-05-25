@@ -1,60 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5839.67it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5416.08it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Translate
-gradient:  {}
-1it [00:46, 46.25s/it]config.theme:  Translate
-gradient:  {}
-2it [01:57, 61.19s/it]config.theme:  Translate
-gradient:  {}
-3it [03:18, 70.14s/it]config.theme:  Translate
-gradient:  {}
-4it [04:07, 61.89s/it]config.theme:  Translate
-gradient:  {'Sentence Type': 1}
-5it [05:03, 59.54s/it]config.theme:  Translate
-gradient:  {}
-6it [06:04, 60.13s/it]config.theme:  Translate
-gradient:  {}
-7it [06:52, 56.29s/it]config.theme:  Translate
-gradient:  {'Sentence Type': 1, 'Background': 1}
-8it [07:57, 59.06s/it]config.theme:  Translate
-gradient:  {'Argument': 1}
-9it [09:14, 64.63s/it]config.theme:  Translate
-gradient:  {'Structure': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
-10it [10:33, 68.81s/it]config.theme:  Translate
-gradient:  {}
-11it [11:24, 63.54s/it]config.theme:  Translate
-gradient:  {'Style': 1, 'Sentence Type': 1}
-12it [12:31, 64.43s/it]config.theme:  Translate
-gradient:  {'Argument': 1, 'Sentence Type': 1}
-13it [13:14, 58.11s/it]config.theme:  Translate
-gradient:  {'Argument': 1, 'Sentence Type': 1, 'Background': 1}
-14it [14:32, 64.05s/it]config.theme:  Translate
-gradient:  {}
-15it [15:32, 62.72s/it]15it [15:32, 62.14s/it]

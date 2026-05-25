@@ -1,69 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6073.32it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5677.58it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Translate
-gradient:  {}
-1it [00:30, 30.22s/it]config.theme:  Translate
-gradient:  {}
-2it [01:48, 58.48s/it]config.theme:  Translate
-gradient:  {}
-3it [04:26, 103.71s/it]config.theme:  Translate
-gradient:  {}
-4it [05:29, 88.02s/it] config.theme:  Translate
-gradient:  {}
-5it [06:17, 73.41s/it]config.theme:  Translate
-gradient:  {}
-6it [06:55, 61.41s/it]config.theme:  Translate
-gradient:  {}
-7it [07:45, 57.72s/it]config.theme:  Translate
-gradient:  {}
-8it [09:43, 76.87s/it]config.theme:  Translate
-gradient:  {}
-9it [11:35, 87.68s/it]config.theme:  Translate
-gradient:  {}
-10it [12:46, 82.58s/it]config.theme:  Translate
-gradient:  {}
-11it [13:48, 76.42s/it]config.theme:  Translate
-gradient:  {}
-12it [15:08, 77.52s/it]config.theme:  Translate
-gradient:  {}
-13it [16:26, 77.53s/it]config.theme:  Translate
-HTTP code 504 from API (<html>
-<head><title>504 Gateway Time-out</title></head>
-<body>
-<center><h1>504 Gateway Time-out</h1></center>
-<hr><center>Microsoft-Azure-Application-Gateway/v2</center>
-</body>
-</html>
-)
-Retrying......
-gradient:  {}
-14it [19:56, 117.67s/it]config.theme:  Translate
-gradient:  {}
-15it [21:10, 104.48s/it]15it [21:10, 84.71s/it] 

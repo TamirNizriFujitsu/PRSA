@@ -1,62 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 4912.48it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5914.59it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Data
-gradient:  {}
-1it [01:10, 70.64s/it]config.theme:  Data
-azure_ai HTTP 500: {"error":{"code":"invalid_model_endpoint_authentication","message":"Failed to authenticate to backend endpoint. RequestId = req_011CavFPZcWzd2D1YETY5ece","details":"Failed to authenticate to backend endpoint. RequestId = req_011CavFPZcWzd2D1YETY5ece"}}
-Retrying......
-gradient:  {}
-2it [03:00, 93.72s/it]config.theme:  Data
-gradient:  {}
-3it [03:55, 75.90s/it]config.theme:  Data
-gradient:  {}
-4it [04:37, 62.76s/it]config.theme:  Data
-gradient:  {}
-5it [05:36, 61.24s/it]config.theme:  Data
-gradient:  {}
-6it [07:17, 74.83s/it]config.theme:  Data
-gradient:  {}
-7it [08:00, 64.46s/it]config.theme:  Data
-gradient:  {}
-8it [08:47, 58.79s/it]config.theme:  Data
-gradient:  {}
-9it [10:04, 64.44s/it]config.theme:  Data
-gradient:  {}
-10it [10:56, 60.54s/it]config.theme:  Data
-gradient:  {}
-11it [12:02, 62.46s/it]config.theme:  Data
-gradient:  {}
-12it [12:44, 56.02s/it]config.theme:  Data
-gradient:  {}
-13it [13:39, 55.87s/it]config.theme:  Data
-gradient:  {}
-14it [14:44, 58.64s/it]config.theme:  Data
-gradient:  {}
-15it [15:35, 56.40s/it]15it [15:35, 62.39s/it]

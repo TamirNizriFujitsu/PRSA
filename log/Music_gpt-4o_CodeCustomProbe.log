@@ -1,60 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6410.93it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6225.46it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Music
-gradient:  {}
-1it [00:18, 18.88s/it]config.theme:  Music
-gradient:  {}
-2it [00:33, 16.64s/it]config.theme:  Music
-gradient:  {}
-3it [00:48, 15.84s/it]config.theme:  Music
-gradient:  {}
-4it [01:42, 30.88s/it]config.theme:  Music
-gradient:  {}
-5it [01:55, 24.34s/it]config.theme:  Music
-gradient:  {}
-6it [02:05, 19.53s/it]config.theme:  Music
-gradient:  {}
-7it [02:46, 26.45s/it]config.theme:  Music
-gradient:  {}
-8it [03:00, 22.47s/it]config.theme:  Music
-gradient:  {}
-9it [03:13, 19.66s/it]config.theme:  Music
-gradient:  {}
-10it [03:27, 17.73s/it]config.theme:  Music
-gradient:  {}
-11it [04:02, 22.96s/it]config.theme:  Music
-gradient:  {}
-12it [04:59, 33.46s/it]config.theme:  Music
-gradient:  {}
-13it [05:18, 29.03s/it]config.theme:  Music
-gradient:  {}
-14it [05:31, 24.34s/it]config.theme:  Music
-gradient:  {}
-15it [06:16, 30.59s/it]15it [06:16, 25.13s/it]

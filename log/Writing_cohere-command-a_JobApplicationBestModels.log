@@ -1,60 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6308.15it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6054.67it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Writing
-gradient:  {}
-1it [01:15, 75.74s/it]config.theme:  Writing
-gradient:  {}
-2it [02:16, 67.12s/it]config.theme:  Writing
-gradient:  {}
-3it [03:10, 61.15s/it]config.theme:  Writing
-gradient:  {}
-4it [04:27, 67.08s/it]config.theme:  Writing
-gradient:  {}
-5it [05:47, 71.79s/it]config.theme:  Writing
-gradient:  {}
-6it [07:14, 77.01s/it]config.theme:  Writing
-gradient:  {}
-7it [08:38, 79.51s/it]config.theme:  Writing
-gradient:  {}
-8it [09:42, 74.27s/it]config.theme:  Writing
-gradient:  {}
-9it [10:59, 75.43s/it]config.theme:  Writing
-gradient:  {}
-10it [12:15, 75.55s/it]config.theme:  Writing
-gradient:  {}
-11it [13:03, 67.01s/it]config.theme:  Writing
-gradient:  {}
-12it [14:29, 72.76s/it]config.theme:  Writing
-gradient:  {}
-13it [16:00, 78.33s/it]config.theme:  Writing
-gradient:  {}
-14it [17:06, 74.69s/it]config.theme:  Writing
-gradient:  {}
-15it [18:10, 71.47s/it]15it [18:10, 72.72s/it]

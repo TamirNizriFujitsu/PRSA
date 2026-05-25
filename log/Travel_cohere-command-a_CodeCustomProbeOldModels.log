@@ -1,60 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6307.41it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5665.02it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Travel
-gradient:  {'Argument': 1, 'Style': 1}
-1it [01:15, 75.83s/it]config.theme:  Travel
-gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
-2it [02:00, 57.27s/it]config.theme:  Travel
-gradient:  {'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
-3it [02:48, 53.28s/it]config.theme:  Travel
-gradient:  {'Characteristic': 1, 'Topic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Purpose': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
-4it [03:27, 47.76s/it]config.theme:  Travel
-gradient:  {'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
-5it [04:23, 50.50s/it]config.theme:  Travel
-gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Sentence Type': 1, 'Audience': 1, 'Background': 1}
-6it [05:25, 54.61s/it]config.theme:  Travel
-gradient:  {'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
-7it [06:31, 58.32s/it]config.theme:  Travel
-gradient:  {'Argument': 1, 'Style': 1, 'Background': 1}
-8it [07:18, 54.67s/it]config.theme:  Travel
-gradient:  {'Characteristic': 1, 'Argument': 1, 'Style': 1, 'Background': 1}
-9it [08:11, 53.96s/it]config.theme:  Travel
-gradient:  {'Argument': 1, 'Background': 1}
-10it [08:42, 46.85s/it]config.theme:  Travel
-gradient:  {'Argument': 1, 'Style': 1, 'Audience': 1}
-11it [09:33, 48.27s/it]config.theme:  Travel
-gradient:  {'Argument': 1, 'Style': 1, 'Background': 1}
-12it [10:51, 57.39s/it]config.theme:  Travel
-gradient:  {'Argument': 1, 'Style': 1, 'Background': 1}
-13it [11:39, 54.44s/it]config.theme:  Travel
-gradient:  {'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
-14it [12:19, 50.25s/it]config.theme:  Travel
-gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
-15it [13:04, 48.52s/it]15it [13:04, 52.30s/it]

@@ -1,61 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7389.90it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6450.03it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Email
-gradient:  {}
-1it [01:03, 63.09s/it]config.theme:  Email
-gradient:  {}
-2it [01:53, 55.64s/it]config.theme:  Email
-[Warning] LLM response content is empty. source=generator model=gpt-5
-gradient:  {}
-3it [04:11, 93.34s/it]config.theme:  Email
-gradient:  {}
-4it [05:11, 80.26s/it]config.theme:  Email
-gradient:  {}
-5it [06:05, 70.72s/it]config.theme:  Email
-gradient:  {}
-6it [07:11, 69.10s/it]config.theme:  Email
-gradient:  {}
-7it [07:51, 59.50s/it]config.theme:  Email
-gradient:  {}
-8it [08:50, 59.31s/it]config.theme:  Email
-gradient:  {}
-9it [09:38, 55.90s/it]config.theme:  Email
-gradient:  {}
-10it [10:09, 48.13s/it]config.theme:  Email
-gradient:  {'Argument': 1, 'Structure': 1, 'Style': 1}
-11it [10:33, 40.80s/it]config.theme:  Email
-gradient:  {}
-12it [10:54, 34.75s/it]config.theme:  Email
-gradient:  {'Structure': 1, 'Sentence Type': 1}
-13it [11:16, 30.87s/it]config.theme:  Email
-gradient:  {'Sentence Type': 1}
-14it [11:36, 27.48s/it]config.theme:  Email
-gradient:  {}
-15it [12:34, 36.66s/it]15it [12:34, 50.27s/it]

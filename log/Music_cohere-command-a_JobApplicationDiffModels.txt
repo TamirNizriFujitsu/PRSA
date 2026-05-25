@@ -1,2 +1,0 @@
-{"theme": "Music", "data_dir": "collect_data", "custom": true, "custom_scenario": "JobApplicationDiffModels", "batch_size": 1, "epochs": 1, "temperature": 0.7, "out": "log/Music_cohere-command-a_JobApplicationDiffModels.txt", "attention_threshold": 7.5, "evaluator": "semantic_similarity", "m": 3, "scorer": "semantic_similarity", "target_llm_model": "cohere-command-a", "generator_llm_model": "gpt-5", "gradient_llm_model": "gpt-4o-mini", "attention_llm_model": "gpt-4.1-mini"}
-"Music: {'Sentence Type': 9, 'Argument': 6, 'Style': 5, 'Characteristic': 2}"

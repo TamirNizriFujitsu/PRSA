@@ -1,2 +1,0 @@
-{"theme": "Health", "data_dir": "collect_data", "custom": true, "custom_scenario": "JobApplicationOldModels", "batch_size": 1, "epochs": 1, "temperature": 0.7, "out": "log/Health_cohere-command-a_JobApplicationOldModels.txt", "attention_threshold": 7.5, "evaluator": "semantic_similarity", "m": 3, "scorer": "semantic_similarity", "target_llm_model": "cohere-command-a", "generator_llm_model": "gpt-4o-mini", "gradient_llm_model": "gpt-4o-mini", "attention_llm_model": "gpt-4o-mini"}
-"Health: {'Background': 14, 'Argument': 13, 'Audience': 13, 'Style': 12}"

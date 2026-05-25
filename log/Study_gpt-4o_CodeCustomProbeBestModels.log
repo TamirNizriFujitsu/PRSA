@@ -1,60 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6388.46it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5150.39it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Study
-gradient:  {}
-1it [00:27, 27.26s/it]config.theme:  Study
-gradient:  {}
-2it [01:35, 51.65s/it]config.theme:  Study
-gradient:  {}
-3it [02:12, 44.56s/it]config.theme:  Study
-gradient:  {'Structure': 1, 'Sentence Type': 1}
-4it [02:40, 38.08s/it]config.theme:  Study
-gradient:  {}
-5it [03:03, 32.86s/it]config.theme:  Study
-gradient:  {'Tone': 1}
-6it [03:30, 30.58s/it]config.theme:  Study
-gradient:  {'Structure': 1, 'Style': 1, 'Sentence Type': 1}
-7it [04:07, 32.73s/it]config.theme:  Study
-gradient:  {}
-8it [05:47, 54.16s/it]config.theme:  Study
-gradient:  {'Characteristic': 1, 'Argument': 1, 'Structure': 1, 'Style': 1, 'Tone': 1, 'Purpose': 1, 'Audience': 1, 'Background': 1}
-9it [06:20, 47.51s/it]config.theme:  Study
-gradient:  {'Argument': 1, 'Structure': 1, 'Sentence Type': 1}
-10it [06:44, 40.51s/it]config.theme:  Study
-gradient:  {'Sentence Type': 1}
-11it [07:10, 35.81s/it]config.theme:  Study
-gradient:  {'Structure': 1, 'Style': 1, 'Sentence Type': 1}
-12it [07:44, 35.37s/it]config.theme:  Study
-gradient:  {}
-13it [08:47, 43.67s/it]config.theme:  Study
-gradient:  {}
-14it [09:23, 41.54s/it]config.theme:  Study
-gradient:  {'Structure': 1, 'Style': 1, 'Sentence Type': 1}
-15it [09:49, 36.70s/it]15it [09:49, 39.29s/it]

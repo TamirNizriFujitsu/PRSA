@@ -1,78 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6533.97it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5385.99it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Games
-gradient:  {}
-1it [01:39, 99.42s/it]config.theme:  Games
-gradient:  {}
-2it [04:13, 131.28s/it]config.theme:  Games
-gradient:  {}
-3it [05:23, 103.38s/it]config.theme:  Games
-gradient:  {}
-4it [06:34, 90.92s/it] config.theme:  Games
-gradient:  {}
-5it [09:03, 111.70s/it]config.theme:  Games
-gradient:  {}
-6it [10:58, 112.75s/it]config.theme:  Games
-gradient:  {}
-7it [12:01, 96.48s/it] config.theme:  Games
-gradient:  {}
-8it [13:25, 92.43s/it]config.theme:  Games
-gradient:  {}
-9it [14:44, 88.30s/it]config.theme:  Games
-HTTP code 504 from API (<html>
-<head><title>504 Gateway Time-out</title></head>
-<body>
-<center><h1>504 Gateway Time-out</h1></center>
-<hr><center>Microsoft-Azure-Application-Gateway/v2</center>
-</body>
-</html>
-)
-Retrying......
-HTTP code 504 from API (<html>
-<head><title>504 Gateway Time-out</title></head>
-<body>
-<center><h1>504 Gateway Time-out</h1></center>
-<hr><center>Microsoft-Azure-Application-Gateway/v2</center>
-</body>
-</html>
-)
-Retrying......
-gradient:  {}
-10it [20:43, 172.09s/it]config.theme:  Games
-gradient:  {}
-11it [21:48, 139.26s/it]config.theme:  Games
-gradient:  {}
-12it [24:16, 141.82s/it]config.theme:  Games
-gradient:  {}
-13it [27:12, 152.30s/it]config.theme:  Games
-gradient:  {}
-14it [28:22, 127.44s/it]config.theme:  Games
-gradient:  {}
-15it [29:31, 109.78s/it]15it [29:31, 118.12s/it]

@@ -1,60 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5682.44it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5752.27it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.predictions.bias                       | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Data
-gradient:  {}
-1it [00:36, 36.30s/it]config.theme:  Data
-gradient:  {}
-2it [01:43, 54.57s/it]config.theme:  Data
-gradient:  {}
-3it [02:10, 41.69s/it]config.theme:  Data
-gradient:  {}
-4it [03:14, 50.51s/it]config.theme:  Data
-gradient:  {}
-5it [03:57, 48.03s/it]config.theme:  Data
-gradient:  {}
-6it [04:23, 40.48s/it]config.theme:  Data
-gradient:  {}
-7it [05:15, 44.27s/it]config.theme:  Data
-gradient:  {}
-8it [06:11, 48.11s/it]config.theme:  Data
-gradient:  {}
-9it [07:09, 51.12s/it]config.theme:  Data
-gradient:  {}
-10it [07:55, 49.40s/it]config.theme:  Data
-gradient:  {}
-11it [09:03, 55.05s/it]config.theme:  Data
-gradient:  {}
-12it [10:18, 61.16s/it]config.theme:  Data
-gradient:  {}
-13it [10:37, 48.51s/it]config.theme:  Data
-gradient:  {}
-14it [11:28, 49.20s/it]config.theme:  Data
-gradient:  {}
-15it [12:26, 51.77s/it]15it [12:26, 49.74s/it]

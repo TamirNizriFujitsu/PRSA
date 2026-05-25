@@ -1,69 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7249.64it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5113.41it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Travel
-gradient:  {}
-1it [00:21, 21.51s/it]config.theme:  Travel
-gradient:  {}
-2it [01:33, 51.18s/it]config.theme:  Travel
-gradient:  {}
-3it [01:52, 36.45s/it]config.theme:  Travel
-gradient:  {}
-4it [02:22, 33.94s/it]config.theme:  Travel
-gradient:  {}
-5it [02:42, 28.86s/it]config.theme:  Travel
-gradient:  {}
-6it [03:09, 28.37s/it]config.theme:  Travel
-gradient:  {}
-7it [03:29, 25.62s/it]config.theme:  Travel
-HTTP code 504 from API (<html>
-<head><title>504 Gateway Time-out</title></head>
-<body>
-<center><h1>504 Gateway Time-out</h1></center>
-<hr><center>Microsoft-Azure-Application-Gateway/v2</center>
-</body>
-</html>
-)
-Retrying......
-gradient:  {}
-8it [06:56, 83.40s/it]config.theme:  Travel
-gradient:  {}
-9it [07:19, 64.57s/it]config.theme:  Travel
-gradient:  {}
-10it [08:21, 63.66s/it]config.theme:  Travel
-gradient:  {}
-11it [08:47, 52.19s/it]config.theme:  Travel
-gradient:  {}
-12it [09:15, 44.77s/it]config.theme:  Travel
-gradient:  {}
-13it [09:55, 43.38s/it]config.theme:  Travel
-gradient:  {}
-14it [10:46, 45.47s/it]config.theme:  Travel
-gradient:  {}
-15it [11:06, 37.90s/it]15it [11:06, 44.43s/it]

@@ -1,62 +1,0 @@
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5441.04it/s]
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5091.51it/s]
-[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
-Key                                        | Status     |  | 
--------------------------------------------+------------+--+-
-cls.seq_relationship.bias                  | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
-cls.seq_relationship.weight                | UNEXPECTED |  | 
-cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
-cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
-cls.predictions.bias                       | UNEXPECTED |  | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to /home/azureuser/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package averaged_perceptron_tagger to
-[nltk_data]     /home/azureuser/nltk_data...
-[nltk_data]   Package averaged_perceptron_tagger is already up-to-
-[nltk_data]       date!
-0it [00:00, ?it/s]config.theme:  Sports
-gradient:  {}
-1it [01:07, 67.88s/it]config.theme:  Sports
-gradient:  {}
-2it [02:12, 66.17s/it]config.theme:  Sports
-gradient:  {}
-3it [03:17, 65.38s/it]The server is overloaded or not ready yet.
-Retrying......
-config.theme:  Sports
-gradient:  {}
-4it [04:45, 74.53s/it]config.theme:  Sports
-gradient:  {'Argument': 1, 'Style': 1, 'Audience': 1}
-5it [06:00, 74.56s/it]config.theme:  Sports
-gradient:  {'Sentence Type': 1, 'Background': 1}
-6it [07:05, 71.22s/it]config.theme:  Sports
-gradient:  {'Sentence Type': 1}
-7it [08:05, 67.72s/it]config.theme:  Sports
-gradient:  {'Sentence Type': 1}
-8it [09:14, 68.07s/it]config.theme:  Sports
-gradient:  {'Sentence Type': 1}
-9it [10:15, 65.81s/it]config.theme:  Sports
-gradient:  {'Argument': 1, 'Style': 1, 'Sentence Type': 1, 'Background': 1}
-10it [11:35, 70.18s/it]config.theme:  Sports
-gradient:  {'Sentence Type': 1}
-11it [12:51, 71.99s/it]config.theme:  Sports
-gradient:  {'Sentence Type': 1, 'Background': 1}
-12it [14:01, 71.28s/it]config.theme:  Sports
-gradient:  {'Style': 1, 'Audience': 1}
-13it [15:04, 68.88s/it]config.theme:  Sports
-gradient:  {'Style': 1, 'Sentence Type': 1}
-14it [16:39, 76.86s/it]config.theme:  Sports
-gradient:  {'Style': 1, 'Audience': 1}
-15it [17:54, 76.31s/it]15it [17:54, 71.65s/it]
