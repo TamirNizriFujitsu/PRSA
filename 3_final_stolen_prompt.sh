@@ -97,7 +97,7 @@ print(f"ASR: {asr}")
 with open(documentation_path, "a", encoding="utf-8") as f:
     f.write(f"categories_average = {categories_average}\n")
     f.write(f"best_category = {best_category_with_ranking}\n")
-    f.write(f"asr = {asr}\n")
+    f.write(f"asr = {asr}\n\n")
 PY
 
 EXTRACT_BEST_STOLEN_PROMPT_ELAPSED=$(( $(date +%s) - EXTRACT_BEST_STOLEN_PROMPT_START))
