@@ -37,7 +37,7 @@ def get_args():
     parser.add_argument('--target_llm_model', default="gpt-4o", type=str, help='LLM model/deployment used to generate target and stolen outputs.')
     parser.add_argument('--generator_llm_model', default="gpt-5", type=str, help='LLM model/deployment used for stolen-prompt generation.')
     parser.add_argument('--pruning_llm_model', default="gpt-4.1-mini", type=str, help='LLM model/deployment used for prompt pre-pruning.')
-    parser.add_argument('--evaluation_llm_model', default="claude-sonnnet-4-5", type=str, help='LLM model/deployment used for LLM-based evaluation.')
+    parser.add_argument('--evaluation_llm_model', default="claude-sonnet-4-5", type=str, help='LLM model/deployment used for LLM-based evaluation.')
     parser.add_argument('--editor_llm_model', default="gpt-4.1-mini", type=str, help='LLM model/deployment used for LLM-based evaluation.')
 
     args = parser.parse_args()

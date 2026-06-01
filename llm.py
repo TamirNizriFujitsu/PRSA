@@ -8,6 +8,7 @@ import utils
 import openai
 import sys
 import os
+from pathlib import Path
 from urllib.parse import parse_qs, parse_qsl, urlencode, urlparse, urlunparse
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
@@ -17,6 +18,14 @@ import fcntl  # LLM-calls counting
 _MODEL_CATALOG_CACHE = None
 # LLM-calls counting
 _LLM_CALL_LOG = "llm_calls.jsonl"
+_MODEL_NAME_ALIASES = {
+    "cohere-command-a": "CommandA",
+}
+_BEDROCK_MODEL_DEFAULTS = {
+    "qwen3": "qwen.qwen3-32b",
+    "gpt-oss": "openai.gpt-oss-20b",
+}
+_DOTENV_CACHE = None
 
 
 def _log_llm_call(source: str, model: str):
@@ -49,6 +58,77 @@ def _warn_if_empty_completion_response(response, model, call_source):
         return True
     
     return False
+
+
+def _normalize_model_name(model_name):
+    return _MODEL_NAME_ALIASES.get(model_name, model_name)
+
+
+def _model_env_key(model_name):
+    return model_name.upper().replace("-", "_").replace(".", "_")
+
+
+def _parse_dotenv_line(line):
+    stripped = line.strip()
+    if not stripped or stripped.startswith("#"):
+        return None, None
+    if stripped.startswith("export "):
+        stripped = stripped[7:].lstrip()
+    if "=" not in stripped:
+        return None, None
+    key, value = stripped.split("=", 1)
+    key = key.strip()
+    value = value.strip()
+    if not key:
+        return None, None
+    if value and value[0] == value[-1] and value[0] in {'"', "'"}:
+        value = value[1:-1]
+    return key, value
+
+
+def _load_dotenv_values():
+    global _DOTENV_CACHE
+    if _DOTENV_CACHE is not None:
+        return _DOTENV_CACHE
+
+    dotenv_values = {}
+    search_roots = []
+    current = Path(os.getcwd()).resolve()
+    search_roots.extend([current, *current.parents])
+    module_dir = Path(__file__).resolve().parent
+    search_roots.extend([module_dir, *module_dir.parents])
+
+    seen = set()
+    for root in search_roots:
+        if root in seen:
+            continue
+        seen.add(root)
+        dotenv_path = root / '.env'
+        if not dotenv_path.exists():
+            continue
+        for line in dotenv_path.read_text().splitlines():
+            key, value = _parse_dotenv_line(line)
+            if key and key not in dotenv_values:
+                dotenv_values[key] = value
+
+    _DOTENV_CACHE = dotenv_values
+    return _DOTENV_CACHE
+
+
+def _getenv(name, default=None):
+    value = os.getenv(name)
+    if value is not None:
+        return value
+    return _load_dotenv_values().get(name, default)
+
+
+def _get_model_api_key(model_name, *fallback_env_names):
+    env_names = [f"{_model_env_key(model_name)}_API_KEY", *fallback_env_names]
+    for env_name in env_names:
+        value = _getenv(env_name)
+        if value:
+            return value
+    return None
 
 
 class Predictor(ABC):
@@ -119,11 +199,11 @@ def _parse_azure_api_base(api_base):
 
 
 def _resolve_azure_deployment_from_env(model_name):
-    model_key = model_name.upper().replace("-", "_").replace(".", "_")
+    model_key = _model_env_key(model_name)
     return (
-        os.getenv(f"AZURE_OPENAI_DEPLOYMENT_{model_key}")
-        or os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT")
-        or os.getenv("AZURE_OPENAI_DEPLOYMENT")
+        _getenv(f"AZURE_OPENAI_DEPLOYMENT_{model_key}")
+        or _getenv("AZURE_OPENAI_CHAT_DEPLOYMENT")
+        or _getenv("AZURE_OPENAI_DEPLOYMENT")
         or model_name
     )
 
@@ -163,10 +243,37 @@ def _build_azure_ai_endpoint_url(api_base, endpoint_path=None, api_version=None)
     return urlunparse((parsed.scheme, parsed.netloc, path, "", query, ""))
 
 
+def _resolve_bedrock_api_base(entry):
+    api_base = entry.get("api_base") or _getenv("BEDROCK_OPENAI_API_BASE")
+    if api_base:
+        return api_base
+
+    region = (
+        entry.get("region")
+        or _getenv(entry.get("region_env", "BEDROCK_REGION"))
+        or _getenv("AWS_REGION")
+        or _getenv("AWS_DEFAULT_REGION")
+    )
+    if not region:
+        return None
+    return f"https://bedrock-mantle.{region}.api.aws/v1"
+
+
+def _resolve_bedrock_model_id(entry, model_name):
+    model_key = _model_env_key(model_name)
+    return (
+        entry.get("model")
+        or entry.get("model_id")
+        or _getenv(f"BEDROCK_MODEL_ID_{model_key}")
+        or _BEDROCK_MODEL_DEFAULTS.get(model_name)
+    )
+
+
 def _resolve_model_runtime(model_name):
     if not isinstance(model_name, str) or not model_name.strip():
         raise RuntimeError("Model name must be a non-empty string.")
-    model_name = model_name.strip()
+    requested_model_name = model_name.strip()
+    model_name = _normalize_model_name(requested_model_name)
 
     catalog = _load_model_catalog()
     entry = catalog.get(model_name)
@@ -175,17 +282,17 @@ def _resolve_model_runtime(model_name):
         if not allow_fallback:
             available = ", ".join(sorted(catalog.keys())) if catalog else "(empty catalog)"
             raise RuntimeError(
-                f"Model '{model_name}' not found in catalog.json. Add it to catalog.json. Available models: {available}"
+                f"Model '{requested_model_name}' not found in catalog.json. Add it to catalog.json. Available models: {available}"
             )
         entry = {}
 
     provider = entry.get("provider")
 
     if provider == "azure":
-        api_key = entry.get("api_key") or os.getenv(entry.get("api_key_env", "AZURE_OPENAI_API_KEY"))
-        api_base = entry.get("api_base") or os.getenv("AZURE_OPENAI_API_BASE") or os.getenv("AZURE_OPENAI_ENDPOINT")
+        api_key = entry.get("api_key") or _get_model_api_key(model_name, entry.get("api_key_env", "AZURE_OPENAI_API_KEY"))
+        api_base = entry.get("api_base") or _getenv("AZURE_OPENAI_API_BASE") or _getenv("AZURE_OPENAI_ENDPOINT")
         deployment = entry.get("deployment")
-        api_version = entry.get("api_version") or os.getenv("AZURE_OPENAI_API_VERSION")
+        api_version = entry.get("api_version") or _getenv("AZURE_OPENAI_API_VERSION")
 
         if api_base:
             api_base, deployment_from_url, version_from_url = _parse_azure_api_base(api_base)
@@ -213,7 +320,7 @@ def _resolve_model_runtime(model_name):
         }
 
     if provider == "openai":
-        api_key = entry.get("api_key") or os.getenv(entry.get("api_key_env", "OPENAI_API_KEY"))
+        api_key = entry.get("api_key") or _get_model_api_key(model_name, entry.get("api_key_env", "OPENAI_API_KEY"))
         if not api_key:
             raise RuntimeError(
                 f"No API key for OpenAI model '{model_name}'. Set {entry.get('api_key_env', 'OPENAI_API_KEY')} or provide api_key in catalog.json."
@@ -235,7 +342,7 @@ def _resolve_model_runtime(model_name):
 
     if provider == "azure_ai":
         api_base = entry.get("api_base")
-        api_version = entry.get("api_version") or os.getenv("AZURE_AI_API_VERSION")
+        api_version = entry.get("api_version") or _getenv("AZURE_AI_API_VERSION")
         model_alias = entry.get("model") or entry.get("deployment") or model_name
         endpoint_path = entry.get("endpoint_path")
         request_format = entry.get("request_format")
@@ -253,12 +360,10 @@ def _resolve_model_runtime(model_name):
 
         api_key = entry.get("api_key")
         api_key_env = entry.get("api_key_env")
-        if not api_key and api_key_env:
-            api_key = os.getenv(api_key_env)
         if not api_key:
-            api_key = os.getenv("AZURE_AI_API_KEY")
+            api_key = _get_model_api_key(model_name, api_key_env or "AZURE_AI_API_KEY")
         if not api_key and request_format == "anthropic_messages":
-            api_key = os.getenv("ANTHROPIC_FOUNDRY_API_KEY") or os.getenv("AZURE_CLAUDE_API_KEY")
+            api_key = _get_model_api_key(model_name, "ANTHROPIC_FOUNDRY_API_KEY", "AZURE_CLAUDE_API_KEY")
 
         if not api_key:
             raise RuntimeError(
@@ -286,21 +391,50 @@ def _resolve_model_runtime(model_name):
             "request_headers": request_headers,
         }
 
+    if provider == "bedrock":
+        api_key = (
+            entry.get("api_key")
+            or _get_model_api_key(model_name, entry.get("api_key_env", "BEDROCK_API_KEY"), "BEDROCK_OPENAI_API_KEY", "AWS_BEARER_TOKEN_BEDROCK")
+        )
+        if not api_key:
+            raise RuntimeError(
+                f"No API key for Bedrock model '{model_name}'. Set {entry.get('api_key_env', 'BEDROCK_API_KEY')}, BEDROCK_OPENAI_API_KEY, or AWS_BEARER_TOKEN_BEDROCK."
+            )
+
+        api_base = _resolve_bedrock_api_base(entry)
+        if not api_base:
+            raise RuntimeError(
+                f"No Bedrock api_base for model '{model_name}'. Set api_base in catalog.json, BEDROCK_OPENAI_API_BASE, or BEDROCK_REGION/AWS_REGION/AWS_DEFAULT_REGION."
+            )
+
+        resolved_model = _resolve_bedrock_model_id(entry, model_name)
+        if not resolved_model:
+            raise RuntimeError(
+                f"No Bedrock model ID for '{model_name}'. Set model/model_id in catalog.json or BEDROCK_MODEL_ID_{_model_env_key(model_name)}."
+            )
+
+        return {
+            "provider": "bedrock",
+            "api_key": api_key,
+            "api_base": api_base,
+            "model": resolved_model,
+        }
+
     # Optional legacy fallback for ad-hoc model usage without catalog entries.
     # Disabled by default; enable only with ALLOW_LEGACY_MODEL_FALLBACK=1.
-    azure_key = os.getenv("AZURE_OPENAI_API_KEY")
-    azure_base = os.getenv("AZURE_OPENAI_API_BASE") or os.getenv("AZURE_OPENAI_ENDPOINT")
+    azure_key = _getenv("AZURE_OPENAI_API_KEY")
+    azure_base = _getenv("AZURE_OPENAI_API_BASE") or _getenv("AZURE_OPENAI_ENDPOINT")
     if azure_key and azure_base:
         azure_base, deployment_from_url, version_from_url = _parse_azure_api_base(azure_base)
         return {
             "provider": "azure",
             "api_key": azure_key,
             "api_base": azure_base,
-            "api_version": os.getenv("AZURE_OPENAI_API_VERSION") or version_from_url or "2024-02-15-preview",
+            "api_version": _getenv("AZURE_OPENAI_API_VERSION") or version_from_url or "2024-02-15-preview",
             "deployment": _resolve_azure_deployment_from_env(model_name) or deployment_from_url,
         }
 
-    openai_key = os.getenv("OPENAI_API_KEY")
+    openai_key = _getenv("OPENAI_API_KEY")
     if openai_key:
         return {
             "provider": "openai",
@@ -357,6 +491,7 @@ def _create_chat_completion(messages, model, temperature, n, top_p, max_tokens, 
 
         if runtime["provider"] == "openai":
             openai.api_key = runtime["api_key"]
+            openai.api_type = "open_ai"
             response = openai.ChatCompletion.create(
                 model=runtime["model"],
                 n=n,
@@ -370,8 +505,8 @@ def _create_chat_completion(messages, model, temperature, n, top_p, max_tokens, 
                 continue
             return response
 
-        # vLLM change
-        if runtime["provider"] == "local_openai":
+        # OpenAI-compatible endpoints, including local vLLM and Bedrock mantle.
+        if runtime["provider"] in {"local_openai", "bedrock"}:
             openai.api_type = "open_ai"
             openai.api_key = runtime["api_key"]
             openai.api_base = runtime["api_base"]

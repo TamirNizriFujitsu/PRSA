@@ -46,7 +46,7 @@ categories=(
 
 models=(
     gpt-4o
-    cohere-command-a
+    CommandA
 )
 
 scenario_suffix="ScenarioBestModels_Improve_Method2"

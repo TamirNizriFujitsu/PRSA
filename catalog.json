@@ -1,36 +1,54 @@
 {
-  "cohere-command-a": {
-    "provider": "azure",
-    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com"
+  "CommandA": {
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com",
+    "provider": "azure"
   },
   "gpt-4o": {
-    "provider": "azure",
-    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com"
-  },
-  "gpt-5": {
-    "provider": "azure",
-    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com"
-  },
-  "gpt-4.1-mini": {
-    "provider": "azure",
-    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com"
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com",
+    "provider": "azure"
   },
   "gpt-4o-mini": {
-    "provider": "azure",
-    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com"
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com",
+    "provider": "azure"
   },
-  "Qwen-1.5B": {
-    "provider": "local_openai",
-    "api_base": "http://localhost:11434/v1",
-    "api_key": "local",
-    "model": "qwen2.5:1.5b"
+  "gpt-4.1-mini": {
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com",
+    "provider": "azure"
+  },
+  "gpt-5": {
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com",
+    "provider": "azure"
+  },
+  "gpt-5-mini": {
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com",
+    "provider": "azure"
+  },
+  "gpt-5-nano": {
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com",
+    "provider": "azure"
+  },
+  "Mistral-Small3.1": {
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com",
+    "provider": "azure"
+  },
+  "DeepSeek-V3.2": {
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com",
+    "provider": "azure"
+  },
+  "claude-haiku-4-5": {
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com/anthropic",
+    "provider": "azure_ai"
   },
   "claude-sonnet-4-5": {
-  "provider": "azure_ai",
-  "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com/anthropic",
-  "deployment": "claude-sonnet-4-5",
-  "api_key_env": "AZURE_CLAUDE_API_KEY",
-  "auth_header": "Authorization",
-  "auth_prefix": "Bearer "
-}
+    "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com/anthropic",
+    "provider": "azure_ai"
+  },
+  "qwen3": {
+    "api_base": null,
+    "provider": "bedrock"
+  },
+  "gpt-oss": {
+    "api_base": null,
+    "provider": "bedrock"
+  }
 }
