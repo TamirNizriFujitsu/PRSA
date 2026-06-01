@@ -30,11 +30,18 @@ cd "$repo_dir" || exit 1
 # from Scenarios Per Category.xlsx, so it is not included here.
 categories=(
     Code
+    Email
+    Ideas
     Health
-    Food
-    SEO
-    Travel
-    Writing
+    Music 
+    Data 
+    Fashion 
+    Games
+    Language 
+    Sports 
+    Study 
+    Translate
+    NoCategory
 )
 
 models=(

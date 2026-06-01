@@ -110,6 +110,9 @@ class PAA(PromptOptimizer):
             temperature=0.0,
             call_source="gradient",
         )
+        if not res or not str(res[0]).strip():
+            return {}, 0
+        
         scores = self.parse_gradient_scores(res[0], elements)
         scores_sum = sum(scores.values())
         gradient = {
