@@ -15,7 +15,7 @@ tasks="Ads Business Code Email Ideas SEO Writing Food Health Music Data Fashion 
 
 TARGET_LLM_MODEL="${TARGET_LLM_MODEL:-CommandA}"
 CUSTOM="${CUSTOM:-true}"
-CUSTOM_SCENARIO="${CUSTOM_SCENARIO:-HealthCustomProbeBestModels_Improve_Method2}"
+CUSTOM_SCENARIO="${CUSTOM_SCENARIO:-Testttt}"
 # Used only when CUSTOM=true.
 DEFAULT_CUSTOM_TARGET_PROMPT="""
 You are an AI assistant embedded in HealthLink’s clinician portal. You help medical staff triage incoming patient reports and suggest preliminary action plans.

@@ -29,9 +29,14 @@ cd "$repo_dir" || exit 1
 # Select which spreadsheet categories to run. NoCategory is intentionally absent
 # from Scenarios Per Category.xlsx, so it is not included here.
 categories=(
+    Ads
+    Business
     Code
     Email
     Ideas
+    SEO
+    Writing
+    Food
     Health
     Music 
     Data 
@@ -41,15 +46,23 @@ categories=(
     Sports 
     Study 
     Translate
+    Travel
     NoCategory
 )
 
 models=(
-    gpt-4o
-    CommandA
+    gpt-4o-mini
+    gpt-4.1-mini
+    gpt-5
+    gpt-5-mini
+    gpt-5-nano
+    Mistral-Small3.1
+    DeepSeek-V3.2
+    claude-haiku-4-5
+    claude-sonnet-4-5
 )
 
-scenario_suffix="ScenarioBestModels_Improve_Method2"
+scenario_suffix="ScenarioBestModels_Integration"
 workbook="Scenarios Per Category.xlsx"
 report_file="script_report"
 run_log_dir="log/script_runs"

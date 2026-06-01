@@ -21,9 +21,17 @@ _LLM_CALL_LOG = "llm_calls.jsonl"
 _MODEL_NAME_ALIASES = {
     "cohere-command-a": "CommandA",
 }
+# Azure deployment/model IDs, kept in sync with the scanner's _resolve_litellm_model map
+# (llm_vul_scanner/.../generators/litellm.py).
+_AZURE_DEPLOYMENT_DEFAULTS = {
+    "CommandA": "cohere-command-a",
+    "Mistral-Small3.1": "mistral-small-2503",
+}
+# Bedrock model IDs, kept in sync with the scanner's _resolve_litellm_model map
+# (llm_vul_scanner/.../generators/litellm.py).
 _BEDROCK_MODEL_DEFAULTS = {
-    "qwen3": "qwen.qwen3-32b",
-    "gpt-oss": "openai.gpt-oss-20b",
+    "qwen3": "qwen.qwen3-32b-v1:0",
+    "gpt-oss": "openai.gpt-oss-20b-1:0",
 }
 _DOTENV_CACHE = None
 
@@ -204,6 +212,7 @@ def _resolve_azure_deployment_from_env(model_name):
         _getenv(f"AZURE_OPENAI_DEPLOYMENT_{model_key}")
         or _getenv("AZURE_OPENAI_CHAT_DEPLOYMENT")
         or _getenv("AZURE_OPENAI_DEPLOYMENT")
+        or _AZURE_DEPLOYMENT_DEFAULTS.get(model_name)
         or model_name
     )
 
@@ -299,7 +308,7 @@ def _resolve_model_runtime(model_name):
             deployment = deployment or deployment_from_url
             api_version = api_version or version_from_url
 
-        deployment = deployment or model_name
+        deployment = deployment or _resolve_azure_deployment_from_env(model_name)
         api_version = api_version or "2024-02-15-preview"
 
         if not api_key:

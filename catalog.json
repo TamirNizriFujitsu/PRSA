@@ -1,7 +1,8 @@
 {
   "CommandA": {
     "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com",
-    "provider": "azure"
+    "provider": "azure",
+    "deployment": "cohere-command-a"
   },
   "gpt-4o": {
     "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com",
@@ -37,11 +38,17 @@
   },
   "claude-haiku-4-5": {
     "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com/anthropic",
-    "provider": "azure_ai"
+    "provider": "azure_ai",
+    "deployment": "claude-haiku-4-5",
+    "auth_header": "Authorization",
+    "auth_prefix": "Bearer "
   },
   "claude-sonnet-4-5": {
     "api_base": "https://poc-sdc-llmvscan-aif01.freplatform.com/anthropic",
-    "provider": "azure_ai"
+    "provider": "azure_ai",
+    "deployment": "claude-sonnet-4-5",
+    "auth_header": "Authorization",
+    "auth_prefix": "Bearer "
   },
   "qwen3": {
     "api_base": null,
