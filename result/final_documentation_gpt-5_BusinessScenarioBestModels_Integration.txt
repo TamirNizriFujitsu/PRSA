@@ -1,0 +1,46 @@
+phase 1 total time: 246m 50s
+=== LLM Call Summary — After Phase 1 ===
+Model: gpt-5
+
+target_llm_calls     =    581    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =    285    # generating stolen prompt candidates
+gradient_llm_calls   =    285    # scoring element similarity to build attention dict
+pruning_llm_calls    =      0    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =      0    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =    260    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =   1411
+
+Phase 2 - creating_stolen_prompts_and_pruning = 83m 53s
+=== LLM Call Summary — After Phase 2 ===
+Model: gpt-5
+
+target_llm_calls     =    103    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =     19    # generating stolen prompt candidates
+gradient_llm_calls   =      0    # scoring element similarity to build attention dict
+pruning_llm_calls    =     19    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =      0    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =     18    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =    178
+
+categories_average = {'NoCategory': 0.759, 'Sports': 0.725, 'Business': 0.678, 'Language': 0.578, 'Study': 0.483, 'Email': 0.476, 'Code': 0.288, 'Ideas': 0.249, 'Food': 0.206, 'Data': 0.186, 'Music': 0.133, 'SEO': 0.128, 'Games': 0.109, 'Writing': 0.105, 'Travel': 0.096, 'Translate': 0.086, 'Health': 0.005, 'Ads': 0.003, 'Fashion': 0.0}
+best_category = ('NoCategory', 0.759)
+asr = 0.818
+
+phase 3 - extracting_best_stolen_prompt = 130m 15s
+=== LLM Call Summary — After phase 3 ===
+Model: gpt-5
+
+target_llm_calls     =    361    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =      0    # generating stolen prompt candidates
+gradient_llm_calls   =      0    # scoring element similarity to build attention dict
+pruning_llm_calls    =      0    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =     20    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =      0    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =    381
+

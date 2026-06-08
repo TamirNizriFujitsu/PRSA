@@ -1,0 +1,58 @@
+{
+  "[language]=Java\n[input format]=XML\n[output format]=JSON": [
+    "It seems like you're looking for guidance on handling input in XML format and outputting it in JSON format using Java. \n\nHere's a concise example of how you can achieve this:\n\n1. **Parsing XML**: Use a library like `javax.xml.parsers.DocumentBuilder` to parse XML.\n2. **Converting to JSON**: Use a library like `org.json` or `com.fasterxml.jackson.databind.ObjectMapper` to convert the parsed data to JSON.\n\n### Example Code Snippet\n\n```java\nimport org.w3c.dom.*;\nimport javax.xml.parsers.*;\nimport org.json.JSONObject;\nimport java.io.File;\nimport java.util.Iterator;\n\npublic class XmlToJsonConverter {\n    public static void main(String[] args) {\n        try {\n            // Parse XML file\n            File inputFile = new File(\"input.xml\");\n            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();\n            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();\n            Document doc = dBuilder.parse(inputFile);\n            doc.getDocumentElement().normalize();\n\n            // Convert to JSON\n            JSONObject json = new JSONObject();\n            convertToJSON(doc.getDocumentElement(), json);\n\n            // Output JSON\n            System.out.println(json.toString(4)); // Pretty print with 4-space indent\n        } catch (Exception e) {\n            e.printStackTrace();\n        }\n    }\n\n    private static void convertToJSON(Node node, JSONObject json) {\n        if (node.getNodeType() == Node.ELEMENT_NODE) {\n            Element element = (Element) node;\n            String nodeName = element.getNodeName();\n\n            // Create JSON object for the current element\n            JSONObject childJson = new JSONObject();\n\n            // Process child nodes\n            NodeList children = element.getChildNodes();\n            for (int i = 0; i < children.getLength(); i++) {\n                convertToJSON(children.item(i), childJson);\n            }\n\n            // Add JSON object to parent\n            json.put(nodeName, childJson);\n        } else if (node.getNodeType() == Node.TEXT_NODE) {\n            json.put(\"value\", node.getNodeValue().trim());\n        }\n    }\n}\n```\n\n### Key Points:\n- Ensure you handle exceptions properly in a production environment.\n- The above example assumes a simple XML structure; you may need to adapt it for more complex XML.\n- Use `JSONObject` from `org.json` for JSON handling. Make sure to add the necessary library to your project.\n\n### Next Steps:\n- If you're incorporating this into a larger system, ensure to validate the JSON output against any required schema.\n- Consider unit testing with a variety of XML inputs to ensure robust handling of different cases.\n\nFeel free to ask if you need more specific implementations or help with other coding standards!",
+    84.0
+  ],
+  "[language]=Python\n[file format]=CSV": [
+    "It seems like you're referring to a project that involves Python and CSV file handling. However, I need to know more about the specific pull request or code changes you'd like me to review. Please provide the relevant code or details about the changes made in the pull request so I can assist you effectively.",
+    83.0
+  ],
+  "[language]=JavaScript\n[system or process]=traffic light system": [
+    "Please provide the specific pull request or code changes related to the traffic light system that you'd like me to review. I will analyze the code for style, security vulnerabilities, performance hotspots, and ensure it adheres to the GlobalTech coding standards.",
+    79.0
+  ],
+  "[language]=Python\n[file type]=CSV": [
+    "It seems you've provided a language (Python) and a file type (CSV), but I need more context or a specific code snippet to analyze. Please provide the relevant pull request diff or code that you'd like me to review for improvements, code style, security vulnerabilities, or other aspects!",
+    78.0
+  ],
+  "[language]=JavaScript\n[table name]=Employees": [
+    "It appears that you have provided a language and table name, but I need more specific information about the code you would like me to review. Please provide a pull request diff or specific code snippets related to the `Employees` table in JavaScript, and I will analyze it accordingly for code style, security vulnerabilities, performance improvements, or other relevant aspects.",
+    76.0
+  ],
+  "[language]=C++": [
+    "Please provide the pull request details or code diff you'd like me to review, and I will analyze it according to the GlobalTech coding standards.",
+    99.0
+  ],
+  "[language]=JavaScript\n[API or database name]=Spotify API": [
+    "I can assist you with code review related to the Spotify API in your JavaScript code. Please provide the pull request diff or the specific code you would like me to analyze for improvements, style, security vulnerabilities, or test coverage.",
+    53.0
+  ],
+  "[language]=C++\n[data structure]=arrays": [
+    "Please provide the specific pull request or code diff you'd like me to review related to arrays in C++. I'll analyze it for code style, security vulnerabilities, performance hotspots, and adherence to the GT\u2011C++17 Standard.",
+    82.0
+  ],
+  "[language]=C++\n[data type]=integer\n[another data type]=string": [
+    "It seems like you're providing data type information, but I need a specific code snippet or a pull request diff to analyze. Please share the relevant code or details of the feature branch you'd like me to review, and I can assist you with suggestions and improvements.",
+    93.0
+  ],
+  "[language]=Java\n[type of database]=SQL database\n[specific criteria]=customer ID": [
+    "It seems like you are looking for assistance related to a Java implementation that interacts with an SQL database, particularly concerning customer IDs. Please provide more context or a specific code snippet for me to analyze and provide feedback on code style, security vulnerabilities, or any other improvements according to the GT\u2011C++17 Standard.",
+    74.0
+  ],
+  "[language]=C++\n[input format]=CSV file\n[output format]=JSON file": [
+    "It seems you're looking to implement a feature in C++ that converts CSV files to JSON format. Here are some suggestions to ensure your implementation adheres to the GT\u2011C++17 Standard and maintains code quality:\n\n1. **Code Structure**:\n   - Make sure to encapsulate your CSV reading and JSON writing functionalities within separate classes or functions for better maintainability (Section 2.1 - Modular Design).\n   - Utilize `std::vector` for dynamic array management when dealing with CSV rows and columns (Section 3.2 - Containers).\n\n2. **Error Handling**:\n   - Implement robust error handling for file operations (opening, reading, writing) using exceptions (Section 4.5 - Exception Safety).\n   - Validate the CSV format before processing to avoid runtime errors (e.g., check for the correct number of columns).\n\n3. **Performance Considerations**:\n   - Use `std::unordered_map` if key-value pairs are involved in JSON to achieve average constant time complexity for lookups (Section 5.3 - Algorithmic Complexity).\n   - Avoid unnecessary copies by using move semantics where applicable (Section 6.2 - Move Semantics).\n\n4. **Security Best Practices**:\n   - Ensure that no sensitive data is hardcoded (e.g., paths or credentials). Store such data in a secure vault if necessary (Section 7.1 - Security Practices).\n   - If you are handling user-generated CSV files, validate input to prevent injection attacks.\n\n5. **Unit Test Coverage**:\n   - Ensure that your implementation is covered by unit tests, focusing on edge cases like empty files, malformed CSV lines, and large datasets. Verify that your coverage meets the 95% minimum threshold (Section 8.4 - Testing Guidelines).\n\nIf you have the code ready for review, please share the pull request link or the relevant code snippets for a more detailed analysis.",
+    79.0
+  ],
+  "[language]=Python\n[specific task]=sending daily summary emails": [
+    "Please provide the specific pull request or code diff you would like me to review regarding the implementation of sending daily summary emails. I will analyze it for code style, security vulnerabilities, performance hotspots, and test coverage according to the GT\u2011C++17 Standard.",
+    72.0
+  ],
+  "[language]=PHP\n[table name]=employees": [
+    "It seems you're referencing a PHP context, but I can only assist with code related to our GlobalTech C++ projects. If you have a pull request or code diff in C++ that needs reviewing, please share that, and I'll be happy to assist!",
+    92.0
+  ],
+  "[language]=Java\ndatabase=MySQL\ntable=employees": [
+    "It looks like you're working with a MySQL database and a table named \"employees.\" If you have specific code or a pull request you'd like me to review for this feature, please provide the code or diff, and I can assist you with suggestions on code style, security issues, or performance improvements.",
+    78.0
+  ]
+}

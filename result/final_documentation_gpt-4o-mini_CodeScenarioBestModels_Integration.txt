@@ -1,0 +1,28 @@
+phase 1 total time: 41m 11s
+=== LLM Call Summary — After Phase 1 ===
+Model: gpt-4o-mini
+
+target_llm_calls     =    568    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =    284    # generating stolen prompt candidates
+gradient_llm_calls   =    284    # scoring element similarity to build attention dict
+pruning_llm_calls    =      0    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =      0    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =    255    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =   1391
+
+Phase 2 - creating_stolen_prompts_and_pruning = 9m 24s
+=== LLM Call Summary — After Phase 2 ===
+Model: gpt-4o-mini
+
+target_llm_calls     =     92    # generating ground-truth and stolen outputs from target LLM
+generator_llm_calls  =     18    # generating stolen prompt candidates
+gradient_llm_calls   =      0    # scoring element similarity to build attention dict
+pruning_llm_calls    =     18    # pre-pruning stolen prompt to remove input-specific leakage
+evaluation_llm_calls =      0    # LLM-based multi-dimensional output evaluation
+attention_llm_calls =     18    # LLM-based multi-dimensional output to craete attention
+edit_llm_calls =      0    # LLM-based multi-dimensional output to edit stolen prompt
+
+total_llm_calls      =    164
+

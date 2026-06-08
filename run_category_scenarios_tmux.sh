@@ -29,9 +29,6 @@ cd "$repo_dir" || exit 1
 # Select which spreadsheet categories to run. NoCategory is intentionally absent
 # from Scenarios Per Category.xlsx, so it is not included here.
 categories=(
-    Ads
-    Business
-    Code
     Email
     Ideas
     SEO
