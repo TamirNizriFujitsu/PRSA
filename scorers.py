@@ -6,8 +6,6 @@ from scipy.spatial.distance import jensenshannon
 from collections import Counter
 import re
 import os
-from transformers import BertTokenizer, BertModel
-import torch
 import fkassim.FastKassim as fkassim
 import sentence_bert
 import llm
@@ -16,9 +14,6 @@ import llm
 java_path = "./tool/jdk-21.0.1"
 #os.environ['JAVAHOME'] = java_path
 os.environ['JAVA_HOME'] = java_path
-
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-model = BertModel.from_pretrained('bert-base-uncased')
 
 
 class MetricsScorer:
@@ -132,35 +127,6 @@ class MetricsScorer:
 
         return avg_score
 
-
-    def sliding_window_tokenize(self, text, tokenizer, max_length, stride):
-        """
-        Sliding window segmentation and Tokenization of text
-        """
-        tokens = tokenizer.tokenize(text)
-        windows = []
-
-        for i in range(0, len(tokens), stride):
-            window = tokens[i:i + max_length]
-            windows.append(window)
-
-        return [tokenizer.convert_tokens_to_ids(window) for window in windows]
-
-    def process_windows(self, windows, model):
-        """
-        Process each window and return the merged result
-        """
-        all_embeddings = []
-
-        for window in windows:
-            inputs = torch.tensor(window).unsqueeze(0)
-            outputs = model(inputs)
-            sentence_embedding = outputs.pooler_output
-            all_embeddings.append(sentence_embedding)
-
-        return torch.mean(torch.stack(all_embeddings), dim=0)
-    
-    
 
     def semantic_score_sbert(self, text1, text2):
         score = sentence_bert.calculate_similarity_sbert(text1, text2)

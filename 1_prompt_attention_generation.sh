@@ -91,6 +91,15 @@ else:
 PY
 fi
 
+# Pre-warm the SentenceTransformer cache once, before launching parallel workers.
+# Without this, on a cold cache all $parallel_jobs processes would try to download
+# paraphrase-MiniLM-L6-v2 at the same time, racing on the shared HF cache. After this
+# runs once, every worker loads the model from local disk cache instead of the network.
+venv/bin/python3 - <<'PY'
+import sentence_bert  # importing loads (and downloads on first run) the model
+print("sbert model cache warmed")
+PY
+
 for task in $tasks
 do
     output_dir="log"
