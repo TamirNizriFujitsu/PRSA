@@ -2,7 +2,17 @@ from gensim.models import KeyedVectors
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-w2v_model = KeyedVectors.load_word2vec_format('tool/GoogleNews-vectors-negative300.bin.gz', binary=True)
+# The GoogleNews vectors are ~3.9GB in RAM. Loading them at import time made every
+# process that imports this module (transitively via utils) pay 3.9GB, even phase-1
+# workers that never call batch_find_sim_words. Load lazily on first use and cache.
+_w2v_model = None
+
+
+def get_w2v_model():
+    global _w2v_model
+    if _w2v_model is None:
+        _w2v_model = KeyedVectors.load_word2vec_format('tool/GoogleNews-vectors-negative300.bin.gz', binary=True)
+    return _w2v_model
 
 def find_similar_words(theme_word, given_text, model, threshold=0.75):
 
@@ -26,7 +36,7 @@ def batch_find_sim_words(word_list, given_text):
     sim_list = []
     for word in word_list:
         try:
-            sim_list += find_similar_words(word, given_text, w2v_model)
+            sim_list += find_similar_words(word, given_text, get_w2v_model())
         except:
             sim_list += [(word, 1)]
     sim_list = sorted(sim_list, key=lambda x: x[1], reverse=True)

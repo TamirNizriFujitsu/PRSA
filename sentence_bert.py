@@ -1,8 +1,8 @@
 from sentence_transformers import SentenceTransformer, util
 import torch
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-sbert_model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
+device = torch.device('cpu')
+sbert_model = SentenceTransformer('paraphrase-MiniLM-L6-v2', device='cpu')
 sbert_model = sbert_model.to(device)
 
 def calculate_similarity_sbert(text1, text2):

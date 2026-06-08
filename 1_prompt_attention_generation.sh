@@ -104,7 +104,10 @@ for task in $tasks
 do
     output_dir="log"
     mkdir -p "$output_dir"
-    nohup venv/bin/python -u 1_prompt_attention_generation.py --theme "$task" $custom_arg --custom_scenario "$CUSTOM_SCENARIO" --out "${output_dir}/${task}_${TARGET_LLM_MODEL}${scenario_suffix}.txt" --target_llm_model "$TARGET_LLM_MODEL" > "${output_dir}/${task}_${TARGET_LLM_MODEL}${scenario_suffix}.log" 2>&1 &
+    # These workers are CPU-only (sbert runs on CPU). Hide the GPUs so torch never
+    # initializes a CUDA context, which otherwise maps multi-GB of CUDA libs into each
+    # process's RSS (and ~33GB of virtual address space) for no benefit.
+    nohup env CUDA_VISIBLE_DEVICES="" venv/bin/python -u 1_prompt_attention_generation.py --theme "$task" $custom_arg --custom_scenario "$CUSTOM_SCENARIO" --out "${output_dir}/${task}_${TARGET_LLM_MODEL}${scenario_suffix}.txt" --target_llm_model "$TARGET_LLM_MODEL" > "${output_dir}/${task}_${TARGET_LLM_MODEL}${scenario_suffix}.log" 2>&1 &
     current_jobs=$((current_jobs + 1))
 
     if [ $current_jobs -ge $parallel_jobs ]; then

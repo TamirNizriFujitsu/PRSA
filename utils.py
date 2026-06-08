@@ -25,7 +25,21 @@ nltk.download('averaged_perceptron_tagger')
 
 categories = ["Ads", "Business", "Code", "Data", "Email", "Fashion", "Food", "Games", "Health", "Ideas", "Language", "Music", "SEO", "Sports", "Study", "Translate", "Travel", "Writing", "NoCategory"]
 model_path = 'tool/GoogleNews-vectors-negative300.bin.gz'
-sim_model = KeyedVectors.load_word2vec_format(model_path, binary=True)
+
+# The GoogleNews word2vec vectors are ~7.5GB in RAM and are only needed by
+# are_synonyms()/phrase_vector(). Loading them at import time made every parallel
+# worker pay 7.5GB even though phase-1 never calls those functions. Load lazily on
+# first use and cache, so processes that don't use synonyms pay nothing.
+_sim_model = None
+
+
+def get_sim_model():
+    global _sim_model
+    if _sim_model is None:
+        _sim_model = KeyedVectors.load_word2vec_format(model_path, binary=True)
+    return _sim_model
+
+
 nlp = spacy.load('en_core_web_md')
 matching_model = spacy.load("en_core_web_sm")
 
@@ -104,8 +118,8 @@ def are_synonyms(word1, word2, threshold=0.3):
     """
     Checks whether two words are synonyms.
     """
-    vector1 = phrase_vector(word1, sim_model)
-    vector2 = phrase_vector(word2, sim_model)
+    vector1 = phrase_vector(word1, get_sim_model())
+    vector2 = phrase_vector(word2, get_sim_model())
     similarity = np.dot(vector1, vector2) / (np.linalg.norm(vector1) * np.linalg.norm(vector2))
     if similarity >= threshold:
         return True
