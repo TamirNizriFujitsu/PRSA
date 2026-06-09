@@ -581,6 +581,7 @@ def write_llm_call_summary(target_model, scenario_suffix, label=""):
         f"pruning_llm_calls    = {counts.get('pruning', 0):>6}    # pre-pruning stolen prompt to remove input-specific leakage",
         f"evaluation_llm_calls = {counts.get('evaluation', 0):>6}    # LLM-based multi-dimensional output evaluation",
         f"attention_llm_calls = {counts.get('attention', 0):>6}    # LLM-based multi-dimensional output to craete attention",
+        f"scoring_llm_calls = {counts.get('scoring', 0):>6}    # LLM-based scoring similarity between stolen and target prompt",
         f"edit_llm_calls = {counts.get('edit', 0):>6}    # LLM-based multi-dimensional output to edit stolen prompt",
         "",
         f"total_llm_calls      = {total:>6}",

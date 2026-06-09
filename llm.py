@@ -980,7 +980,7 @@ def llm_based_evaluation(target_prompt, generated_prompt, model="claude-sonnet-4
 
     Generated Prompt: \"{generated_prompt}\"
     """
-    res = chatGPT_inference(system_prompt=system_prompt, text=user_prompt, model=model, temperature=0, call_source="evaluation")[0]  # LLM-calls counting
+    res = chatGPT_inference(system_prompt=system_prompt, text=user_prompt, model=model, temperature=0, call_source="scoring")[0]  # LLM-calls counting
     return utils.parse_and_validate_llm_json_response(
         res,
         expected_keys=list(dimentions_description.keys()),
